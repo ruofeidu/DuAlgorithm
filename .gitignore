@@ -3,6 +3,13 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+*.png
+*.log
+*.mp4
+*.avi
+*.pyc
+Python/.idea/
+
 # User-specific files
 *.suo
 *.user
@@ -219,7 +226,6 @@ UpgradeLog*.htm
 # SQL Server files
 *.mdf
 *.ldf
-*.ndf
 
 # Business Intelligence projects
 *.rdl.data
@@ -286,3 +292,4 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+/UnitTests/_create.py
