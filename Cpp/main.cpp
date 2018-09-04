@@ -1,7 +1,15 @@
 #include "common.h"
-#include "treap.h"
-#include "graph.h"
+#include "math.h"
 #include "sorts.h"
+#include "graph.h"
+#include "networkflow.h"
+
+#include "linkedlist.h"
+#include "unionset.h"
+#include "trie.h"
+#include "heap.h"
+#include "treap.h"
+
 
 namespace TestTreap {
 	Treap<int> t;

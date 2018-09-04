@@ -116,10 +116,14 @@
     <ClInclude Include="common.h" />
     <ClInclude Include="graph.h" />
     <ClInclude Include="heap.h" />
+    <ClInclude Include="linkedlist.h" />
+    <ClInclude Include="math.h" />
     <ClInclude Include="networkflow.h" />
+    <ClInclude Include="singleton.h" />
     <ClInclude Include="sorts.h" />
     <ClInclude Include="treap.h" />
     <ClInclude Include="trie.h" />
+    <ClInclude Include="unionset.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

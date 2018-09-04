@@ -19,6 +19,9 @@
     <Filter Include="Header Files\DataStructures">
       <UniqueIdentifier>{f40c40d6-3c05-4cf7-ad34-6abab89ad139}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\DesignPatterns">
+      <UniqueIdentifier>{3b32632f-1731-4157-b677-6cb649bf3beb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h">
@@ -41,6 +44,18 @@
     </ClInclude>
     <ClInclude Include="networkflow.h">
       <Filter>Header Files\Algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="linkedlist.h">
+      <Filter>Header Files\DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="math.h">
+      <Filter>Header Files\Algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="unionset.h">
+      <Filter>Header Files\DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="singleton.h">
+      <Filter>Header Files\DesignPatterns</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
