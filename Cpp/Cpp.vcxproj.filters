@@ -57,6 +57,12 @@
     <ClInclude Include="singleton.h">
       <Filter>Header Files\DesignPatterns</Filter>
     </ClInclude>
+    <ClInclude Include="factory.h">
+      <Filter>Header Files\DesignPatterns</Filter>
+    </ClInclude>
+    <ClInclude Include="abstractfactory.h">
+      <Filter>Header Files\DesignPatterns</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
