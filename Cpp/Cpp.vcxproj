@@ -118,9 +118,11 @@
     <ClInclude Include="factory.h" />
     <ClInclude Include="graph.h" />
     <ClInclude Include="heap.h" />
+    <ClInclude Include="interval.h" />
     <ClInclude Include="linkedlist.h" />
     <ClInclude Include="math.h" />
     <ClInclude Include="networkflow.h" />
+    <ClInclude Include="palindrome.h" />
     <ClInclude Include="singleton.h" />
     <ClInclude Include="sorts.h" />
     <ClInclude Include="treap.h" />

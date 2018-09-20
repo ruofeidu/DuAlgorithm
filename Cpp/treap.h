@@ -56,17 +56,17 @@ public:
 			p->c = 1;
 		}
 		else
-			if (x < p->x) {
-				ins(p->l, x);
-				if (p->l->y < p->y)
-					lr(p);
-			}
-			else
-			{
-				ins(p->r, x);
-				if (p->r->y < p->y)
-					rr(p);
-			}
+		if (x < p->x) {
+			ins(p->l, x);
+			if (p->l->y < p->y)
+				lr(p);
+		}
+		else
+		{
+			ins(p->r, x);
+			if (p->r->y < p->y)
+				rr(p);
+		}
 		update(p);
 	}
 	void del(Node *&p, int x) {
