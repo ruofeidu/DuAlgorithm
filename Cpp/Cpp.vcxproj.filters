@@ -22,6 +22,15 @@
     <Filter Include="Header Files\DesignPatterns">
       <UniqueIdentifier>{3b32632f-1731-4157-b677-6cb649bf3beb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\DataStructures\Tree">
+      <UniqueIdentifier>{58bf33fa-1c51-4251-a10c-9e819e5489de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\DataStructures\Tree\BST">
+      <UniqueIdentifier>{9bd06188-b992-478d-8b14-cfc41136ed95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Algorithms\Search">
+      <UniqueIdentifier>{8a792317-eaf9-4db3-808e-57abcd6d9783}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h">
@@ -68,6 +77,42 @@
     </ClInclude>
     <ClInclude Include="palindrome.h">
       <Filter>Header Files\Algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="dp1d.h">
+      <Filter>Header Files\Algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="grid.h">
+      <Filter>Header Files\DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="queues.h">
+      <Filter>Header Files\DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="stacks.h">
+      <Filter>Header Files\DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="greedy.h">
+      <Filter>Header Files\Algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="segmenttree.h">
+      <Filter>Header Files\DataStructures</Filter>
+    </ClInclude>
+    <ClInclude Include="scan.h">
+      <Filter>Header Files\Algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="rsq.h">
+      <Filter>Header Files\Algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="randoms.h">
+      <Filter>Header Files\Algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="bfs.h">
+      <Filter>Header Files\Algorithms\Search</Filter>
+    </ClInclude>
+    <ClInclude Include="dfs.h">
+      <Filter>Header Files\Algorithms\Search</Filter>
+    </ClInclude>
+    <ClInclude Include="binarysearch.h">
+      <Filter>Header Files\Algorithms\Search</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

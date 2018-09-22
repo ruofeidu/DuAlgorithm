@@ -114,17 +114,29 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="abstractfactory.h" />
+    <ClInclude Include="bfs.h" />
+    <ClInclude Include="binarysearch.h" />
     <ClInclude Include="common.h" />
+    <ClInclude Include="dfs.h" />
+    <ClInclude Include="dp1d.h" />
     <ClInclude Include="factory.h" />
     <ClInclude Include="graph.h" />
+    <ClInclude Include="greedy.h" />
+    <ClInclude Include="grid.h" />
     <ClInclude Include="heap.h" />
     <ClInclude Include="interval.h" />
     <ClInclude Include="linkedlist.h" />
     <ClInclude Include="math.h" />
     <ClInclude Include="networkflow.h" />
     <ClInclude Include="palindrome.h" />
+    <ClInclude Include="queues.h" />
+    <ClInclude Include="randoms.h" />
+    <ClInclude Include="rsq.h" />
+    <ClInclude Include="scan.h" />
+    <ClInclude Include="segmenttree.h" />
     <ClInclude Include="singleton.h" />
     <ClInclude Include="sorts.h" />
+    <ClInclude Include="stacks.h" />
     <ClInclude Include="treap.h" />
     <ClInclude Include="trie.h" />
     <ClInclude Include="unionset.h" />
