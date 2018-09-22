@@ -8,19 +8,15 @@ namespace Randoms {
 	std::uniform_real_distribution<double> uniform_random(0.0, 1.0);
 
 	// use as sample = uniform_random(mt);
-
 	int getRandom(int low, int high) {
 		auto sample = uniform_random(mt);
-		return floor(sample * (high - low + 1)) + low;
+		return (int)floor(sample * (high - low + 1)) + low;
 	}
 
-	int shuffle(vector<int> &a) {
-		// if it's 1 or 0 items, just return
-		if (a.size() <= 1) return;
-
-		// walk through from beginning to end
+	// Time: O(N), scan and swap a[i] with a[random(i, n - 1)].
+	void shuffle(vector<int> &a) {
 		for (int i = 0; i < a.size(); ++i) {
-			int id = getRandom(i, a.size() - 1);
+			int id = getRandom(i, (int)a.size() - 1);
 			swap(a[i], a[id]);
 		}
 	}

@@ -2,16 +2,6 @@
 #include "common.h"
 
 namespace DFSTree {
-	bool leafSimilar(TreeNode* root1, TreeNode* root2) {
-		vector<TreeNode*> s1{ root1 }, s2{ root2 };
-		while (!s1.empty() && !s2.empty()) {
-			if (dfs(s1) != dfs(s2)) {
-				return false;
-			}
-		}
-		return s1.empty() && s2.empty();
-	}
-
 	int dfsLeafSimilar(vector<TreeNode*>& s) {
 		while (true) {
 			const auto node = s.back();
@@ -26,5 +16,15 @@ namespace DFSTree {
 				return node->val;
 			}
 		}
+	}
+
+	bool leafSimilar(TreeNode* root1, TreeNode* root2) {
+		vector<TreeNode*> s1{ root1 }, s2{ root2 };
+		while (!s1.empty() && !s2.empty()) {
+			if (dfsLeafSimilar(s1) != dfsLeafSimilar(s2)) {
+				return false;
+			}
+		}
+		return s1.empty() && s2.empty();
 	}
 }

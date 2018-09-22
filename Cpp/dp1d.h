@@ -5,7 +5,7 @@ namespace DP1D {
 	// Given n non-negative integers representing an elevation map where the width of each bar is 1, 
 	// compute how much water it is able to trap after raining.
 	int trap(vector<int>& height) {
-		const int n = height.size();
+		const int n = (int)height.size();
 		if (n < 3) return 0;
 		vector<int> lmax(n, 0), rmax(n, 0);
 		lmax[0] = height[0];

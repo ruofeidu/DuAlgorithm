@@ -26,11 +26,13 @@ public:
 		dummy->y = INT_MAX;
 		root = dummy;
 	}
+
 	void update(Node*&p) {
 		if (p != dummy) {
 			p->c = p->l->c + p->r->c + 1;
 		}
 	}
+
 	// left rotate
 	void lr(Node *&p) {
 		Node *q = p->l;
@@ -40,6 +42,7 @@ public:
 		update(q);
 		p = q;
 	}
+
 	// right rotate
 	void rr(Node *&p) {
 		Node *q = p->r;
@@ -49,6 +52,7 @@ public:
 		update(q);
 		p = q;
 	}
+
 	void ins(Node *&p, int x) {
 		if (p == dummy) {
 			p = new Node(x);
@@ -69,12 +73,14 @@ public:
 		}
 		update(p);
 	}
+
 	void del(Node *&p, int x) {
 		if (p == dummy) return;
 		if (p->x == x) del(p); else
 			if (x < p->x) del(p->l, x); else del(p->r, x);
 		if (p != dummy) update(p);
 	}
+
 	void del(Node *&p) {
 		if (p->l == dummy && p->r == dummy) {
 			delete p;
@@ -103,12 +109,15 @@ public:
 	void ins(int x) {
 		ins(root, x);
 	}
+
 	void del(int x) {
 		del(root, x);
 	}
+
 	bool find(int x) {
 		return find(root, x);
 	}
+
 	int kth(int k) {
 		return (k >= 1 && k <= root->c) ? kth(root, k) : -1;
 	}

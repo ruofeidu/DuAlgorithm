@@ -110,7 +110,7 @@ namespace BFS {
 		int res = 0;
 
 		while (!q.empty()) {
-			for (int size = q.size() - 1; size >= 0; --size) {
+			for (int size = (int)q.size() - 1; size >= 0; --size) {
 				auto s = q.front();
 				q.pop();
 				if (s == B) {
@@ -153,7 +153,6 @@ namespace BFS {
 		queue<CT> q;
 		q.push(start);
 		vector<vector<int>> dir{ { 0, 1 }, { 0, -1 }, { 1, 0 }, { -1, 0 } };
-
 
 		while (!q.empty()) {
 			int i = q.front().first;

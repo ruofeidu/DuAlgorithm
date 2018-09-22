@@ -22,7 +22,7 @@ namespace SegmentTree {
 				Xi[X[i]] = i;
 			}
 
-			auto st = new SegmentTreeNode(0, X.size() - 1, X);
+			auto st = new SegmentTreeNode(0, (int)X.size() - 1, X);
 			int64_t result = 0;
 			int64_t cur_x_sum = 0;
 			int cur_y = events[0][0];

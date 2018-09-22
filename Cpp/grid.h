@@ -2,7 +2,6 @@
 #include "common.h"
 
 namespace grid {
-	using Grid = vector<vector<int>>;
 	vector<pair<int, int>> pacificAtlanticAnother(Grid& matrix) {
 		int n = (int)matrix.size();
 		int m = n ? (int)matrix[0].size() : 0;

@@ -4,14 +4,18 @@
 #include <cmath>
 #include <ctime>
 
+#include <fstream>
 #include <iostream>
 #include <sstream>
+#include <numeric>
+
+#include <bitset>
 #include <vector>
 #include <queue>
 #include <stack>
-#include <iterator>
-#include <string>
 #include <set>
+#include <string>
+#include <iterator>
 #include <unordered_set>
 #include <unordered_map>
 
@@ -20,7 +24,9 @@
 
 using namespace std;
 
-// hasing for pairs
+// common data structued are defined below
+
+// Hasing for pairs
 template <class T>
 inline void hash_combine(std::size_t & seed, const T & v)
 {
@@ -42,6 +48,8 @@ namespace std
 	};
 }
 
+// Linear
+
 struct ListNode {
 	int val;
 	ListNode *next;
@@ -61,11 +69,15 @@ struct Interval {
 	Interval(int s, int e) : start(s), end(e) {}
 };
 
+// Graph
+
 struct UndirectedGraphNode {
 	int label;
 	vector<UndirectedGraphNode *> neighbors;
 	UndirectedGraphNode(int x) : label(x) {};
 };
+
+// Tree
 
 class TreeNode {
 public:
@@ -73,6 +85,15 @@ public:
 	TreeNode *left, *right;
 	TreeNode(int _val) : val(_val), left(nullptr), right(nullptr) {}
 };
+using GraphMap = unordered_map<const UndirectedGraphNode*, UndirectedGraphNode*>;
+
+struct TreeLinkNode {
+	int val;
+	TreeLinkNode *left, *right, *next;
+	TreeLinkNode(int x) : val(x), left(NULL), right(NULL), next(NULL) {}
+};
+
+// Spatial
 
 struct Point {
 	int x;
@@ -81,4 +102,5 @@ struct Point {
 	Point(int a, int b) : x(a), y(b) {}
 };
 
-using GraphMap = unordered_map<const UndirectedGraphNode*, UndirectedGraphNode*>;
+using Vector = vector<int>;
+using Grid = vector<Vector>;

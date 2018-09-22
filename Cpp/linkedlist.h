@@ -72,4 +72,53 @@ namespace TestLinkedList {
 		return dummy.next;
 	}
 
+	// Use three pointers to reverse a linked list
+	ListNode* reverse(ListNode *head) {
+		if (!head || !head->next) return head;
+		ListNode *prev = head;
+		for (ListNode *curr = head->next, *next = curr->next; curr; prev = curr, curr = next, next = next ? next->next : nullptr) {
+			curr->next = prev;
+		}
+		head->next = nullptr;
+		return prev;
+	}
+
+	// Given a singly linked list L0 -> L1 -> Ln-1 -> Ln,
+	// reorder it to: L0 -> Ln -> L1 -> Ln-1 -> L2 -> Ln-2
+	// O(n) time
+	// O(1) space
+	void reorderList(ListNode* head) {
+		if (head == nullptr || head->next == nullptr) return;
+		// calc length
+		ListNode* node = head;
+		int N = 0;
+		while (node) {
+			++N;
+			node = node->next;
+		}
+
+		// cut in the middle O(n)
+		ListNode *slow = head, *fast = head, *prev = nullptr;
+		while (fast && fast->next) {
+			prev = slow;
+			fast = fast->next->next;
+			slow = slow->next;
+		}
+		prev->next = nullptr;
+
+
+		slow = reverse(slow);
+
+
+		// merge two lists
+		ListNode *curr = head;
+		while (curr->next) {
+			ListNode *tmp = curr->next;
+			curr->next = slow;
+			slow = slow->next;
+			curr->next->next = tmp;
+			curr = tmp;
+		}
+		curr->next = slow;
+	}
 }

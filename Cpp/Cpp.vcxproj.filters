@@ -31,37 +31,55 @@
     <Filter Include="Header Files\Algorithms\Search">
       <UniqueIdentifier>{8a792317-eaf9-4db3-808e-57abcd6d9783}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\DataStructures\Linear">
+      <UniqueIdentifier>{807b7fc5-3ab2-4e60-9705-b5fac4accd3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\DataStructures\Cluster">
+      <UniqueIdentifier>{cd28a63c-9375-439d-8b6f-0b2510934c59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Algorithms\DynamicProgramming">
+      <UniqueIdentifier>{55e56d0c-53c5-4e0c-9c82-fdd455215ceb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Algorithms\Math">
+      <UniqueIdentifier>{61fa367b-f557-4e75-9681-2ab138fc8f80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Algorithms\GraphTheory">
+      <UniqueIdentifier>{f027cf5d-29d2-4e54-95f9-e90e614566fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Algorithms\Greedy">
+      <UniqueIdentifier>{7ee1a454-33c7-4883-be27-2d437956acae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Algorithms\Linear">
+      <UniqueIdentifier>{433546b9-feec-4b3d-89b8-78362a378667}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Algorithms\Sorts">
+      <UniqueIdentifier>{cede40ef-9191-4f13-9141-565030ff76bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\DataStructures\Spatial">
+      <UniqueIdentifier>{5c19cb3e-0b7f-4e5a-b471-0a96bd37cd92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\DataStructures\Strings">
+      <UniqueIdentifier>{ba7c7f7f-17cf-40f2-a04c-2199a9e158c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Algorithms\Strings">
+      <UniqueIdentifier>{b035e948-2a43-49a2-9688-d410bcbf1b40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Algorithms\Games">
+      <UniqueIdentifier>{b34ac022-dd8a-4981-a1ac-83aa5855dc20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Algorithms\BitsManipulation">
+      <UniqueIdentifier>{41415bb3-5622-4d37-843a-7444d6799254}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Algorithms\HighPrecision">
+      <UniqueIdentifier>{c0eb9632-3050-4068-90d4-dd97c5544847}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Algorithms\Simulation">
+      <UniqueIdentifier>{8d3c4d12-e108-46c1-91e5-f60393e93075}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="sorts.h">
-      <Filter>Header Files\Algorithms</Filter>
-    </ClInclude>
-    <ClInclude Include="treap.h">
-      <Filter>Header Files\DataStructures</Filter>
-    </ClInclude>
-    <ClInclude Include="trie.h">
-      <Filter>Header Files\DataStructures</Filter>
-    </ClInclude>
-    <ClInclude Include="graph.h">
-      <Filter>Header Files\Algorithms</Filter>
-    </ClInclude>
-    <ClInclude Include="heap.h">
-      <Filter>Header Files\DataStructures</Filter>
-    </ClInclude>
-    <ClInclude Include="networkflow.h">
-      <Filter>Header Files\Algorithms</Filter>
-    </ClInclude>
-    <ClInclude Include="linkedlist.h">
-      <Filter>Header Files\DataStructures</Filter>
-    </ClInclude>
-    <ClInclude Include="math.h">
-      <Filter>Header Files\Algorithms</Filter>
-    </ClInclude>
-    <ClInclude Include="unionset.h">
-      <Filter>Header Files\DataStructures</Filter>
     </ClInclude>
     <ClInclude Include="singleton.h">
       <Filter>Header Files\DesignPatterns</Filter>
@@ -72,39 +90,6 @@
     <ClInclude Include="abstractfactory.h">
       <Filter>Header Files\DesignPatterns</Filter>
     </ClInclude>
-    <ClInclude Include="interval.h">
-      <Filter>Header Files\DataStructures</Filter>
-    </ClInclude>
-    <ClInclude Include="palindrome.h">
-      <Filter>Header Files\Algorithms</Filter>
-    </ClInclude>
-    <ClInclude Include="dp1d.h">
-      <Filter>Header Files\Algorithms</Filter>
-    </ClInclude>
-    <ClInclude Include="grid.h">
-      <Filter>Header Files\DataStructures</Filter>
-    </ClInclude>
-    <ClInclude Include="queues.h">
-      <Filter>Header Files\DataStructures</Filter>
-    </ClInclude>
-    <ClInclude Include="stacks.h">
-      <Filter>Header Files\DataStructures</Filter>
-    </ClInclude>
-    <ClInclude Include="greedy.h">
-      <Filter>Header Files\Algorithms</Filter>
-    </ClInclude>
-    <ClInclude Include="segmenttree.h">
-      <Filter>Header Files\DataStructures</Filter>
-    </ClInclude>
-    <ClInclude Include="scan.h">
-      <Filter>Header Files\Algorithms</Filter>
-    </ClInclude>
-    <ClInclude Include="rsq.h">
-      <Filter>Header Files\Algorithms</Filter>
-    </ClInclude>
-    <ClInclude Include="randoms.h">
-      <Filter>Header Files\Algorithms</Filter>
-    </ClInclude>
     <ClInclude Include="bfs.h">
       <Filter>Header Files\Algorithms\Search</Filter>
     </ClInclude>
@@ -113,6 +98,105 @@
     </ClInclude>
     <ClInclude Include="binarysearch.h">
       <Filter>Header Files\Algorithms\Search</Filter>
+    </ClInclude>
+    <ClInclude Include="stacks.h">
+      <Filter>Header Files\DataStructures\Linear</Filter>
+    </ClInclude>
+    <ClInclude Include="treap.h">
+      <Filter>Header Files\DataStructures\Tree\BST</Filter>
+    </ClInclude>
+    <ClInclude Include="segmenttree.h">
+      <Filter>Header Files\DataStructures\Tree\BST</Filter>
+    </ClInclude>
+    <ClInclude Include="linkedlist.h">
+      <Filter>Header Files\DataStructures\Linear</Filter>
+    </ClInclude>
+    <ClInclude Include="unionset.h">
+      <Filter>Header Files\DataStructures\Cluster</Filter>
+    </ClInclude>
+    <ClInclude Include="queues.h">
+      <Filter>Header Files\DataStructures\Linear</Filter>
+    </ClInclude>
+    <ClInclude Include="interval.h">
+      <Filter>Header Files\DataStructures\Linear</Filter>
+    </ClInclude>
+    <ClInclude Include="heap.h">
+      <Filter>Header Files\DataStructures\Tree\BST</Filter>
+    </ClInclude>
+    <ClInclude Include="grid.h">
+      <Filter>Header Files\DataStructures\Spatial</Filter>
+    </ClInclude>
+    <ClInclude Include="dp1d.h">
+      <Filter>Header Files\Algorithms\DynamicProgramming</Filter>
+    </ClInclude>
+    <ClInclude Include="math.h">
+      <Filter>Header Files\Algorithms\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="graph.h">
+      <Filter>Header Files\Algorithms\GraphTheory</Filter>
+    </ClInclude>
+    <ClInclude Include="greedy.h">
+      <Filter>Header Files\Algorithms\Greedy</Filter>
+    </ClInclude>
+    <ClInclude Include="networkflow.h">
+      <Filter>Header Files\Algorithms\GraphTheory</Filter>
+    </ClInclude>
+    <ClInclude Include="scan.h">
+      <Filter>Header Files\Algorithms\Linear</Filter>
+    </ClInclude>
+    <ClInclude Include="randoms.h">
+      <Filter>Header Files\Algorithms\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="rsq.h">
+      <Filter>Header Files\Algorithms\Linear</Filter>
+    </ClInclude>
+    <ClInclude Include="palindrome.h">
+      <Filter>Header Files\Algorithms\Linear</Filter>
+    </ClInclude>
+    <ClInclude Include="multisets.h">
+      <Filter>Header Files\DataStructures\Tree\BST</Filter>
+    </ClInclude>
+    <ClInclude Include="mergesort.h">
+      <Filter>Header Files\Algorithms\Sorts</Filter>
+    </ClInclude>
+    <ClInclude Include="bubblesort.h">
+      <Filter>Header Files\Algorithms\Sorts</Filter>
+    </ClInclude>
+    <ClInclude Include="instertsort.h">
+      <Filter>Header Files\Algorithms\Sorts</Filter>
+    </ClInclude>
+    <ClInclude Include="quicksort.h">
+      <Filter>Header Files\Algorithms\Sorts</Filter>
+    </ClInclude>
+    <ClInclude Include="smallsort.h">
+      <Filter>Header Files\Algorithms\Sorts</Filter>
+    </ClInclude>
+    <ClInclude Include="quadtree.h">
+      <Filter>Header Files\DataStructures\Spatial</Filter>
+    </ClInclude>
+    <ClInclude Include="trie.h">
+      <Filter>Header Files\DataStructures\Strings</Filter>
+    </ClInclude>
+    <ClInclude Include="cstringtricks.h">
+      <Filter>Header Files\Algorithms\Strings</Filter>
+    </ClInclude>
+    <ClInclude Include="games.h">
+      <Filter>Header Files\Algorithms\Games</Filter>
+    </ClInclude>
+    <ClInclude Include="bits.h">
+      <Filter>Header Files\Algorithms\BitsManipulation</Filter>
+    </ClInclude>
+    <ClInclude Include="binarytrees.h">
+      <Filter>Header Files\DataStructures\Tree</Filter>
+    </ClInclude>
+    <ClInclude Include="binarysearchtrees.h">
+      <Filter>Header Files\DataStructures\Tree\BST</Filter>
+    </ClInclude>
+    <ClInclude Include="number2words.h">
+      <Filter>Header Files\Algorithms\Simulation</Filter>
+    </ClInclude>
+    <ClInclude Include="bigint.h">
+      <Filter>Header Files\Algorithms\HighPrecision</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

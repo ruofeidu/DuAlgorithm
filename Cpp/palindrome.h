@@ -32,7 +32,7 @@ namespace Palindrome {
 
 	int next(int x) {
 		auto s = to_string(x);
-		auto n = s.size();
+		int n = (int)s.size();
 		bool is_odd = n & 1;
 		auto left_half = s.substr(0, n >> 1);
 		auto middle = s[(n - 1) >> 1];
