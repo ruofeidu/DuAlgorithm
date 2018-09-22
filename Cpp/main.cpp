@@ -2,6 +2,11 @@
 
 // Algorithms
 #include "dp1d.h"
+#include "LCS.h"
+#include "bags.h"
+#include "stocks.h"
+
+#include "dpgrid.h"
 
 #include "math.h"
 #include "randoms.h"
@@ -16,6 +21,9 @@
 #include "scan.h"
 
 #include "games.h"
+#include "nimgame.h"
+#include "nqueens.h"
+#include "tictactoe.h"
 
 #include "bits.h"
 
@@ -41,6 +49,9 @@
 #include "linkedlist.h"
 #include "queues.h"
 #include "stacks.h"
+
+/// geometry
+#include "lines.h"
 
 /// cluster
 #include "unionset.h"

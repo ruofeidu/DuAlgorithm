@@ -50,7 +50,7 @@ namespace Stacks {
 				--i;
 			}
 			else if (c == ')') sign.pop_back();
-			else if (c != ' ') sign.push_back(sign.back() * (c == '-' ? -1 : 1));
+			else if (c != ' ') sign.emplace_back(sign.back() * (c == '-' ? -1 : 1));
 		}
 		return res;
 	}
@@ -83,7 +83,8 @@ namespace Stacks {
 		int n = (int)heights.size();
 		if (n == 0) return 0;
 		stack<int> s;
-		heights.push_back(0);  ++n;
+		heights.emplace_back(0);
+		++n;
 		int ans = 0;
 		for (int i = 0; i < n; ) {
 			if (s.empty() || heights[i] > heights[s.top()]) {

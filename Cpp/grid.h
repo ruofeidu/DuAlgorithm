@@ -76,4 +76,21 @@ namespace grid {
 
 		return ans;
 	}
+
+	// 48. rotate image
+	void rotate(vector<vector<int>>& matrix) {
+		size_t n = matrix.size();
+		size_t m = n - 1;
+		for (size_t i = 0; i < n; ++i) {
+			for (size_t j = 0; j < n - i; ++j) {
+				swap(matrix[i][j], matrix[m - j][m - i]);
+			}
+		}
+
+		for (size_t i = 0; i < n / 2; ++i) {
+			for (size_t j = 0; j < n; ++j) {
+				swap(matrix[i][j], matrix[m - i][j]);
+			}
+		}
+	}
 }

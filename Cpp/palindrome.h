@@ -2,6 +2,29 @@
 #include "common.h"
 
 namespace Palindrome {
+	// 5
+	string longestPalindrome(string s)
+	{
+		const size_t n = s.size();
+		if (n == 0) return s;
+		bool* g = new bool[n*n];
+		memset(g, false, sizeof(g));
+
+		size_t max_len = 1, start = 0;
+		for (size_t i = 0; i < n; ++i) {
+			g[i*n + i] = true;
+			for (size_t j = 0; j < i; ++j) {
+				g[i*n + j] = (s[j] == s[i] && (j == i - 1 || g[j + 1 + n*(i - 1)]));
+				if (g[j + n*i] && max_len < (i - j + 1)) {
+					max_len = i - j + 1;
+					start = j;
+				}
+			}
+		}
+		delete[] g;
+		return s.substr(start, max_len);
+	}
+
 	int int_len(int x) {
 		int y = 1; 
 		while (x > 10) {
@@ -56,5 +79,21 @@ namespace Palindrome {
 			return y + inc;
 		else
 			return next(round_up(x));
+	}
+
+	bool isPalindrome(int x)
+	{
+		if (x < 0) return false;
+		if (x == INT_MAX) return false;
+		int n = (int)ceil(log10(x + 1));
+		while (n > 1) {
+			int a = x % 10;
+			int b = x / (int)pow(10, n - 1);
+			if (a != b) return false;
+			x %= (int)pow(10, n - 1);
+			x /= 10;
+			n -= 2;
+		}
+		return true;
 	}
 }

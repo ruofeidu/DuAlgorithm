@@ -84,10 +84,10 @@ namespace BinaryTrees {
 			if (node.second > curLevel) {
 				++curLevel;
 				vector<int> values(1, node.first->val);
-				res.push_back(values);
+				res.emplace_back(values);
 			}
 			else {
-				res[curLevel].push_back(node.first->val);
+				res[curLevel].emplace_back(node.first->val);
 			}
 			if (node.first->left != nullptr) q.push(Level(node.first->left, curLevel + 1));
 			if (node.first->right != nullptr) q.push(Level(node.first->right, curLevel + 1));
@@ -110,11 +110,11 @@ namespace BinaryTrees {
 			if (node.second > curLevel) {
 				++curLevel;
 				vector<int> values(1, node.first->val);
-				res.push_back(values);
+				res.emplace_back(values);
 			}
 			else {
 				if (curLevel % 2 == 0) {
-					res[curLevel].push_back(node.first->val);
+					res[curLevel].emplace_back(node.first->val);
 				}
 				else {
 					res[curLevel].insert(res[curLevel].begin(), node.first->val);

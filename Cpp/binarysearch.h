@@ -2,6 +2,21 @@
 #include "common.h"
 
 namespace BinarySearch {
+	int binarySearch(vector<int>& A, int l, int r, int key) {
+		while (l <= r) {
+			int p = (l + r) >> 1;
+			if (key == A[p])
+				return p;
+			if (key > A[p]) {
+				l = p + 1;
+			}
+			else {
+				r = p - 1;
+			}
+		}
+		return l;
+	}
+
 	// find peak element in an array
 	int peakIndexInMountainArray(vector<int>& A) {
 		int l = 0, r = (int)A.size();

@@ -21,7 +21,6 @@
 
 #include <functional>
 #include <algorithm>
-
 using namespace std;
 
 // common data structued are defined below

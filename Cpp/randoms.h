@@ -7,7 +7,7 @@ namespace Randoms {
 	std::mt19937 mt(rd());
 	std::uniform_real_distribution<double> uniform_random(0.0, 1.0);
 
-	// use as sample = uniform_random(mt);
+	// Use as sample = uniform_random(mt);
 	int getRandom(int low, int high) {
 		auto sample = uniform_random(mt);
 		return (int)floor(sample * (high - low + 1)) + low;

@@ -76,6 +76,24 @@
     <Filter Include="Header Files\Algorithms\Simulation">
       <UniqueIdentifier>{8d3c4d12-e108-46c1-91e5-f60393e93075}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\DataStructures\Geometry">
+      <UniqueIdentifier>{af83d17f-1885-41ec-a653-92df3cf558bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\QuickReferences">
+      <UniqueIdentifier>{8596299b-8911-44b9-b5f7-968cd64dfc52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\DataStructures\Time">
+      <UniqueIdentifier>{3f95dfda-ddb8-4bc5-9af3-13d868c048d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Algorithms\DynamicProgramming\1D">
+      <UniqueIdentifier>{0b2c4d44-2ab9-41a0-8c09-334fc46499d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Algorithms\DynamicProgramming\2D">
+      <UniqueIdentifier>{1691edb0-75f3-49f8-8ba6-0a050f5aca64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Algorithms\Hashing">
+      <UniqueIdentifier>{fadd44ab-a192-44b9-af8f-2e623c5cc4c8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h">
@@ -125,9 +143,6 @@
     </ClInclude>
     <ClInclude Include="grid.h">
       <Filter>Header Files\DataStructures\Spatial</Filter>
-    </ClInclude>
-    <ClInclude Include="dp1d.h">
-      <Filter>Header Files\Algorithms\DynamicProgramming</Filter>
     </ClInclude>
     <ClInclude Include="math.h">
       <Filter>Header Files\Algorithms\Math</Filter>
@@ -197,6 +212,75 @@
     </ClInclude>
     <ClInclude Include="bigint.h">
       <Filter>Header Files\Algorithms\HighPrecision</Filter>
+    </ClInclude>
+    <ClInclude Include="prime.h">
+      <Filter>Header Files\Algorithms\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="mods.h">
+      <Filter>Header Files\Algorithms\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="counts.h">
+      <Filter>Header Files\Algorithms\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="fraction.h">
+      <Filter>Header Files\Algorithms\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="nqueens.h">
+      <Filter>Header Files\Algorithms\Games</Filter>
+    </ClInclude>
+    <ClInclude Include="tictactoe.h">
+      <Filter>Header Files\Algorithms\Games</Filter>
+    </ClInclude>
+    <ClInclude Include="nimgame.h">
+      <Filter>Header Files\Algorithms\Games</Filter>
+    </ClInclude>
+    <ClInclude Include="lines.h">
+      <Filter>Header Files\DataStructures\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="io.h">
+      <Filter>Header Files\QuickReferences</Filter>
+    </ClInclude>
+    <ClInclude Include="cpp17.h">
+      <Filter>Header Files\QuickReferences</Filter>
+    </ClInclude>
+    <ClInclude Include="cpp14.h">
+      <Filter>Header Files\QuickReferences</Filter>
+    </ClInclude>
+    <ClInclude Include="dijkstra.h">
+      <Filter>Header Files\Algorithms\GraphTheory</Filter>
+    </ClInclude>
+    <ClInclude Include="times.h">
+      <Filter>Header Files\DataStructures\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="dp1d.h">
+      <Filter>Header Files\Algorithms\DynamicProgramming\1D</Filter>
+    </ClInclude>
+    <ClInclude Include="LCS.h">
+      <Filter>Header Files\Algorithms\DynamicProgramming\1D</Filter>
+    </ClInclude>
+    <ClInclude Include="bags.h">
+      <Filter>Header Files\Algorithms\DynamicProgramming\1D</Filter>
+    </ClInclude>
+    <ClInclude Include="stocks.h">
+      <Filter>Header Files\Algorithms\DynamicProgramming\1D</Filter>
+    </ClInclude>
+    <ClInclude Include="dpgrid.h">
+      <Filter>Header Files\Algorithms\DynamicProgramming\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="dpnums.h">
+      <Filter>Header Files\Algorithms\DynamicProgramming\1D</Filter>
+    </ClInclude>
+    <ClInclude Include="hashmaps.h">
+      <Filter>Header Files\Algorithms\Hashing</Filter>
+    </ClInclude>
+    <ClInclude Include="hpexercise.h">
+      <Filter>Header Files\Algorithms\HighPrecision</Filter>
+    </ClInclude>
+    <ClInclude Include="numbers.h">
+      <Filter>Header Files\Algorithms\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="permutation.h">
+      <Filter>Header Files\Algorithms\Math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

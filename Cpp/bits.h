@@ -91,7 +91,7 @@ namespace BitsManipulation {
 	vector<int> countBitsBitset(int num) {
 		vector<int> res;
 		for (int i = 0; i <= num; ++i) {
-			res.push_back((int)bitset<32>(i).count());
+			res.emplace_back((int)bitset<32>(i).count());
 		}
 		return res;
 	}
@@ -179,4 +179,63 @@ namespace BitsManipulation {
 		}
 		return f[MAX_T - 1];
 	}
+
+	vector<int> grayCode(int n) {
+		// n ^ (n >> 1)
+		vector<int> ans;
+		ans.reserve((int)(1 << n));
+		ans.push_back(0);
+		for (int i = 0; i < n; ++i) {
+			const int highest_bit = 1 << i;
+			for (int j = (int)ans.size() - 1; j >= 0; --j) {
+				ans.push_back(highest_bit | ans[j]);
+			}
+		}
+		return ans;
+	}
+
+	/*
+	int solveMaximumXOR(vector<int>& nums0, vector<int>& nums1, int mask) {
+		if (mask <= 1) return mask;
+
+		vector<int> nums00, nums01, nums10, nums11;
+		mask >>= 1;
+		for (auto n : nums0) {
+			if (n & mask == 0) nums00.push_back(n);
+			if (n & mask) nums01.push_back(n);
+		}
+		for (auto n : nums1) {
+			if (n & mask == 0) nums10.push_back(n);
+			if (n & mask) nums11.push_back(n);
+		}
+
+		int ans = 0;
+		if (!nums10.empty() && !nums01.empty()) {
+			ans = max(ans, solveMaximumXOR(nums10, nums01, mask));
+		}
+		if (!nums00.empty() && !nums11.empty()) {
+			ans = max(ans, solveMaximumXOR(nums00, nums11, mask));
+		}
+		if (!ans) {
+			ans = solveMaximumXOR(nums0, nums1, mask) - mask;
+		}
+		return ans + (mask << 1);
+	}
+
+	int findMaximumXOR2(vector<int>& nums) {
+		int mask = 1 << 31;
+		vector<int> nums0, nums1;
+
+		while (mask) {
+			for (auto n : nums) {
+				if (n & mask == 0) nums0.push_back(n);
+				if (n & mask) nums1.push_back(n);
+			}
+			if (!nums0.empty() && !nums1.empty()) break;
+			mask >>= 1;
+		}
+
+		return solveMaximumXOR(nums0, nums1, mask);
+	}
+	*/
 };
