@@ -17,7 +17,7 @@ namespace Numbers {
 		return ans;
 	}
 
-	int Solutions::myAtoi(string str)
+	int myAtoi(string str)
 	{
 		int num = 0;
 		int sign = 1;

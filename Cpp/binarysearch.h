@@ -2,6 +2,7 @@
 #include "common.h"
 
 namespace BinarySearch {
+	// search key, return the first value >= key
 	int binarySearch(vector<int>& A, int l, int r, int key) {
 		while (l <= r) {
 			int p = (l + r) >> 1;
