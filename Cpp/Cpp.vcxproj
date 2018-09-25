@@ -124,8 +124,10 @@
     <ClInclude Include="bubblesort.h" />
     <ClInclude Include="common.h" />
     <ClInclude Include="counts.h" />
+    <ClInclude Include="cpp11.h" />
     <ClInclude Include="cpp14.h" />
     <ClInclude Include="cpp17.h" />
+    <ClInclude Include="cppwired.h" />
     <ClInclude Include="dfs.h" />
     <ClInclude Include="dijkstra.h" />
     <ClInclude Include="dp1d.h" />
@@ -143,6 +145,7 @@
     <ClInclude Include="instertsort.h" />
     <ClInclude Include="interval.h" />
     <ClInclude Include="io.h" />
+    <ClInclude Include="KMP.h" />
     <ClInclude Include="LCS.h" />
     <ClInclude Include="lines.h" />
     <ClInclude Include="linkedlist.h" />
@@ -161,6 +164,7 @@
     <ClInclude Include="quadtree.h" />
     <ClInclude Include="queues.h" />
     <ClInclude Include="quicksort.h" />
+    <ClInclude Include="RabinKarp.h" />
     <ClInclude Include="randoms.h" />
     <ClInclude Include="rsq.h" />
     <ClInclude Include="scan.h" />
@@ -169,6 +173,7 @@
     <ClInclude Include="smallsort.h" />
     <ClInclude Include="stacks.h" />
     <ClInclude Include="stocks.h" />
+    <ClInclude Include="suffixarray.h" />
     <ClInclude Include="tictactoe.h" />
     <ClInclude Include="times.h" />
     <ClInclude Include="treap.h" />

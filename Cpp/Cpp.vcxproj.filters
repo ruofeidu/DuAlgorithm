@@ -94,6 +94,12 @@
     <Filter Include="Header Files\Algorithms\Hashing">
       <UniqueIdentifier>{fadd44ab-a192-44b9-af8f-2e623c5cc4c8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Toolkits">
+      <UniqueIdentifier>{d7f98305-b1c5-4081-95d3-c0e49fe02581}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Toolkits">
+      <UniqueIdentifier>{fae55a29-8a5c-4cd9-9609-1126d3676b70}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h">
@@ -222,9 +228,6 @@
     <ClInclude Include="counts.h">
       <Filter>Header Files\Algorithms\Math</Filter>
     </ClInclude>
-    <ClInclude Include="fraction.h">
-      <Filter>Header Files\Algorithms\Math</Filter>
-    </ClInclude>
     <ClInclude Include="nqueens.h">
       <Filter>Header Files\Algorithms\Games</Filter>
     </ClInclude>
@@ -281,6 +284,24 @@
     </ClInclude>
     <ClInclude Include="permutation.h">
       <Filter>Header Files\Algorithms\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="cppwired.h">
+      <Filter>Header Files\QuickReferences</Filter>
+    </ClInclude>
+    <ClInclude Include="cpp11.h">
+      <Filter>Header Files\QuickReferences</Filter>
+    </ClInclude>
+    <ClInclude Include="fraction.h">
+      <Filter>Header Files\Algorithms\HighPrecision</Filter>
+    </ClInclude>
+    <ClInclude Include="suffixarray.h">
+      <Filter>Header Files\DataStructures\Strings</Filter>
+    </ClInclude>
+    <ClInclude Include="KMP.h">
+      <Filter>Header Files\Algorithms\Strings</Filter>
+    </ClInclude>
+    <ClInclude Include="RabinKarp.h">
+      <Filter>Header Files\Algorithms\Strings</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -3,7 +3,7 @@
 
 namespace Mods{
 	// GCD: Greatest common divisor using binary Euclidean algorithm. 
-	// Thus, the time complexity is O(log(a. b)) = O(log (a + b)) = O(log n).
+	// Thus, the time complexity is O(log(a.b)) = O(log (a + b)) = O(log n).
 	int gcd(int x, int y) {
 		if (!x || !y) return max(x, y);
 		for (int t; t = x % y; x = y, y = t);

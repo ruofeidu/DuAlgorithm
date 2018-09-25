@@ -7,7 +7,6 @@ namespace LCSProblems {
 	int LCS(string &a, string &b) {
 		int n = (int)a.size();
 		int m = (int)b.size();
-		int i, j;
 		Grid f(n + 1, Vector(m + 1, 0));
 		
 		for (int i = 0; i <= n; ++i) {

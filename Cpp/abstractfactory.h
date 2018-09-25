@@ -2,6 +2,7 @@
 #include <iostream>
 using namespace std;
 
+// Clean code deveopment: http://lumiera.org/project/background/CleanCodeDevelopment.html
 // Product A
 class ProductA
 {

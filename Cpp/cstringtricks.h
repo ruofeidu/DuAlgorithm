@@ -66,7 +66,7 @@ namespace StringTricks {
 		cout << isAnagram("apex", "peax");
 	}
 
-	// Write a method to replace all spaces in a string with ‘%20’.
+	// Write a method to replace all spaces in a string with ?20?
 
 	void replace(char *c) {
 		if (c == NULL) return;

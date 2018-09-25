@@ -1,5 +1,48 @@
 #pragma once
 #include "common.h"
+#include "mods.h"
+
+class Fraction
+{
+public:
+	int molecule, denominator;
+	
+	Fraction(int m, int d) :molecule(m), denominator(d) {
+		this->abbreviate();
+	};
+
+	void abbreviate()
+	{
+		int t = Mods::gcd(molecule, denominator);
+		molecule /= t;
+		denominator /= t;
+	}
+
+	double getDouble(Fraction x)
+	{
+		return static_cast<double>(x.molecule / x.denominator);
+	}
+
+	void print(Fraction x)
+	{
+		int l = max(floor(log10(x.molecule)), floor(log10(x.denominator))) + 2;
+		cout << x.molecule << endl;
+		for (int i = 0; i < l; ++i)
+			cout << '-';
+		cout << endl << x.denominator << endl;
+	}
+
+};
+
+Fraction operator +(Fraction const &x, Fraction const &y)
+{
+	return Fraction(x.molecule * y.denominator + y.molecule * x.denominator, x.denominator * y.denominator);
+}
+
+Fraction operator *(Fraction const &x, Fraction const &y)
+{
+	return Fraction(x.molecule * y.molecule, x.denominator * y.denominator);
+}
 
 namespace Fractions {
 	// 166. Fraction to Recurring Decimal
@@ -30,4 +73,5 @@ namespace Fractions {
 		}
 		return res + s;
 	}
+
 }
