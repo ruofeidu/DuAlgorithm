@@ -4,15 +4,18 @@ My collection of algorithms and data structure in C++ and Python.
 ## Data Structure
 ### Linear
 #### Interval
-
+##### Sweeping line
 #### Linked List
-
+* Reverse (between) with a dummy pointer
+* Deep copy, one after one
 
 #### Queue
-
+##### Dequeue
+* Sliding window
+* Moving average
 
 #### Stacks
-
+* Calculator
 
 ### Cluster
 #### Union Set
@@ -20,21 +23,35 @@ My collection of algorithms and data structure in C++ and Python.
 
 ## Algorithm
 ### Dynamic Programming
+#### Bag problem
+##### Infinite goods
+#### LCS
+#### Stock problem
 
 ### Math
-
+#### Counting Problems
+#### Mods Theory
+#### Number Theory
+#### Primes
+#### Permutations
 #### Random
+#### Probability
 ##### Shuffle
 * Time: O(N), scan and swap a[i] with a[random(i,n-1)].
 
 ### Graph Theory
 #### Shortest Path
 
+#### Network Flow
+
 ### Greedy
 
 
 ### Linear
 
+### String
+#### KMP
+#### RabinKarp
 
 ### Sorts
 #### QuickSort
