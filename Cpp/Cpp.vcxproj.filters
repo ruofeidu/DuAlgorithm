@@ -28,9 +28,6 @@
     <Filter Include="Header Files\DataStructures\Tree\BST">
       <UniqueIdentifier>{9bd06188-b992-478d-8b14-cfc41136ed95}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Algorithms\Search">
-      <UniqueIdentifier>{8a792317-eaf9-4db3-808e-57abcd6d9783}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\DataStructures\Linear">
       <UniqueIdentifier>{807b7fc5-3ab2-4e60-9705-b5fac4accd3f}</UniqueIdentifier>
     </Filter>
@@ -100,6 +97,9 @@
     <Filter Include="Header Files\Toolkits">
       <UniqueIdentifier>{fae55a29-8a5c-4cd9-9609-1126d3676b70}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Algorithms\Search">
+      <UniqueIdentifier>{8a792317-eaf9-4db3-808e-57abcd6d9783}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h">
@@ -162,17 +162,8 @@
     <ClInclude Include="networkflow.h">
       <Filter>Header Files\Algorithms\GraphTheory</Filter>
     </ClInclude>
-    <ClInclude Include="scan.h">
-      <Filter>Header Files\Algorithms\Linear</Filter>
-    </ClInclude>
     <ClInclude Include="randoms.h">
       <Filter>Header Files\Algorithms\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="rsq.h">
-      <Filter>Header Files\Algorithms\Linear</Filter>
-    </ClInclude>
-    <ClInclude Include="palindrome.h">
-      <Filter>Header Files\Algorithms\Linear</Filter>
     </ClInclude>
     <ClInclude Include="multisets.h">
       <Filter>Header Files\DataStructures\Tree\BST</Filter>
@@ -249,19 +240,10 @@
     <ClInclude Include="cpp14.h">
       <Filter>Header Files\QuickReferences</Filter>
     </ClInclude>
-    <ClInclude Include="dijkstra.h">
-      <Filter>Header Files\Algorithms\GraphTheory</Filter>
-    </ClInclude>
     <ClInclude Include="times.h">
       <Filter>Header Files\DataStructures\Time</Filter>
     </ClInclude>
-    <ClInclude Include="dp1d.h">
-      <Filter>Header Files\Algorithms\DynamicProgramming\1D</Filter>
-    </ClInclude>
     <ClInclude Include="LCS.h">
-      <Filter>Header Files\Algorithms\DynamicProgramming\1D</Filter>
-    </ClInclude>
-    <ClInclude Include="bags.h">
       <Filter>Header Files\Algorithms\DynamicProgramming\1D</Filter>
     </ClInclude>
     <ClInclude Include="stocks.h">
@@ -302,6 +284,27 @@
     </ClInclude>
     <ClInclude Include="RabinKarp.h">
       <Filter>Header Files\Algorithms\Strings</Filter>
+    </ClInclude>
+    <ClInclude Include="Knapsack.h">
+      <Filter>Header Files\Algorithms\DynamicProgramming\1D</Filter>
+    </ClInclude>
+    <ClInclude Include="DP1D.h">
+      <Filter>Header Files\Algorithms\DynamicProgramming\1D</Filter>
+    </ClInclude>
+    <ClInclude Include="LIS.h">
+      <Filter>Header Files\Algorithms\DynamicProgramming\1D</Filter>
+    </ClInclude>
+    <ClInclude Include="Palindrome.h">
+      <Filter>Header Files\Algorithms\Linear</Filter>
+    </ClInclude>
+    <ClInclude Include="RSQ.h">
+      <Filter>Header Files\Algorithms\Linear</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanning.h">
+      <Filter>Header Files\Algorithms\Linear</Filter>
+    </ClInclude>
+    <ClInclude Include="Dijkstra.h">
+      <Filter>Header Files\Algorithms\GraphTheory</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

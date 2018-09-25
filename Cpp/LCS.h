@@ -1,12 +1,13 @@
 #pragma once
 #include "common.h"
 
+// Longest Common Subsequence (LCS)
+// Find the longest subsequence common to all sequences in a set of sequences (often just two sequences).
+// Time: O(M•N)
+// Space: O(M•N) => O(1)
 namespace LCSProblems {
-	// Longest common subsequence
-	// O(MN)
 	int LCS(string &a, string &b) {
-		int n = (int)a.size();
-		int m = (int)b.size();
+		int n = (int)a.size(), m = (int)b.size();
 		Grid f(n + 1, Vector(m + 1, 0));
 		
 		for (int i = 0; i <= n; ++i) {

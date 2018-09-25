@@ -2,7 +2,8 @@
 #include "common.h"
 
 namespace Palindrome {
-	// 5
+	// 5. Longest Palindromic Subsequence
+	// Find the length of the longest palindromic subsequence in a given sequence
 	string longestPalindrome(string s)
 	{
 		const size_t n = s.size();

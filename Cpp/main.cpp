@@ -3,7 +3,7 @@
 // Algorithms
 #include "dp1d.h"
 #include "LCS.h"
-#include "bags.h"
+#include "Knapsack.h"
 #include "stocks.h"
 
 #include "dpgrid.h"
@@ -18,7 +18,7 @@
 
 #include "palindrome.h"
 #include "rsq.h"
-#include "scan.h"
+#include "Scaning.h"
 
 #include "games.h"
 #include "nimgame.h"

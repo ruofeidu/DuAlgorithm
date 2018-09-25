@@ -114,7 +114,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="abstractfactory.h" />
-    <ClInclude Include="bags.h" />
+    <ClInclude Include="Knapsack.h" />
     <ClInclude Include="bfs.h" />
     <ClInclude Include="bigint.h" />
     <ClInclude Include="binarysearch.h" />
@@ -129,8 +129,8 @@
     <ClInclude Include="cpp17.h" />
     <ClInclude Include="cppwired.h" />
     <ClInclude Include="dfs.h" />
-    <ClInclude Include="dijkstra.h" />
-    <ClInclude Include="dp1d.h" />
+    <ClInclude Include="Dijkstra.h" />
+    <ClInclude Include="DP1D.h" />
     <ClInclude Include="dpgrid.h" />
     <ClInclude Include="dpnums.h" />
     <ClInclude Include="factory.h" />
@@ -149,6 +149,7 @@
     <ClInclude Include="LCS.h" />
     <ClInclude Include="lines.h" />
     <ClInclude Include="linkedlist.h" />
+    <ClInclude Include="LIS.h" />
     <ClInclude Include="math.h" />
     <ClInclude Include="mergesort.h" />
     <ClInclude Include="mods.h" />
@@ -158,7 +159,7 @@
     <ClInclude Include="nqueens.h" />
     <ClInclude Include="number2words.h" />
     <ClInclude Include="numbers.h" />
-    <ClInclude Include="palindrome.h" />
+    <ClInclude Include="Palindrome.h" />
     <ClInclude Include="permutation.h" />
     <ClInclude Include="prime.h" />
     <ClInclude Include="quadtree.h" />
@@ -166,8 +167,8 @@
     <ClInclude Include="quicksort.h" />
     <ClInclude Include="RabinKarp.h" />
     <ClInclude Include="randoms.h" />
-    <ClInclude Include="rsq.h" />
-    <ClInclude Include="scan.h" />
+    <ClInclude Include="RSQ.h" />
+    <ClInclude Include="Scanning.h" />
     <ClInclude Include="segmenttree.h" />
     <ClInclude Include="singleton.h" />
     <ClInclude Include="smallsort.h" />

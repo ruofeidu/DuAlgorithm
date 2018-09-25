@@ -22,7 +22,7 @@ public:
 	};
 
 	// 307. Range Sum Query - Mutable
-	// 1D Updated RSQ, O(n log n), BIT
+	// 1D Updated RSQ, O(n log n), Binary Index Tree (Fenwick Tree)
 	/**
 	*	C1 = A1
 	*	C2 = A1 + A2
