@@ -10,6 +10,24 @@ namespace Mods{
 		return y;
 	}
 
+	// LCM: Lowest Common Multiple
+	int lcm(int x, int y) {
+		return x * y == 0 ? 0 : x * y / gcd(x, y);
+	}
+
+	// Modular exponentiation: a ^ b % n
+	// https://en.wikipedia.org/wiki/Modular_exponentiation
+	int modExp(int a, int b, int n) {
+		int c = 1, y = a;
+		while (b != 0) {
+			if (b & 1)
+				c = c * y % n;
+			y = y * y % n;
+			b = b >> 1;
+		}
+		return c;
+	}
+
 	// advanced gcd
 	int kgcd(int x, int y) {
 		if (!x || !y) return max(x, y);

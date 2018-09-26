@@ -2,15 +2,14 @@
 #include "common.h"
 
 // Longest Common Subsequence (LCS)
-// Find the length of the longest subsequence of a given sequence 
-// such that all elements of the subsequence are sorted in increasing order.
-// Time: O(N log N)
-// Space: O(N) => O(1)
+// Find the longest subsequence common to all sequences in a set of sequences (often just two sequences).
+// Time: O(M•N)
+// Space: O(M•N) => O(1)
 namespace LCSProblems {
 	int LCS(string &a, string &b) {
 		int n = (int)a.size(), m = (int)b.size();
 		Grid f(n + 1, Vector(m + 1, 0));
-
+		
 		for (int i = 0; i <= n; ++i) {
 			for (int j = 0; j <= m; ++j) {
 				if (a[i - 1] == b[j - 1])

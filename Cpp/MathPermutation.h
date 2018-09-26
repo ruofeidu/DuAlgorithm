@@ -2,10 +2,9 @@
 #include "common.h"
 
 namespace Permutations {
-
-	// 47 unique permutation
+	// 47. Unique Permutation
 	typedef vector<pair<int, int>>::const_iterator Iter;
-	void Solutions::DFSUniquePermutation(Iter first, Iter last, vector<int> &p, vector<vector<int>> &result, size_t n) {
+	void DFSUniquePermutation(Iter first, Iter last, vector<int> &p, vector<vector<int>> &result, size_t n) {
 		if (n == p.size()) {
 			result.push_back(p);
 		}
@@ -25,8 +24,8 @@ namespace Permutations {
 		}
 	}
 
-	// 46 permutation
-	template<typename T> bool Solutions::nextPermutation(T first, T last) {
+	// 46. Permutation
+	template<typename T> bool nextPermutation(T first, T last) {
 		const auto rFirst = reverse_iterator<T>(last);
 		const auto rLast = reverse_iterator<T>(first);
 

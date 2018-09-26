@@ -2,16 +2,16 @@
 #include "common.h"
 
 namespace Hashmaps {
-	vector<int> twoSum(vector<int>& nums, int target) {
-		unordered_map<int, size_t> map;
-		vector<int> res;
+	vector<size_t> twoSum(vector<int>& nums, int target) {
+		unordered_map<int, size_t> dict;
+		vector<size_t> res;
 		for (size_t i = 0; i < nums.size(); ++i) {
 			int cur = nums[i];
-			if (map.find(cur) == map.end()) {
-				map[target - cur] = i;
+			if (dict.find(cur) == dict.end()) {
+				dict[target - cur] = i;
 			}
 			else {
-				res.emplace_back(map[nums[i]]);
+				res.emplace_back(dict[nums[i]]);
 				res.emplace_back(i);
 				break;
 			}

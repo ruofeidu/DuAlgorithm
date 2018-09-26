@@ -1,6 +1,6 @@
 #pragma once
 #include "common.h"
-#include "mods.h"
+#include "MathMods.h"
 
 class Fraction
 {
@@ -25,7 +25,7 @@ public:
 
 	void print(Fraction x)
 	{
-		int l = max(floor(log10(x.molecule)), floor(log10(x.denominator))) + 2;
+		int l = static_cast<int>(max(floor(log10(x.molecule)), floor(log10(x.denominator)))) + 2;
 		cout << x.molecule << endl;
 		for (int i = 0; i < l; ++i)
 			cout << '-';

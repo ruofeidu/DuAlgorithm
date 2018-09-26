@@ -1,79 +1,101 @@
 #include "common.h"
 
 // Algorithms
-#include "dp1d.h"
-#include "LCS.h"
-#include "Knapsack.h"
-#include "stocks.h"
 
-#include "dpgrid.h"
+/// Dynamic Programming
+#include "DPLinear.h"
+#include "DPNumbers.h"
+#include "DPLCS.h"
+#include "DPKnapsack.h"
+#include "DPStock.h"
 
-#include "math.h"
-#include "randoms.h"
+#include "DPGrid.h"
 
-#include "graph.h"
-#include "networkflow.h"
+#include "DPTree.h"
 
-#include "greedy.h"
+/// Games
+#include "GameTheory.h"
+#include "GameNim.h"
+#include "GameNQueen.h"
+#include "GameTicTacToe.h"
 
-#include "palindrome.h"
-#include "rsq.h"
-#include "Scaning.h"
+/// Graph Theory
+#include "GraphDijkstra.h"
+#include "GraphMisc.h"
+#include "GraphNetworkFlow.h"
 
-#include "games.h"
-#include "nimgame.h"
-#include "nqueens.h"
-#include "tictactoe.h"
+/// Greedy
+#include "Greedy.h"
 
-#include "bits.h"
+/// Math
+/// High Precision
+#include "BigInt.h"
+#include "Fraction.h"
+#include "HighPrecision.h"
 
-#include "bigint.h"
+#include "MathCount.h"
+#include "MathMisc.h"
+#include "MathMods.h"
+#include "MathNumbers.h"
+#include "MathPermutation.h"
+#include "MathPrime.h"
+#include "MathRandom.h"
 
-#include "number2words.h"
+/// Hashing
+#include "HashMaps.h"
 
-#include "cstringtricks.h"
+/// Search
+#include "SearchBFS.h"
+#include "SearchBinary.h"
+#include "SearchDFS.h"
 
-#include "quicksort.h"
-#include "mergesort.h"
-#include "bubblesort.h"
-#include "instertsort.h"
-#include "smallsort.h"
+/// Simulation
+#include "SimulationNum2Word.h"
 
-#include "bfs.h"
-#include "binarysearch.h"
-#include "dfs.h"
+/// Sorts
+#include "SortQuick.h"
+#include "SortMerge.h"
+#include "SortBubble.h"
+#include "SortInsert.h"
+#include "SortTiny.h"
+
+/// Strings
+#include "StringCTricks.h"
+#include "StringKMP.h"
+#include "StringRabinKarp.h"
 
 // Data Structures
 /// linear
-#include "interval.h"
-#include "linkedlist.h"
-#include "queues.h"
-#include "stacks.h"
+#include "Intervals.h"
+#include "LinkedLists.h"
+#include "Queues.h"
+#include "Stacks.h"
 
 /// geometry
-#include "lines.h"
+#include "GeoLines.h"
 
 /// cluster
-#include "unionset.h"
+#include "UnionSets.h"
 
 /// spatial
-#include "grid.h"
-#include "quadtree.h"
+#include "Grids.h"
+#include "QuadTrees.h"
 
 /// strings
-#include "trie.h"
+#include "StringSuffixArrays.h"
+#include "Tries.h"
 
 /// trees
-#include "binarysearchtrees.h"
-#include "heap.h"
-#include "multisets.h"
-#include "segmenttree.h"
-#include "treap.h"
+#include "BinarySearchTrees.h"
+#include "Heaps.h"
+#include "Multisets.h"
+#include "SegmentTrees.h"
+#include "Treaps.h"
 
 // Design Patterns
-#include "abstractfactory.h"
-#include "factory.h"
-#include "singleton.h"
+#include "PatternAbstractFactory.h"
+#include "PatternFactory.h"
+#include "PatternSingleton.h"
 
 namespace TestTreap {
 	Treap<int> t;

@@ -89,4 +89,28 @@ namespace Counts {
 		return f[n % 3];
 	}
 
+
+	int maxRegionsByALine(int n) {
+		// f[n] = f[n-1] + n
+		return n * (n + 1) / 2 + 1;
+	}
+
+	int maxRegionsByAPolyLine(int n) {
+		return (n - 1)*(2 * n - 1) + 2 * n;
+	}
+
+	int maxRegionsByAClosedCurve(int n) {
+		// f[n] = f[n-1] + 2 * (n-1)
+		return n * n - n + 2;
+	}
+
+	int countTrianglesOfPolygon(int n) {
+		return combination(2 * n - 2, n - 1) / n;
+	}
+
+	int countKlygonOfPolygon(int n, int k) {
+		if (k < 3)
+			return -1;
+		return combination(2 * k - 4, k - 2) / (k - 1);
+	}
 }

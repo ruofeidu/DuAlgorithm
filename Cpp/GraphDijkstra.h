@@ -51,3 +51,31 @@ vector<GraphNode*> dijkstra(int n, GraphNode* s, GraphNode* t) {
 	reverse(res.begin(), res.end());
 	return res;
 }
+
+int dijkstra2(int s, int t, int n, Grid& f) {
+	vector<bool> vd(n, false);
+	vector<int> d(n, INT_MAX);
+	vector<int> p(n, -1); // path
+	int i = s;
+	d[s] = 0;
+	while (i != t) {
+		// update d
+		for (int j = 0; j < n; ++j) {
+			if (!vd[j] && d[i] + f[i][j] < d[j]) {
+				d[j] = d[i] + f[i][j];
+				p[j] = i;
+			}
+		}
+		int min = INT_MAX;
+		for (int j = 0; j < n; ++j) {
+			if (!vd[j] && d[j] < min) {
+				i = j; 
+				min = d[j];
+				vd[i] = true;
+			}
+			if (min == INT_MAX)
+				return -1;
+		}
+	}
+	return d[t];
+}
