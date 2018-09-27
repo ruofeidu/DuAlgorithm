@@ -116,6 +116,7 @@
     <ClInclude Include="GraphFloyd.h" />
     <ClInclude Include="GraphKruskal.h" />
     <ClInclude Include="GraphPrim.h" />
+    <ClInclude Include="MathSampling.h" />
     <ClInclude Include="PatternAbstractFactory.h" />
     <ClInclude Include="DPKnapsack.h" />
     <ClInclude Include="PatternRAII.h" />

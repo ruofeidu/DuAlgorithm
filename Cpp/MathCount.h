@@ -104,11 +104,11 @@ namespace Counts {
 		return n * n - n + 2;
 	}
 
-	int countTrianglesOfPolygon(int n) {
+	long long countTrianglesOfPolygon(int n) {
 		return combination(2 * n - 2, n - 1) / n;
 	}
 
-	int countKlygonOfPolygon(int n, int k) {
+	long long countKlygonOfPolygon(int n, int k) {
 		if (k < 3)
 			return -1;
 		return combination(2 * k - 4, k - 2) / (k - 1);

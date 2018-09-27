@@ -40,6 +40,7 @@
 #include "MathPermutation.h"
 #include "MathPrime.h"
 #include "MathRandom.h"
+#include "MathSampling.h"
 
 /// Hashing
 #include "HashMaps.h"

@@ -336,6 +336,9 @@
     <ClInclude Include="PatternRAII.h">
       <Filter>Header Files\DesignPatterns</Filter>
     </ClInclude>
+    <ClInclude Include="MathSampling.h">
+      <Filter>Header Files\Algorithms\Math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
