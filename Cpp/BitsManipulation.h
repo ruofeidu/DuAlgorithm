@@ -276,4 +276,24 @@ namespace BitsManipulation {
 		return solveMaximumXOR(nums0, nums1, mask);
 	}
 	*/
+
+	// 201. Bitwise AND of Numbers Range
+	// Given a range [m, n] where 0 <= m <= n <= 2147483647, return the bitwise AND of all numbers in this range, inclusive
+	// Insight: for the range [m, n], if n > m, the lowest bit is always 0.
+	// the only case that lowest bit will become 1 is when m==n, and the lowest bit is 1
+	int rangeBitwiseAnd(int m, int n) {
+		while (m < n) {
+			n = n & (n - 1);
+		}
+		return m & n;
+	}
+
+	int rangeBitwiseAnd2(int m, int n) {
+		if (n > m) {
+			return rangeBitwiseAnd(m >> 1, n >> 1) << 1;
+		}
+		else {
+			return m;
+		}
+	}
 };

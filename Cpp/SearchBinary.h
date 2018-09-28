@@ -18,7 +18,7 @@ class BinarySearch {
 		return l;
 	}
 
-	// find peak element in an array
+	// Find peak element in an array
 	int peakIndexInMountainArray(vector<int>& A) {
 		int l = 0, r = (int)A.size();
 		while (l < r) {
