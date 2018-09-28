@@ -2,6 +2,7 @@
 #include "common.h"
 
 namespace Scanning {
+	// 849. Maximize Distance to Closest Person
 	int maxDistToClosest(vector<int>& seats) {
 		int res = 0, cnt = 0;
 		bool ends = true;

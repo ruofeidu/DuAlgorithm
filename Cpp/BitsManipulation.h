@@ -276,4 +276,13 @@ namespace BitsManipulation {
 		return solveMaximumXOR(nums0, nums1, mask);
 	}
 	*/
+
+	// 461. Hamming Distance
+	int hammingDistance(int x, int y) {
+		int distance = 0;
+		for (int z = x ^ y; z; z &= z - 1) {
+			++distance;
+		}
+		return distance;
+	}
 };

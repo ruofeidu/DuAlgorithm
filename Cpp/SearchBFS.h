@@ -173,4 +173,119 @@ namespace BFS {
 		}
 		return (botright.first - topleft.first + 1) * (botright.second - topleft.second + 1);
 	}
+
+	// BFS + DFS
+	vector<vector<string>> findLadders(string beginWord, string endWord, vector<string>& wordList) {
+		vector<vector<string>> res;
+		wordList.emplace_back(beginWord);
+
+		const int n = wordList.size();
+		int start = -1, target = -1;
+		vector<vector<int>> edge(n, vector<int>());
+
+		auto isConnected = [=](const string& a, const string& b) {
+			if (a.size() != b.size())
+				return false;
+			int cnt = 0;
+			for (int i = 0; i < a.size(); ++i) {
+				if (a[i] != b[i])
+					++cnt;
+				if (cnt > 1)
+					return false;
+			}
+			return cnt == 1;
+		};
+
+		for (int i = 0; i < n; ++i) {
+			if (!wordList[i].compare(beginWord)) {
+				start = i;
+			}
+			if (!wordList[i].compare(endWord)) {
+				target = i;
+			}
+			for (int j = i + 1; j < n; ++j) {
+				if (isConnected(wordList[i], wordList[j])) {
+					edge[i].emplace_back(j);
+					edge[j].emplace_back(i);
+					//cout << "c" << i << " " << j << endl;
+				}
+			}
+		}
+		if (start == -1 || target == -1)
+			return res;
+
+		queue<pair<int, int>> q;
+		q.emplace(make_pair(target, 0));
+
+		vector<bool> vd(n, false);
+		vector<bool> marked(n, false);
+
+		vd[target] = true;
+		marked[target] = true;
+
+		vector<vector<int>> path(n, vector<int>());
+		int current_layer = 0;
+		vector<int> next_layer;
+		bool finish = false;
+
+		//cout << start << " " << target << endl;
+
+		while (!q.empty()) {
+			auto p = q.front();
+			q.pop();
+			int i = p.first;
+			int layer = p.second;
+			cout << i << " " << layer << endl;
+
+			if (layer != current_layer) {
+				if (finish) {
+					cout << "finish" << endl;
+					vector<string> ans;
+					stack<pair<int, int>> DFS;
+					DFS.push({ start, 0 });
+					while (!DFS.empty()) {
+						auto p = DFS.top();
+						auto i = p.first;
+						auto layer = p.second;
+						DFS.pop();
+						while (ans.size() > layer) {
+							ans.pop_back();
+						}
+						ans.emplace_back(wordList[i]);
+
+						if (i != target) {
+							for (const auto j : path[i]) {
+								DFS.push({ j, layer + 1 });
+							}
+						}
+						else {
+							auto copied = ans;
+							res.emplace_back(copied);
+						}
+					}
+					return res;
+				}
+
+				current_layer = layer;
+				for (auto j : next_layer) {
+					marked[j] = true;
+				}
+				next_layer.clear();
+			}
+			for (const auto j : edge[i]) {
+				if (j == start) {
+					finish = true;
+				}
+				if (!vd[j]) {
+					q.emplace(make_pair(j, layer + 1));
+					vd[j] = true;
+				}
+				if (!marked[j]) {
+					path[j].emplace_back(i);
+					next_layer.emplace_back(j);
+				}
+			}
+		}
+		return res;
+	}
 }

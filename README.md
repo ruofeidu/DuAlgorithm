@@ -1,31 +1,17 @@
 # DuAlgorithm
-My collection of algorithms and data structure in C++ and Python.
-
-## Data Structure
-### Linear
-#### Interval
-##### Sweeping line
-#### Linked List
-* Reverse (between) with a dummy pointer
-* Deep copy, one after one
-
-#### Queue
-##### Dequeue
-* Sliding window
-* Moving average
-
-#### Stacks
-* Calculator
-
-### Cluster
-#### Union Set
-* Time: O(alpha), typically alpha < 4
+My collection of algorithms, data structure in C++ and Python.
 
 ## Algorithm
 ### Dynamic Programming
-#### Bag problem
-##### Infinite goods
+#### Knapsack problem
+* f[j] = f[j] || f[j-v[i]]
+* f[i][j] = max(f[i-1][j-v[i]] + w[i], f[i-1][j])
+* f[i,j] = f[i-1,j-a[i]] or f[i-1,j+a[i]]
+##### Knapsack on a tree
+* f[i,j] = max(f[i,j], f[l,j-v[i]-v[fb[i]]-v[fa[i]]]+v[i]*p[i]+v[fb[i]]*p[fb[i]]+v[fa[i]]*p[fa[i]])
 #### LCS
+* f[i] = max{f[j] + 1}
+* f[i] = min{{f(i-k)} (not stone[i]) {f(i-k)} + 1} (stone[i]);  
 #### Stock problem
 
 ### Math
@@ -41,9 +27,12 @@ My collection of algorithms and data structure in C++ and Python.
 
 ### Graph Theory
 #### Shortest Path
-
+* Dijkstra: O(E + V log V), heap for pending vertices.
+* Bellman Ford: O(VE)
+* Kruskal: O(E log V)
+* Prim: O(E + V log V) Fibonacci heap and adjacency list
 #### Network Flow
-
+##### SPFA
 ### Greedy
 
 
@@ -72,6 +61,29 @@ My collection of algorithms and data structure in C++ and Python.
 #### DFS
 
 #### Binary Search
+
+
+## Data Structure
+
+### Linear
+
+#### Interval
+##### Sweeping line
+#### Linked List
+* Reverse (between): Use a dummy pointer
+* Deep copy: Copy one after one
+
+#### Queue
+##### Dequeue
+* Sliding window
+* Moving average
+
+#### Stacks
+* Calculator
+
+### Cluster
+#### Union Set
+* Time: O(alpha), typically alpha < 4
 
 ## Design Patterns
 ### Sinleton

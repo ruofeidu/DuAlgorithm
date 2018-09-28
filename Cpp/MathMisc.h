@@ -1,5 +1,5 @@
 #pragma once
 
-namespace math {
+namespace MathMisc {
 
 }
