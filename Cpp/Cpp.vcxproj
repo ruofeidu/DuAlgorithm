@@ -113,6 +113,11 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GameSudoku.h" />
+    <ClInclude Include="Geo3D.h" />
+    <ClInclude Include="GeoPoints.h" />
+    <ClInclude Include="GeoPolygons.h" />
+    <ClInclude Include="GraphBipartite.h" />
     <ClInclude Include="GraphFloyd.h" />
     <ClInclude Include="GraphKruskal.h" />
     <ClInclude Include="GraphPrim.h" />
