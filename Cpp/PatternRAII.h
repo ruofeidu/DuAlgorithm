@@ -6,6 +6,7 @@
 using namespace std;
 static int gGlobal = 0;
 CRITICAL_SECTION cs;
+
 //Resource Acquisition Is Initialization
 class MyLock
 {

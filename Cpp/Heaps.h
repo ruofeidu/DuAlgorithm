@@ -34,6 +34,11 @@ namespace TestHeap {
 }
 
 namespace HeapAlgos {
+	// 857. Minimum Cost to Hire K Workers
+	// There are N workers.  The i-th worker has a quality[i] and a minimum wage expectation wage[i].
+	// Every worker in the paid group should be paid in the ratio of their quality compared to other workers in the paid group.
+	// Every worker in the paid group must be paid at least their minimum wage expectation.
+	// Return the least amount of money needed to form a paid group satisfying the above conditions.
 	double mincostToHireWorkers(vector<int>& quality, vector<int>& wage, int K) {
 		vector<pair<double, int>> workers;
 		const auto N = quality.size();
@@ -69,11 +74,9 @@ namespace HeapAlgos {
 		return (int)q.size();
 	}
 
-	/**
-	295. Find Median from Data Stream
-	[2,3,4] , the median is 3
-	[2,3], the median is (2 + 3) / 2 = 2.5
-	**/
+	// 295. Find Median from Data Stream
+	// [2,3,4] , the median is 3
+	// [2,3], the median is (2 + 3) / 2 = 2.5
 	class MedianFinder {
 	private:
 		priority_queue<int> small, large;

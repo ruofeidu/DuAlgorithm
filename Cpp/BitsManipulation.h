@@ -2,38 +2,38 @@
 #include "common.h"
 
 /*
-Remove the last digit (101101->10110)
-x >> 1
-Add 0 to the end (101101->1011010)
-x << 1
-Add 1 to the end (101101->1011011)
-(x << 1) + 1
-Make last digit 1 (101100->101101)
-x | 1
-Make last digit 0 (101101->101100)
-(x | 1) - 1
-Reverse last digit(101101->101100)
-x ^ 1
-Reverse last k_th digit(101101->101001, k = 3)
-x ^ (1 << (k - 1))
-Get last 3 digits(1101101->101)
-x & 7
-Get last k digits(1101101->1101, k = 5)
-x & ((1 << k) - 1)
-Turn last k digits to 1 (101001->101111, k = 4)
-x | ((1 << k) - 1)
-Reverse last k digits(101001->100110, k = 4)
-x ^ ((1 << k) - 1)
-Turn continuous right - side 1 to 0 (100101111->100100000)
-x & (x + 1)
-Make rightmost 0 one(100101111->100111111)
-x | (x + 1)
-Turn right - side continuous 0 to 1 (11011000->11011111)
-x or (x - 1)
-Get continuous ones in the right(100101111->1111)
-(x ^ (x + 1)) >> 1
-Remove the left - side before the first 1 from the right(100101000->1000, tree arrays)
-x & (x ^ (x - 1))
+	Remove the last digit (101101->10110)
+	x >> 1
+	Add 0 to the end (101101->1011010)
+	x << 1
+	Add 1 to the end (101101->1011011)
+	(x << 1) + 1
+	Make last digit 1 (101100->101101)
+	x | 1
+	Make last digit 0 (101101->101100)
+	(x | 1) - 1
+	Reverse last digit(101101->101100)
+	x ^ 1
+	Reverse last k_th digit(101101->101001, k = 3)
+	x ^ (1 << (k - 1))
+	Get last 3 digits(1101101->101)
+	x & 7
+	Get last k digits(1101101->1101, k = 5)
+	x & ((1 << k) - 1)
+	Turn last k digits to 1 (101001->101111, k = 4)
+	x | ((1 << k) - 1)
+	Reverse last k digits(101001->100110, k = 4)
+	x ^ ((1 << k) - 1)
+	Turn continuous right - side 1 to 0 (100101111->100100000)
+	x & (x + 1)
+	Make rightmost 0 one(100101111->100111111)
+	x | (x + 1)
+	Turn right - side continuous 0 to 1 (11011000->11011111)
+	x or (x - 1)
+	Get continuous ones in the right(100101111->1111)
+	(x ^ (x + 1)) >> 1
+	Remove the left - side before the first 1 from the right(100101000->1000, tree arrays)
+	x & (x ^ (x - 1))
 */
 namespace BitsManipulation {
 	// a negative number's bit representation is its complement + 1
@@ -295,5 +295,14 @@ namespace BitsManipulation {
 		else {
 			return m;
 		}
+	}
+	
+	// 461. Hamming Distance
+	int hammingDistance(int x, int y) {
+		int distance = 0;
+		for (int z = x ^ y; z; z &= z - 1) {
+			++distance;
+		}
+		return distance;
 	}
 };

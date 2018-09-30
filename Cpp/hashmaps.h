@@ -70,26 +70,8 @@ namespace Hashmaps {
 		return false;
 	}
 
-	// 220. Contains Duplicate III
-	// or use multiset
-	// Given an array of integers, find out whether there are two distinct indices i and j in the array such that the difference between nums[i] and nums[j] is at most t and the difference between i and j is at most k.
-	bool containsNearbyAlmostDuplicate(vector<int>& nums, int k, int t) {
-		map<int, int> m;
-		int j = 0;
-		for (int i = 0; i < nums.size(); ++i) {
-			if (i - j > k && m[nums[j]] == j) m.erase(nums[j++]);
-			auto a = m.lower_bound(nums[i] - t);
-			if (a != m.end() && abs(a->first - nums[i]) <= t) return true;
-			m[nums[i]] = i;
-		}
-		return false;
-	}
-
-	/**
-	 * 325. Maximum Size Subarray Sum Equals k
-	 * Given an array nums and a target value k, find the maximum length of a subarray that sums to k.
-	 * If there isn't one, return 0 instead.
-	 */
+	// 325. Maximum Size Subarray Sum Equals k
+	// Given an array nums and a target value k, find the maximum length of a subarray that sums to k.
 	int maxSubArrayLen(vector<int>& nums, int k) {
 		int n = (int)nums.size();
 		if (n == 0) return 0;
@@ -105,6 +87,68 @@ namespace Hashmaps {
 			}
 			if (m.find(sum) == m.end()) {
 				m[sum] = i;
+			}
+		}
+		return res;
+	}
+
+	// 349. Intersection of Two Arrays [E]
+	// Given two arrays, write a function to compute their intersection.
+	// Time:  O(m + n)
+	// Space: O(min(m, n))
+	// See log time and O(1) space in Binary Search
+	vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
+		if (nums1.size() > nums2.size()) {
+			return intersection(nums2, nums1);
+		}
+
+		unordered_set<int> s{ nums1.cbegin(), nums1.cend() };
+		vector<int> res;
+
+		for (const auto x : nums2) {
+			if (s.count(x)) {
+				res.emplace_back(x);
+				s.erase(x);
+			}
+		}
+		return res;
+	}
+
+	// 525. Contiguous Array [M]
+	// Time: O(N)
+	// Space: O(N)
+	// nums  0, 1, 1, 1, 0, 0, 0
+	// dict 0:2, -1:0, 1:2, 2:3, 
+	int findMaxLength(vector<int>& nums) {
+		int res = 0, cnt = 0, n = (int)nums.size();
+		unordered_map<int, int> dict{ { 0, -1 } };
+		for (int i = 0; i < n; ++i) {
+			cnt += (nums[i] << 1) - 1;
+			if (dict.count(cnt)) {
+				res = max(res, i - dict[cnt]);
+			}
+			else {
+				dict[cnt] = i;
+			}
+		}
+		return res;
+	}
+
+	// 554. Brick Wall
+	// Given a block of walls with bricks of the same height but different width.
+	// Draw a vertical line from the top to the bottom and cross the least bricks.
+	int leastBricks(vector<vector<int>>& wall) {
+		const int n = (int)wall.size();
+		unordered_map<int, int> d;
+		int res = n;
+
+		for (const auto &w : wall) {
+			const int m = w.size();
+			int c = 0;
+			for (int i = 0; i < m - 1; ++i) {
+				c += w[i];
+				d[c] += 1;
+				res = min(res, n - d[c]);
 			}
 		}
 

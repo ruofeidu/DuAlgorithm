@@ -113,6 +113,11 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GameSudoku.h" />
+    <ClInclude Include="Geo3D.h" />
+    <ClInclude Include="GeoPoints.h" />
+    <ClInclude Include="GeoPolygons.h" />
+    <ClInclude Include="GraphBipartite.h" />
     <ClInclude Include="GraphFloyd.h" />
     <ClInclude Include="GraphKruskal.h" />
     <ClInclude Include="GraphPrim.h" />
@@ -120,6 +125,7 @@
     <ClInclude Include="PatternAbstractFactory.h" />
     <ClInclude Include="DPKnapsack.h" />
     <ClInclude Include="PatternRAII.h" />
+    <ClInclude Include="RedBlackTree.h" />
     <ClInclude Include="SearchBFS.h" />
     <ClInclude Include="BigInt.h" />
     <ClInclude Include="SearchBinary.h" />
