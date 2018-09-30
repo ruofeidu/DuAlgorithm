@@ -360,6 +360,9 @@
     <ClInclude Include="SearchGrid.h">
       <Filter>Header Files\Algorithms\Search</Filter>
     </ClInclude>
+    <ClInclude Include="Octree.h">
+      <Filter>Header Files\DataStructures\Spatial</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

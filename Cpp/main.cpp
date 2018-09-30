@@ -76,6 +76,9 @@
 
 /// geometry
 #include "GeoLines.h"
+#include "GeoPoints.h"
+#include "GeoPolygons.h"
+#include "Geo3D.h"
 
 /// cluster
 #include "UnionSets.h"
