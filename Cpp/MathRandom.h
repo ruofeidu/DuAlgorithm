@@ -46,7 +46,7 @@ public:
 	/** Inserts a value to the collection. Returns true if the collection did not already contain the specified element. */
 	bool insert(int val) {
 		bool res = m_dict.find(val) == m_dict.end();
-		m_dict[val].insert(m_list.size());
+		m_dict[val].insert((int)m_list.size());
 		m_list.emplace_back(val);
 		return res;
 	}
@@ -58,9 +58,9 @@ public:
 
 		int last = m_list.back();
 		m_list.pop_back();
-		m_dict[last].erase(m_list.size());
+		m_dict[last].erase((int)m_list.size());
 		if (last != val) {
-			int val_id = *m_dict[val].begin();
+			auto val_id = *m_dict[val].begin();
 			m_dict[val].erase(val_id);
 			m_dict[last].insert(val_id);
 			m_list[val_id] = last;

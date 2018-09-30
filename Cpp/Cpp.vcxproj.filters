@@ -357,6 +357,9 @@
     <ClInclude Include="Geo3D.h">
       <Filter>Header Files\DataStructures\Geometry</Filter>
     </ClInclude>
+    <ClInclude Include="SearchGrid.h">
+      <Filter>Header Files\Algorithms\Search</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

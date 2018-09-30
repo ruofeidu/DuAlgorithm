@@ -143,7 +143,7 @@ namespace Hashmaps {
 		int res = n;
 
 		for (const auto &w : wall) {
-			const int m = w.size();
+			const int m = (int)w.size();
 			int c = 0;
 			for (int i = 0; i < m - 1; ++i) {
 				c += w[i];
@@ -154,4 +154,22 @@ namespace Hashmaps {
 
 		return res;
 	}
+
+	// 340. Longest Substring with At Most K Distinct Characters
+	// Given a string, find the length of the longest substring T that contains at most k distinct characters.
+	int lengthOfLongestSubstringKDistinct(string s, int k) {
+		int res = 0, left = 0;
+		unordered_map<char, int> m;
+		for (int i = 0; i < s.size(); ++i) {
+			++m[s[i]];
+			while (m.size() > k) {
+				if (--m[s[left]] == 0) m.erase(s[left]);
+				++left;
+			}
+			res = max(res, i - left + 1);
+		}
+		return res;
+	}
+
+
 }

@@ -22,7 +22,7 @@ class BinarySearch {
 
 	// 162. Find peak element in an array [E]
 	int findPeakElement(vector<int>& nums) {
-		int n = nums.size();
+		int n = (int)nums.size();
 		if (n <= 1) return 0;
 		int l = 0, r = n - 1;
 		while (l < r) {

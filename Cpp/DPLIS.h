@@ -7,9 +7,9 @@ namespace LISProblems {
 	// Given an unsorted array of integers, find the length of longest increasing subsequence.
 	int lengthOfLIS(vector<int>& nums) {
 		vector<int> f;
-		int n = nums.size();
+		const int n = (int)nums.size();
 		for (int x : nums) {
-			int l = 0, r = f.size();
+			int l = 0, r = (int)f.size();
 			// find the first element in f, that is not greater than x
 			// 4, 2, 4, 5, 3, 7
 			// 4
@@ -25,7 +25,7 @@ namespace LISProblems {
 			}
 			if (r >= f.size()) f.push_back(x); else f[r] = x;
 		}
-		return f.size();
+		return (int)f.size();
 	}
 
 	// 675. Longest Continuous Increasing Subsequence

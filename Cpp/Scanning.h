@@ -44,29 +44,6 @@ namespace Scanning {
 		return ans;
 	}
 
-	int trap(vector<int>& height)
-	{
-		const int n = (int)height.size();
-		if (n < 3) return 0;
-		vector<int> lmax(n, 0);
-		vector<int> rmax(n, 0);
-		lmax[0] = height[0];
-		rmax[n - 1] = height[n - 1];
-		for (int i = 1; i < n; ++i) {
-			lmax[i] = max(lmax[i - 1], height[i]);
-		}
-
-		for (int i = n - 2; i >= 0; --i) {
-			rmax[i] = max(rmax[i + 1], height[i]);
-		}
-
-		int ans = 0;
-		for (int i = 1; i < n - 1; ++i) {
-			ans += min(lmax[i], rmax[i]) - height[i];
-		}
-		return ans;
-	}
-
 	int removeDuplicatesTwice(vector<int>& nums) {
 		int n = (int)nums.size();
 		if (n <= 2) return n;
@@ -76,5 +53,52 @@ namespace Scanning {
 			if (nums[i] != nums[index - 2]) nums[index++] = nums[i];
 		}
 		return index;
+	}
+
+	// 169. Majority Element
+	// Given an array of size n, find the majority element. The majority element is the element that appears more than n/2 times.
+	int majorityElement(vector<int>& nums) {
+		// O(n) time, O(1) space;
+		//   "5,4,4,2,1,5,5,5,5,2,1"
+		//    5 5 4 4 1 1 5 5 5 5 5
+		//    1 0 1 0 1 0 1 2 3 2 1
+
+		int majority = 0;
+		int count = 0;
+
+		for (int x : nums) {
+			if (count == 0) {
+				majority = x;
+				++count;
+			}
+			else {
+				if (majority == x) {
+					++count;
+				}
+				else {
+					--count;
+				}
+			}
+		}
+		return majority;
+	}
+
+	int threeSumSmaller(vector<int>& nums, int target) {
+		if (nums.size() < 3) return 0;
+		int res = 0;
+		sort(nums.begin(), nums.end());
+		for (int i = 0; i < nums.size() - 2; ++i) {
+			int left = i + 1, right = nums.size() - 1;
+			while (left < right) {
+				if (nums[i] + nums[left] + nums[right] < target) {
+					res += right - left;
+					++left;
+				}
+				else {
+					--right;
+				}
+			}
+		}
+		return res;
 	}
 }

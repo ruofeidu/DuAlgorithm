@@ -179,7 +179,7 @@ namespace BFS {
 		vector<vector<string>> res;
 		wordList.emplace_back(beginWord);
 
-		const int n = wordList.size();
+		const int n = (int)wordList.size();
 		int start = -1, target = -1;
 		vector<vector<int>> edge(n, vector<int>());
 

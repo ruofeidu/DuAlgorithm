@@ -8,6 +8,7 @@
 #include "DPLCS.h"
 #include "DPKnapsack.h"
 #include "DPStock.h"
+#include "DPLIS.h"
 
 #include "DPGrid.h"
 
@@ -49,6 +50,7 @@
 #include "SearchBFS.h"
 #include "SearchBinary.h"
 #include "SearchDFS.h"
+#include "SearchGrid.h"
 
 /// Simulation
 #include "SimulationNum2Word.h"

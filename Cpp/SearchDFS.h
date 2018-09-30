@@ -27,4 +27,32 @@ namespace DFSTree {
 		}
 		return s1.empty() && s2.empty();
 	}
+
+	void addOperatorsDFS(string num, int target, long long diff, long long curNum, string out, vector<string> &res) {
+		if ((int)num.size() == 0 && curNum == target) res.push_back(out);
+
+
+		for (int i = 1; i <= (int)num.size(); ++i) {
+			string s = num.substr(0, i);
+			string next = num.substr(i);
+			long long n = stoll(s);
+			if (s.size() > 1 && s[0] == '0') return;
+			if (out.size() > 0) {
+				addOperatorsDFS(next, target, n, curNum + n, out + "+" + s, res);
+				addOperatorsDFS(next, target, -n, curNum - n, out + "-" + s, res);
+				// 3-5*2
+				addOperatorsDFS(next, target, diff * n, (curNum - diff) + diff * n, out + "*" + s, res);
+			}
+			else {
+				addOperatorsDFS(next, target, n, n, s, res);
+			}
+		}
+	}
+
+
+	vector<string> addOperators(string num, int target) {
+		vector<string> res;
+		addOperatorsDFS(num, target, 0, 0, "", res);
+		return res;
+	}
 }

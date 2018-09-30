@@ -2,19 +2,19 @@
 #include "common.h"
 
 namespace Queues {
-	/*
-	239. Sliding Window Maximum
+	// 239. Sliding Window Maximum
 	// every element enque once and deque once
-	[1,3,-1,-3,5,3,6,7]
-	3
-	0
-	1
-	1	2
-	1	2	3
-	4
-	4	5
-	6
-	7
+	/*
+		[1,3,-1,-3,5,3,6,7]
+		3
+		0
+		1
+		1	2
+		1	2	3
+		4
+		4	5
+		6
+		7
 	*/
 	vector<int> maxSlidingWindow(vector<int>& nums, int k) {
 		vector<int> res;
