@@ -2,9 +2,9 @@
 #include "common.h"
 
 class PrimeNumbers {
-	// Miller method to test prime
-	// for n > 2, and steps = 50
-	// error rate <= 2^{-steps}
+	// Miller¨CRabin primality test
+	// https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test
+	// for n > 2, and steps = 50. error rate <= 2^{-steps}
 	bool millerTest(int n, int s = 50) {
 		if (n == 2) return true;
 		if ((n % 2) == 0)
@@ -27,4 +27,34 @@ class PrimeNumbers {
 				d = (d * a) % n;
 		}
 	}
+
+	// Euler's totient function
+	// Phi(n) counts the positive integers up to a given integer n that are relatively prime to n.
+	// https://en.wikipedia.org/wiki/Euler%27s_totient_function
+	vector<int> eulerVector(int n) {
+		vector<int> phi(n + 1, 0);
+		for (int i = 1; i <= n; i++)
+			phi[i] = i;
+		for (int i = 2; i <= n; i += 2)
+			phi[i] /= 2;
+		for (int i = 3; i <= n; i += 2) 
+			if (phi[i] == i)
+				for (int j = i; j <= n; j += i)
+					phi[j] = phi[j] / i * (i - 1);
+		return phi;
+	}
+
+	int euler(int x) {
+		int i, res = x;
+		for (i = 2; i < (int)sqrt(x * 1.0) + 1; i++) 
+			if (x % i == 0) {
+				res = res / i * (i - 1);
+				while (x % i == 0)
+					x /= i;
+			}
+		if (x > 1)
+			res = res / x * (x - 1);
+		return res;
+	}
+
 };

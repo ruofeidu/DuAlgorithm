@@ -15,17 +15,43 @@ namespace Mods{
 		return x * y == 0 ? 0 : x * y / gcd(x, y);
 	}
 
-	// Modular exponentiation: a ^ b % n
+	// Modular exponentiation: (a ^ b) % n
 	// https://en.wikipedia.org/wiki/Modular_exponentiation
 	int modExp(int a, int b, int n) {
-		int c = 1, y = a;
+		int res = 1, y = a;
 		while (b != 0) {
 			if (b & 1)
-				c = c * y % n;
+				res *= y % n;
 			y = y * y % n;
 			b = b >> 1;
 		}
-		return c;
+		return res;
+	}
+
+	// Modular multiplication (x * y) % n
+	long long mod_pro(long long x, long long y, long long n) {
+		long long res = 0, tmp = x % n;
+		while (y) {
+			if (y & 0x1)
+				if ((res += tmp) > n)
+					res -= n;
+			if ((tmp <<= 1) > n)
+				tmp -= n;
+			y >>= 1;
+		}
+		return res;
+	}
+
+	// Modular exponentiation: (a ^ b) % n
+	long long mod_exp(long long a, long long b, long long c) {
+		long long res = 1;
+		while (b) {
+			if (b & 0x1)
+				res = mod_pro(res, a, c);
+			a = mod_pro(a, a, c);
+			b >>= 1;
+		}
+		return res;
 	}
 
 	// advanced gcd
