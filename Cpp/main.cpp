@@ -32,7 +32,7 @@
 /// High Precision
 #include "BigInt.h"
 #include "Fraction.h"
-#include "HighPrecision.h"
+#include "HPMisc.h"
 
 #include "MathCount.h"
 #include "MathMisc.h"

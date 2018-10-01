@@ -174,9 +174,6 @@
     <ClInclude Include="Fraction.h">
       <Filter>Header Files\Algorithms\Math\HighPrecision</Filter>
     </ClInclude>
-    <ClInclude Include="HighPrecision.h">
-      <Filter>Header Files\Algorithms\Math\HighPrecision</Filter>
-    </ClInclude>
     <ClInclude Include="MathCount.h">
       <Filter>Header Files\Algorithms\Math</Filter>
     </ClInclude>
@@ -366,10 +363,43 @@
     <ClInclude Include="RMQ.h">
       <Filter>Header Files\Algorithms\Linear</Filter>
     </ClInclude>
+    <ClInclude Include="DuConfig.h">
+      <Filter>Header Files\Toolkits</Filter>
+    </ClInclude>
+    <ClInclude Include="DuTimer.h">
+      <Filter>Header Files\Toolkits</Filter>
+    </ClInclude>
+    <ClInclude Include="DuUtils.h">
+      <Filter>Header Files\Toolkits</Filter>
+    </ClInclude>
+    <ClInclude Include="dirent.h">
+      <Filter>Header Files\Toolkits</Filter>
+    </ClInclude>
+    <ClInclude Include="MathMatrix.h">
+      <Filter>Header Files\Algorithms\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="StringMisc.h">
+      <Filter>Header Files\Algorithms\Strings</Filter>
+    </ClInclude>
+    <ClInclude Include="ArrayInPlace.h">
+      <Filter>Header Files\DataStructures\Linear</Filter>
+    </ClInclude>
+    <ClInclude Include="HPMisc.h">
+      <Filter>Header Files\Algorithms\Math\HighPrecision</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DuConfig.cpp">
+      <Filter>Source Files\Toolkits</Filter>
+    </ClCompile>
+    <ClCompile Include="DuTimer.cpp">
+      <Filter>Source Files\Toolkits</Filter>
+    </ClCompile>
+    <ClCompile Include="DuUtils.cpp">
+      <Filter>Source Files\Toolkits</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

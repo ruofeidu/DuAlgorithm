@@ -47,6 +47,61 @@ namespace TestLinkedList {
 		return dummy.next;
 	}
 
+	// 25. Reverse Nodes in k-Group [H]
+	// Given a linked list, reverse the nodes of a linked list k at a time and return its modified list.
+	/*
+	Given this linked list: 1->2->3->4->5
+	For k = 2, you should return: 2->1->4->3->5
+	For k = 3, you should return: 3->2->1->4->5
+	*/
+	ListNode* reverseKGroup(ListNode* head, int k) {
+		if (head == nullptr || head->next == nullptr || k <= 1) return head;
+		ListNode *next_group = head;
+		for (int i = 0; i < k; ++i) {
+			if (next_group)
+				next_group = next_group->next;
+			else
+				return head;
+		}
+		// next_group is the head of next group
+		// new_next_group is the new head of next group after reversion
+		ListNode *new_next_group = reverseKGroup(next_group, k);
+		ListNode *prev = NULL, *cur = head;
+		while (cur != next_group) {
+			ListNode *next = cur->next;
+			cur->next = prev ? prev : new_next_group;
+			prev = cur;
+			cur = next;
+		}
+		return prev; // prev will be the new head of this group
+	}
+
+	// 19. Remove Nth Node From End of List
+	ListNode* removeNthFromEnd(ListNode* head, int n) {
+		ListNode* node = head;
+		if (node == NULL) return head;
+
+		int total = 1;
+		while (node->next != NULL) {
+			node = node->next;
+			++total;
+		}
+
+		int cur = 0;
+		if (total < n) return head;
+		if (cur == total - n) return head->next;
+		node = head;
+		while (node->next != NULL) {
+			++cur;
+			if (cur == total - n) {
+				node->next = node->next->next;
+				break;
+			}
+			node = node->next;
+		}
+		return head;
+	}
+
 	// deep copy of a linked list with an additional pointer
 	RandomListNode* copyRandomList(RandomListNode* head) {
 		// insert the copied node after the original one.
@@ -120,5 +175,32 @@ namespace TestLinkedList {
 			curr = tmp;
 		}
 		curr->next = slow;
+	}
+
+	// 24. Swap Nodes in Pairs [M]
+	// Given a linked list, swap every two adjacent nodes and return its head.
+	// Given 1->2->3->4, you should return the list as 2->1->4->3.
+	ListNode* swapPairs(ListNode* head) {
+		if (head == nullptr) return nullptr;
+		ListNode* ans = head;
+		ListNode* prev = ans;
+		bool first = true;
+		ListNode *p = head, *q = p->next;
+		while (q != nullptr) {
+			if (first) {
+				ans = q;
+			}
+			else {
+				prev->next = q;
+			}
+			p->next = q->next;
+			q->next = p;
+			prev = p;
+			p = p->next;
+			if (p == nullptr) break;
+			q = p->next;
+			first = false;
+		}
+		return ans;
 	}
 }

@@ -2,6 +2,8 @@
 #include "common.h"
 
 namespace Hashmaps {
+	// 1. Two Sum
+	// Given an array of integers, return indices of the two numbers such that they add up to a specific target.
 	vector<size_t> twoSum(vector<int>& nums, int target) {
 		unordered_map<int, size_t> dict;
 		vector<size_t> res;
@@ -17,6 +19,138 @@ namespace Hashmaps {
 			}
 		}
 		return res;
+	}
+
+	// 15. 3Sum
+	vector<vector<int>> threeSum(vector<int>& nums) {
+		vector<vector<int>> result;
+		if (nums.size() < 3) return result;
+		sort(nums.begin(), nums.end());
+		const int target = 0;
+		auto last = nums.end();
+		for (auto i = nums.begin(); i < last - 2; ++i) {
+			auto j = i + 1;
+			if (i > nums.begin() && *i == *(i - 1)) continue;
+			auto k = last - 1;
+			while (j < k) {
+				if (*i + *j + *k < target) {
+					++j;
+					while (*j == *(j - 1) && j < k) ++j;
+				}
+				else if (*i + *j + *k > target) {
+					--k;
+					while (*k == *(k + 1) && j < k) --k;
+				}
+				else {
+					result.push_back({ *i, *j, *k });
+					++j;
+					--k;
+					while (*j == *(j - 1) && *k == *(k + 1) && j < k) ++j;
+				}
+			}
+		}
+		return result;
+	}
+
+	// 16. 3Sum Closest
+	int threeSumClosest(vector<int>& nums, int target) {
+		size_t n = nums.size();
+		sort(nums.begin(), nums.end());
+		int min_gap = INT_MAX;
+		int ans = 0;
+		for (auto a = nums.begin(); a < nums.end(); ++a) {
+			auto b = next(a);
+			auto c = prev(nums.end());
+
+			while (b < c) {
+				const int sum = *a + *b + *c;
+				const int gap = abs(sum - target);
+				if (gap < min_gap) {
+					ans = sum;
+					min_gap = gap;
+				}
+				if (sum < target) ++b; else --c;
+			}
+		}
+		return ans;
+	}
+
+	// 18. 4Sum
+	vector<vector<int>> fourSum(vector<int>& nums, int target) {
+		vector<vector<int>> result;
+		if (nums.size() < 4) return result;
+		sort(nums.begin(), nums.end());
+		auto last = nums.end();
+
+		for (auto i = nums.begin(); i < last - 3; ++i) {
+			if (i > nums.begin() && *i == *(i - 1)) continue;
+			for (auto ii = i + 1; ii < last - 2; ++ii) {
+				if (ii > i + 1 && *ii == *(ii - 1)) continue;
+				auto j = ii + 1;
+				auto k = last - 1;
+				while (j < k) {
+					if (*i + *ii + *j + *k < target) {
+						++j;
+						while (*j == *(j - 1) && j < k) ++j;
+					}
+					else if (*i + *ii + *j + *k > target) {
+						--k;
+						while (*k == *(k + 1) && j < k) --k;
+					}
+					else {
+						result.push_back({ *i, *ii, *j, *k });
+						++j;
+						--k;
+						while (*j == *(j - 1) && *k == *(k + 1) && j < k) ++j;
+					}
+				}
+			}
+		}
+		return result;
+	}
+
+	// 49. Group Anagrams
+	// Given an array of strings, group anagrams together.
+	vector<vector<string>> groupAnagrams(vector<string>& strs) {
+		size_t n = strs.size();
+		int total = 0;
+		unordered_map<string, int> strMap;
+		vector<vector<string>> result;
+
+		for (int i = 0; i < n; ++i) {
+			string s = strs[i];
+			sort(s.begin(), s.end());
+			auto iter = strMap.find(s);
+			if (iter == strMap.end()) {
+				strMap[s] = total;
+				vector<string> v;
+				v.push_back(strs[i]);
+				result.push_back(v);
+				total = total + 1;
+			}
+			else {
+				result[iter->second].push_back(strs[i]);
+			}
+		}
+
+		return result;
+	}
+
+
+	// 3. Longest Substring Without Repeating Characters
+	// Given a string, find the length of the longest substring without repeating characters.
+	// Input: "abcabcbb"
+	// Output: 3
+	int lengthOfLongestSubstring(string s) {
+		vector<int> d(256, -1);
+		int last_repeat_pos = -1, ans = 0;
+		for (int i = 0; i < s.size(); ++i) {
+			char c = s[i];
+			last_repeat_pos = max(last_repeat_pos, d[c]);
+			ans = max(ans, i - last_repeat_pos);
+			d[c] = i;
+		}
+		return ans;
 	}
 
 	// 316. Remove Duplicate Letters

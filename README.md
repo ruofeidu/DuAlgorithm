@@ -1,5 +1,5 @@
 # DuAlgorithm
-My collection of algorithms, data structure in C++ and Python.
+My collection of algorithms, data structures, and design patterns in C++ and Python.
 
 ## Algorithm
 ### Dynamic Programming

@@ -129,24 +129,4 @@ namespace StringTricks {
 		}
 		return true;
 	}
-
-	bool isValid(string s)
-	{
-		string stack = "";
-		for (auto c : s) {
-			if (c == '(') stack += ')';
-			else if (c == '[') stack += ']';
-			else if (c == '{') stack += '}';
-			else {
-				if (stack.empty() || c != stack.back()) {
-					return false;
-				}
-				else {
-					stack.pop_back();
-				}
-			}
-
-		}
-		return stack.empty();
-	}
 }

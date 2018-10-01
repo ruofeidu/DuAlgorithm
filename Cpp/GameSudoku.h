@@ -4,6 +4,7 @@
 class Sudoku {
 public:
 	// 36. Valid Sudoku
+	// Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated.
 	bool isValidSudoku(vector<vector<char>>& board) {
 		// check each 3x3
 		const int n = 3;
@@ -43,8 +44,9 @@ public:
 		return true;
 	}
 
-public:
 	// 37. Sudoku solver
+	// Write a program to solve a Sudoku puzzle by filling the empty cells.
+public:
 	void solveSudoku(vector<vector<char>>& board) {
 		solveSudokuDFS(board);
 	}

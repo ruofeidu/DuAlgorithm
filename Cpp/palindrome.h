@@ -82,8 +82,8 @@ namespace Palindrome {
 			return next(round_up(x));
 	}
 
-	bool isPalindrome(int x)
-	{
+	// 9. Palindrome Number
+	bool isPalindrome(int x) {
 		if (x < 0) return false;
 		if (x == INT_MAX) return false;
 		int n = (int)ceil(log10(x + 1));

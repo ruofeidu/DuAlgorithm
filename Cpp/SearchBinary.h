@@ -20,6 +20,72 @@ class BinarySearch {
 		return l;
 	}
 
+	// 35. Search Insert Position
+	int searchInsert(vector<int>& nums, int target) {
+		int l = 0, r = (int)nums.size() - 1;
+		while (l <= r) {
+			int id = (l + r) >> 1;
+			int x = nums[id];
+			if (x == target) {
+				return id;
+			}
+			if (x > target) {
+				r = id - 1;
+			}
+			else {
+				l = id + 1;
+			}
+		}
+		return l;
+	}
+
+	// 33. Search in Rotated Sorted Array
+	// Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+	// (i.e., [0, 1, 2, 4, 5, 6, 7] might become[4, 5, 6, 7, 0, 1, 2]).
+	/*
+	Input: nums = [4,5,6,7,0,1,2], target = 0
+	Output: 4
+	*/
+	int search(vector<int>& nums, int target) {
+		int first = 0, last = (int)nums.size();
+		while (first != last) {
+			const int mid = first + (last - first) / 2;
+			if (nums[mid] == target) return mid;
+			if (nums[first] <= nums[mid]) {
+				if (nums[first] <= target && target < nums[mid]) {
+					last = mid;
+				}
+				else {
+					first = mid + 1;
+				}
+			}
+			else {
+				if (nums[mid] < target && target <= nums[last - 1]) {
+					first = mid + 1;
+				}
+				else {
+					last = mid;
+				}
+			}
+		}
+		return -1;
+	}
+
+	// 34. Find First and Last Position of Element in Sorted Array
+	// Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
+	/*
+	Input: nums = [5,7,7,8,8,10], target = 8
+	Output: [3,4]
+	*/
+	vector<int> searchRange(vector<int>& nums, int target) {
+		int first = 0, last = (int)nums.size();
+		const int l = (int)distance(nums.begin(), lower_bound(nums.begin(), nums.end(), target));
+		const int u = (int)distance(nums.begin(), prev(upper_bound(nums.begin(), nums.end(), target)));
+
+		if (nums[l] != target) return vector<int>{-1, -1};
+		return vector<int> {l, u};
+	}
+
 	// 162. Find peak element in an array [E]
 	int findPeakElement(vector<int>& nums) {
 		int n = (int)nums.size();

@@ -116,4 +116,38 @@ namespace MergeSort {
 		}
 		return countAndMergeSort(&sums, 0, (int)sums.size() - 1, lower, upper);
 	}
+
+	// 23. Merge k Sorted Lists [H][Heap][MergeSort]
+	// Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
+	// M: Total Numbers
+	// N: Tumber of lists
+	// Time: O(M log N)
+	ListNode* mergeKLists(vector<ListNode*>& lists) {
+		struct smallerComparator {
+			bool operator()(ListNode* i, ListNode* j) {
+				return i->val > j->val;
+			}
+		};
+		priority_queue<ListNode*, vector<ListNode*>, smallerComparator> minHeap;
+
+		int n = (int)lists.size();
+		for (int i = 0; i < n; ++i)
+			if (lists[i] != nullptr)
+				minHeap.push(lists[i]);
+
+		ListNode* head = new ListNode(0);
+		ListNode* ans = head;
+
+		while (!minHeap.empty()) {
+			ListNode* t = minHeap.top();
+			head->next = new ListNode(t->val);
+			head = head->next;
+			minHeap.pop();
+			if (t->next != nullptr) {
+				minHeap.push(t->next);
+			}
+		}
+
+		return ans->next;
+	}
 }

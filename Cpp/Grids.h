@@ -77,7 +77,8 @@ namespace grid {
 		return ans;
 	}
 
-	// 48. rotate image
+	// 48. Rotate Image
+	// Rotate the image by 90 degrees (clockwise).
 	void rotate(vector<vector<int>>& matrix) {
 		size_t n = matrix.size();
 		size_t m = n - 1;

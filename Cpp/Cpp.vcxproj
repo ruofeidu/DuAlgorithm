@@ -110,9 +110,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DuConfig.cpp" />
+    <ClCompile Include="DuTimer.cpp" />
+    <ClCompile Include="DuUtils.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ArrayInPlace.h" />
+    <ClInclude Include="dirent.h" />
+    <ClInclude Include="DuConfig.h" />
+    <ClInclude Include="DuTimer.h" />
+    <ClInclude Include="DuUtils.h" />
     <ClInclude Include="GameSudoku.h" />
     <ClInclude Include="Geo3D.h" />
     <ClInclude Include="GeoPoints.h" />
@@ -121,6 +129,7 @@
     <ClInclude Include="GraphFloyd.h" />
     <ClInclude Include="GraphKruskal.h" />
     <ClInclude Include="GraphPrim.h" />
+    <ClInclude Include="MathMatrix.h" />
     <ClInclude Include="MathSampling.h" />
     <ClInclude Include="Octree.h" />
     <ClInclude Include="PatternAbstractFactory.h" />
@@ -156,7 +165,7 @@
     <ClInclude Include="Grids.h" />
     <ClInclude Include="HashMaps.h" />
     <ClInclude Include="Heaps.h" />
-    <ClInclude Include="HighPrecision.h" />
+    <ClInclude Include="HPMisc.h" />
     <ClInclude Include="SortInsert.h" />
     <ClInclude Include="Intervals.h" />
     <ClInclude Include="CIO.h" />
@@ -182,6 +191,7 @@
     <ClInclude Include="QuadTrees.h" />
     <ClInclude Include="Queues.h" />
     <ClInclude Include="SortQuick.h" />
+    <ClInclude Include="StringMisc.h" />
     <ClInclude Include="StringRabinKarp.h" />
     <ClInclude Include="MathRandom.h" />
     <ClInclude Include="RSQ.h" />

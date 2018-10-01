@@ -1,36 +1,36 @@
 #pragma once
 #include "common.h"
 
+class MinStack {
+public:
+	/** initialize your data structure here. */
+	MinStack() {}
+
+	void push(int x) {
+		s1.push(x);
+		if (s2.empty() || x <= s2.top()) s2.push(x);
+	}
+
+	void pop() {
+		if (s1.top() == s2.top()) s2.pop();
+		s1.pop();
+	}
+
+	int top() {
+		return s1.top();
+	}
+
+	int getMin() {
+		return s2.top();
+	}
+
+private:
+	stack<int> s1, s2;
+};
+
 namespace Stacks {
-	class MinStack {
-	public:
-		/** initialize your data structure here. */
-		MinStack() {}
-
-		void push(int x) {
-			s1.push(x);
-			if (s2.empty() || x <= s2.top()) s2.push(x);
-		}
-
-		void pop() {
-			if (s1.top() == s2.top()) s2.pop();
-			s1.pop();
-		}
-
-		int top() {
-			return s1.top();
-		}
-
-		int getMin() {
-			return s2.top();
-		}
-
-	private:
-		stack<int> s1, s2;
-	};
-
-	/* 
-	 * 224. Basic Calculator
+	// 224. Basic Calculator
+	/*
 		"1 + 1" = 2
 		" 2-1 + 2 " = 3
 		"(1+(4+5+2)-3)+(6+8)" = 23
@@ -115,5 +115,51 @@ namespace Stacks {
 			p->left = nullptr;
 			if (!s.empty()) p->right = s.top();
 		}
+	}
+
+
+	// 20. Valid Parentheses
+	// Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+	bool isValid(string s)
+	{
+		string stack = "";
+		for (auto c : s) {
+			if (c == '(') stack += ')';
+			else if (c == '[') stack += ']';
+			else if (c == '{') stack += '}';
+			else {
+				if (stack.empty() || c != stack.back()) {
+					return false;
+				}
+				else {
+					stack.pop_back();
+				}
+			}
+
+		}
+		return stack.empty();
+	}
+
+	// 32. Longest Valid Parentheses
+	int longestValidParentheses(string s) {
+		int n = (int)s.size();
+		int* f = new int[n];
+		memset(f, 0, n * sizeof(int));
+		int ans = 0;
+		for (int i = 1; i < n; ++i) if (s[i] == ')') {
+			int prev = i - f[i - 1] - 1;
+			if (prev >= 0 && s[prev] == '(') {
+				if (prev >= 1)
+					f[i] = max(f[i], f[i - 1] + 2 + f[prev - 1]);
+				else
+					f[i] = max(f[i], f[i - 1] + 2);
+			}
+			if (s[i - 1] == '(') {
+				f[i] = max(f[i], f[i - 2] + 2);
+			}
+			ans = max(ans, f[i]);
+		}
+		delete[] f;
+		return ans;
 	}
 }

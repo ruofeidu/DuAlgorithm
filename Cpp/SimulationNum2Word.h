@@ -63,6 +63,18 @@ namespace Number2Words {
 		return join(res, " ");
 	}
 
+	// 12. Integer to Roman
+	// Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
+	/*
+	Symbol       Value
+	I             1
+	V             5
+	X             10
+	L             50
+	C             100
+	D             500
+	M             1000
+	*/
 	string intToRoman(int num)
 	{
 		const int radix[] = { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
@@ -91,6 +103,7 @@ namespace Number2Words {
 		}
 	}
 
+	// 13. Roman to Integer
 	int romanToInt(string s)
 	{
 		int ans = 0;

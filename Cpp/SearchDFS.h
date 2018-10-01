@@ -56,3 +56,59 @@ namespace DFSTree {
 		return res;
 	}
 }
+
+class DFSLinear {
+public:
+	// 39. Combination Sum [M]
+	// Given a set of candidate numbers (candidates) (without duplicates) and a target number (target), find all unique combinations in candidates where the candidate numbers sums to target.
+	// DFS O(n!)
+	vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+		sort(candidates.begin(), candidates.end());
+		vector<vector<int>> ans;
+		vector<int> sol;
+		combinationSumDFS(candidates, target, sol, ans, 0);
+		return ans;
+	}
+
+private:
+	void combinationSumDFS(vector<int>& candidates, int target, vector<int>& sol, vector<vector<int>> &ans, int pos) {
+		if (target == 0) {
+			ans.push_back(sol);
+			return;
+		}
+		for (int i = pos; i < (int)candidates.size(); ++i) {
+			if (candidates[i] > target) return;
+			sol.push_back(candidates[i]);
+			combinationSumDFS(candidates, target - candidates[i], sol, ans, i);
+			sol.pop_back();
+		}
+	}
+
+	// 40. Combination Sum II
+	// Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the candidate numbers sums to target.
+public:
+	vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+		sort(candidates.begin(), candidates.end());
+		vector<vector<int>> ans;
+		vector<int> sol;
+		combinationSumDFS2(candidates, target, sol, ans, 0);
+		return ans;
+	}
+
+private:
+	void combinationSumDFS2(vector<int>& candidates, int target, vector<int>& sol, vector<vector<int>> &ans, int pos) {
+		if (target == 0) {
+			ans.push_back(sol);
+			return;
+		}
+		int previous = INT_MIN;
+		for (int i = pos; i < (int)candidates.size(); ++i) {
+			if (previous == candidates[i]) continue;
+			if (candidates[i] > target) return;
+			previous = candidates[i];
+			sol.push_back(candidates[i]);
+			combinationSumDFS2(candidates, target - candidates[i], sol, ans, i + 1);
+			sol.pop_back();
+		}
+	}
+};

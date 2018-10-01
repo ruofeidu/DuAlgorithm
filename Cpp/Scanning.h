@@ -22,8 +22,12 @@ namespace Scanning {
 		return max(res, cnt);
 	}
 
-	int maxArea(vector<int>& height)
-	{
+	// 11. Container With Most Water [M]
+	// Given n non-negative integers a1, a2, ..., an , where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water.
+	// Input: [1,8,6,2,5,4,8,3,7]
+	// Output: 49
+	// Time: O(N)
+	int maxArea(vector<int>& height) {
 		int i = 0, j = (int)height.size() - 1, ans = 0;
 
 		while (i < j) {
@@ -100,5 +104,33 @@ namespace Scanning {
 			}
 		}
 		return res;
+	}
+
+	// 45. Jump Game II [H?]
+	// Given an array of non-negative integers, you are initially positioned at the first index of the array.
+	// Each element in the array represents your maximum jump length at that position.
+	// Your goal is to reach the last index in the minimum number of jumps.
+	/*
+	Input: [2,3,1,1,4]
+	Output: 2
+	Explanation: The minimum number of jumps to reach the last index is 2.
+    Jump 1 step from index 0 to 1, then 3 steps to the last index.
+	*/
+	int jump(vector<int>& nums) {
+		const size_t n = nums.size();
+		int steps = 0;
+		int left = 0, right = 0;
+		if (n == 1) return 0;
+		while (left <= right) {
+			++steps;
+			const int prev_right = right;
+			for (int i = left; i <= prev_right; ++i) {
+				int new_right = i + nums[i];
+				if (new_right >= n - 1) return steps;
+				if (new_right > right) right = new_right;
+			}
+			left = prev_right + 1;
+		}
+		return 0;
 	}
 }
