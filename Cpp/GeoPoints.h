@@ -37,11 +37,11 @@ namespace GeoPoints {
 	}
 
 	int maxPoints2(vector<Point>& points) {
-		int n = points.size();
+		int n = (int)points.size();
 		if (n <= 0) return 0;
 		unordered_map<float, int> map;
 		int ans = 1;
-		const float EPS = 1e-6;
+		const float EPS = 1e-6f;
 		float INF = 1e6;
 		for (int i = 0; i < n; ++i) {
 			map.clear();

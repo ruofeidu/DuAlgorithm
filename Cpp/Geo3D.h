@@ -16,8 +16,8 @@ namespace Bin2Ply {
 
 	class Model	{
 	public:
-		unsigned int n;
-		unsigned int m;
+		int n;
+		int m;
 		Vertex* vertex;
 		Face* face;
 	};
@@ -25,8 +25,7 @@ namespace Bin2Ply {
 
 	int bin2ply()
 	{
-		FILE *fin, *fout;
-		fin = fopen("model.bin", "rb");
+		FILE *fin = fopen("model.bin", "rb");
 		freopen("model.ply", "w", stdout);
 
 		Model model;

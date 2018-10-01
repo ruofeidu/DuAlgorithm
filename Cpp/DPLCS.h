@@ -3,8 +3,8 @@
 
 // Longest Common Subsequence (LCS)
 // Find the longest subsequence common to all sequences in a set of sequences (often just two sequences).
-// Time: O(M•N)
-// Space: O(M•N) => O(1)
+// Time: O(M)
+// Space: O(M) => O(1)
 namespace LCSProblems {
 	int LCS(string &a, string &b) {
 		int n = (int)a.size(), m = (int)b.size();

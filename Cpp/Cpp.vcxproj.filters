@@ -363,6 +363,9 @@
     <ClInclude Include="Octree.h">
       <Filter>Header Files\DataStructures\Spatial</Filter>
     </ClInclude>
+    <ClInclude Include="RMQ.h">
+      <Filter>Header Files\Algorithms\Linear</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

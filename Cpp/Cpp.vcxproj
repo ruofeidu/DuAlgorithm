@@ -127,6 +127,7 @@
     <ClInclude Include="DPKnapsack.h" />
     <ClInclude Include="PatternRAII.h" />
     <ClInclude Include="RedBlackTree.h" />
+    <ClInclude Include="RMQ.h" />
     <ClInclude Include="SearchBFS.h" />
     <ClInclude Include="BigInt.h" />
     <ClInclude Include="SearchBinary.h" />

@@ -31,6 +31,9 @@ namespace TestHeap {
 	};
 
 	priority_queue <Point, vector<Point>, myComparator > pq;
+
+	priority_queue< string, vector<string>, greater<string> > ascend;
+	priority_queue< string, vector<string>, less<string> > descend;
 }
 
 namespace HeapAlgos {
