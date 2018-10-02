@@ -2,6 +2,48 @@
 #include "common.h"
 
 namespace BinaryTrees {
+	// 94. Binary Tree Inorder Traversal
+	vector<int> inorderTraversal(TreeNode* root) {
+		stack<TreeNode*> s;
+		typedef unsigned char byte;
+		stack<byte> d;
+
+		s.push(root);
+		d.push(0);
+
+		vector<int> ans;
+		if (root == NULL) return ans;
+
+		while (!s.empty()) {
+			TreeNode* node = s.top();
+			byte depth = d.top();
+
+			if (depth == 0) {
+				// first step, deal with left
+				d.top() = 1;
+				if (node->left != NULL) {
+					s.push(node->left);
+					d.push(0);
+				}
+			}
+			else
+				if (depth == 1) {
+					// left done, deal itself
+					ans.push_back(node->val);
+					d.top() = 2;
+				}
+				else {
+					d.pop();
+					s.pop();
+					if (node->right != NULL) {
+						s.push(node->right);
+						d.push(0);
+					}
+				}
+		}
+		return ans;
+	}
+
 	vector<int> preorderTraversal(TreeNode* root) {
 		vector<int> ans;
 		if (root == nullptr)
@@ -165,5 +207,14 @@ namespace BinaryTrees {
 			if (node->right != nullptr) s.push(Level(node->right, depth + 1));
 		}
 		return ans;
+	}
+
+	// 100. Same Tree [E]
+	// Given two binary trees, write a function to check if they are the same or not.
+	bool isSameTree(TreeNode* p, TreeNode* q) {
+		if (p == nullptr && q == nullptr) return true;
+		if ((p == nullptr && q != nullptr) || (q == nullptr && p != nullptr)) return false;
+		if (p->val != q->val) return false;
+		return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
 	}
 }

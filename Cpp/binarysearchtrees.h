@@ -2,6 +2,28 @@
 #include "common.h"
 
 class BinarySearchTrees {
+	// 98. Validate Binary Search Tree [E]
+public:
+	bool isValidBST(TreeNode* root) {
+		return isValidBST(root, INT_MIN, INT_MAX);
+	}
+
+private:
+	bool isValidBST(TreeNode* root, int lowerbound, int upperbound) {
+		if (root == NULL) return true;
+		if (root->val < lowerbound || root->val > upperbound) return false;
+		if (root->left != NULL) {
+			if (root->left->val >= root->val) return false;
+			if (!isValidBST(root->left, lowerbound, root->val - 1)) return false;
+		}
+		if (root->right != NULL) {
+			if (root->right->val <= root->val) return false;
+			if (!isValidBST(root->right, root->val + 1, upperbound)) return false;
+		}
+		return true;
+	}
+
+public:
 	template<typename T>
 	TreeNode* sortedArrayToBST(T first, T last) {
 		const auto length = distance(first, last);
@@ -132,4 +154,49 @@ class BinarySearchTrees {
 			dfs(node->right, prev, result);
 		}
 	};
+
+	// 99. Recover Binary Search Tree [H]
+	// Two elements of a binary search tree (BST) are swapped by mistake.
+	// Recover the tree without changing its structure.
+	// A solution using O(n) space is pretty straight forward.
+	// Could you devise a constant space solution ?
+	void recoverTree(TreeNode* root) {
+		// Morris in-order
+		pair<TreeNode*, TreeNode*> broken;
+		TreeNode* prev = nullptr;
+		TreeNode* cur = root;
+
+
+		while (cur != nullptr) {
+			if (cur->left == nullptr) {
+				detect(broken, prev, cur);
+				prev = cur;
+				cur = cur->right;
+			}
+			else {
+				auto node = cur->left;
+				while (node->right != nullptr && node->right != cur) node = node->right;
+				if (node->right == nullptr) {
+					node->right = cur;
+					cur = cur->left;
+				}
+				else {
+					detect(broken, prev, cur);
+					node->right = nullptr;
+					prev = cur;
+					cur = cur->right;
+				}
+			}
+		}
+		swap(broken.first->val, broken.second->val);
+	}
+
+	void detect(pair<TreeNode*, TreeNode*> &broken, TreeNode* prev, TreeNode* current) {
+		if (prev != nullptr && prev->val > current->val) {
+			if (broken.first == nullptr) {
+				broken.first = prev;
+			}
+			broken.second = current;
+		}
+	}
 };

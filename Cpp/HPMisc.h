@@ -56,6 +56,53 @@ namespace HPMisc {
 		return ans;
 	}
 
+	// 66. Plus One
+	void add(vector<int> &digits, int num) {
+		int carry = num;
+		for (auto it = digits.rbegin(); it != digits.rend(); ++it) {
+			*it += carry;
+			carry = *it / 10;
+			*it %= 10;
+		}
+		if (carry > 0) digits.insert(digits.begin(), 1);
+	}
+
+	vector<int> plusOne(vector<int>& digits) {
+		add(digits, 1);
+		return digits;
+	}
+
+	// 67. Add Binary
+	// Given two binary strings, return their sum (also a binary string).
+	string addBinary(string a, string b) {
+		int n = (int)a.size(), m = (int)b.size();
+		std::reverse(a.begin(), a.end());
+		std::reverse(b.begin(), b.end());
+		if (n < m) {
+			swap(n, m);
+			swap(a, b);
+		}
+
+		int carry = 0;
+		string res = "";
+		for (int i = 0; i < m; ++i) {
+			int c = (a[i] - '0') + (b[i] - '0') + carry;
+			carry = c / 2;
+			c %= 2;
+			res += char('0' + c);
+		}
+
+		for (int i = m; i < n; ++i) {
+			int c = (a[i] - '0') + carry;
+			carry = c / 2;
+			c %= 2;
+			res += char('0' + c);
+		}
+		if (carry > 0) res += char('1');
+		std::reverse(res.begin(), res.end());
+		return res;
+	}
+
 	// 43. Multiply Strings
 	// Given two non-negative integers num1 and num2 represented as strings, return the product of num1 and num2, also represented as a string.
 	typedef vector<int> bigint;

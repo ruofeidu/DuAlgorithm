@@ -15,6 +15,20 @@ namespace ArrayInPlace {
 		return index + 1;
 	}
 
+	// 80. Remove Duplicates from Sorted Array II
+	// Given a sorted array nums, remove the duplicates in-place such that duplicates appeared at most twice and return the new length.
+	// Do not allocate extra space for another array, you must do this by modifying the input array in - place with O(1) extra memory.
+	int removeDuplicates(vector<int>& nums) {
+		auto n = nums.size();
+		if (n <= 2) return n;
+		int index = 2;
+
+		for (size_t i = index; i < n; ++i) {
+			if (nums[i] != nums[index - 2]) nums[index++] = nums[i];
+		}
+		return index;
+	}
+
 	// 27. Remove Element [E]
 	// Given an array nums and a value val, remove all instances of that value in-place and return the new length.
 	int removeElement(vector<int>& nums, int val) {

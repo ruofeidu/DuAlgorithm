@@ -3,6 +3,25 @@
 
 class DP2D {
 public:
+	// 64. Minimum Path Sum
+	int minPathSum(vector<vector<int>>& grid) {
+		auto m = grid.size();
+		auto n = grid[0].size();
+
+		vector<int> f(n, 0);
+		f[0] = grid[0][0];
+		for (auto j = 1; j < n; ++j) f[j] = f[j - 1] + grid[0][j];
+
+		for (auto i = 1; i < m; ++i) {
+			f[0] += grid[i][0];
+			for (int j = 1; j < n; ++j) {
+				f[j] = min(f[j], f[j - 1]) + grid[i][j];
+			}
+		}
+
+		return f[n - 1];
+	}
+
 	vector<pair<int, int>> pacificAtlanticAnother(Grid& matrix) {
 		int n = (int)matrix.size();
 		int m = n ? (int)matrix[0].size() : 0;
@@ -87,7 +106,8 @@ public:
 
 
 
-	// 85. Maximal Rectangle
+	// 85. Maximal Rectangle [M]
+	// Given a 2D binary matrix filled with 0's and 1's, find the largest rectangle containing only 1's and return its area.
 	/*
 	1 0 1 0 0
 	1 0 1 1 1
@@ -175,6 +195,45 @@ public:
 			}
 		}
 		return dp[0][0];
+	}
+
+	// 62. Unique Paths [M]
+	// A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below).
+	// How many possible unique paths are there?
+	// f[i][j] = f[i-1][j] + f[i][j-1]
+	int uniquePaths(int m, int n) {
+		vector<int> f(n, 0);
+		f[0] = 1;
+		for (int i = 0; i < m; ++i) {
+			for (int j = 0; j < n; ++j) {
+				f[j] = f[j] + f[j - 1];
+			}
+		}
+		return f[n - 1];
+	}
+
+	// 63. Unique Paths II [M]
+	// With obstacles
+	int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
+		auto m = obstacleGrid.size();
+		auto n = obstacleGrid[0].size();
+
+		if (n == 0 || m == 0 || obstacleGrid[0][0] || obstacleGrid[m - 1][n - 1]) return 0;
+
+		vector<int> f(n, 0);
+		f[0] = 1;
+
+		for (auto i = 0; i < m; ++i) {
+			f[0] = f[0] == 0 ? 0 : (!obstacleGrid[i][0]);
+			for (int j = 1; j < n; ++j) if (!obstacleGrid[i][j]) {
+				f[j] = f[j] + f[j - 1];
+			}
+			else {
+				f[j] = 0;
+			}
+		}
+
+		return f[n - 1];
 	}
 };
 

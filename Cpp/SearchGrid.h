@@ -1,7 +1,7 @@
 #pragma once
 #include "common.h"
 
-namespace SearchGrid {
+class SearchGrid {
 	// 240. Search a 2D Matrix II
 	/*
 		[1,   4,  7, 11, 15],
@@ -67,4 +67,39 @@ namespace SearchGrid {
 		}
 		return (botright.first - topleft.first + 1) * (botright.second - topleft.second + 1);
 	}
-}
+
+	// 79. Word Search
+	// Given a 2D board and a word, find if the word exists in the grid.
+public:
+	bool exist(vector<vector<char>>& board, string word) {
+		if (board.empty()) return word.empty();
+		const int n = (int)board.size(), m = (int)board[0].size();
+
+		vector<vector<bool>> vd(n, vector<bool>(m, false));
+
+		for (int y = 0; y < n; ++y) {
+			for (int x = 0; x < m; ++x) if (board[y][x] == word[0]) {
+				if (existDFS(board, word, "", y, x, vd, 0)) return true;
+			}
+		}
+
+		return false;
+	}
+
+	bool existDFS(vector<vector<char>>& board, string &word, string curword, int y, int x, vector<vector<bool>> &vd, int depth) {
+		const int dir[4][2] = { { -1, 0 },{ 1, 0 },{ 0, 1 },{ 0, -1 } };
+		curword += board[y][x];
+		if (curword[depth] != word[depth]) return false;
+		vd[y][x] = true;
+		if (curword == word) return true;
+		if (curword.size() > word.size()) return false;
+		for (int i = 0; i < 4; ++i) {
+			int ny = y + dir[i][0];
+			int nx = x + dir[i][1];
+			if (ny < 0 || nx < 0 || ny >= board.size() || nx >= board[0].size() || vd[ny][nx]) continue;
+			if (existDFS(board, word, curword, ny, nx, vd, depth + 1)) return true;
+		}
+		vd[y][x] = false;
+		return false;
+	}
+};

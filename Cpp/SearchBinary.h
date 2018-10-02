@@ -71,6 +71,40 @@ class BinarySearch {
 		return -1;
 	}
 
+	// 81. Search in Rotated Sorted Array II
+	// Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+	// (i.e., [0, 0, 1, 2, 2, 5, 6] might become[2, 5, 6, 0, 0, 1, 2]).
+	// You are given a target value to search.If found in the array return true, otherwise return false.
+	bool search2(vector<int>& nums, int target) {
+		int l = 0, r = (int)nums.size() - 1;
+		while (l <= r) {
+			int mid = (l + r) >> 1;
+			if (nums[mid] == target) return true;
+			if (nums[l] < nums[mid]) {
+				if (nums[l] <= target && target < nums[mid]) {
+					r = mid - 1;
+				}
+				else {
+					l = mid + 1;
+				}
+			}
+			else
+				if (nums[l] > nums[mid]) {
+					if (nums[mid] < target && target <= nums[r]) {
+						l = mid + 1;
+					}
+					else {
+						r = mid - 1;
+					}
+				}
+				else {
+					// duplicated
+					++l;
+				}
+		}
+		return false;
+	}
+
 	// 34. Find First and Last Position of Element in Sorted Array
 	// Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
 	/*
@@ -84,6 +118,31 @@ class BinarySearch {
 
 		if (nums[l] != target) return vector<int>{-1, -1};
 		return vector<int> {l, u};
+	}
+
+	// 74. Search a 2D Matrix [M]
+	// Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:
+	// Integers in each row are sorted from left to right.
+	// The first integer of each row is greater than the last integer of the previous row.
+	bool searchMatrix(vector<vector<int>> &matrix, int target) {
+		auto n = (int)matrix.size();
+		auto m = (int)matrix[0].size();
+		int l = 0, r = n * m - 1;
+		while (l <= r) {
+			int p = (l + r) >> 1;
+			int mid = matrix[p / m][p % m];
+			if (mid < target) {
+				l = p + 1;
+			}
+			else
+				if (mid > target) {
+					r = p - 1;
+				}
+				else {
+					return true;
+				}
+		}
+		return false;
 	}
 
 	// 162. Find peak element in an array [E]

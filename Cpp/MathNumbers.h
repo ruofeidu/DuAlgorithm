@@ -123,4 +123,50 @@ private:
 		if (n % 2 == 0) return v * v;
 		return v * v * x;
 	}
+
+	// 69. Sqrt(x)
+	// Compute and return the square root of x, where x is guaranteed to be a non-negative integer.
+	int mySqrt(int x) {
+		if (x < 0) return INT_MIN;
+		if (x == 1) return 1;
+		long long l = 0, r = x / 2, ans = 0;
+		while (l <= r) {
+			long long p = (l + r) >> 1;
+			long long square = p * p;
+			if (square < x) {
+				ans = p;
+				l = p + 1;
+			}
+			else
+				if (square > x) {
+					r = p - 1;
+				}
+				else {
+					return (int)p;
+				}
+		}
+		return (int)ans;
+	}
+
+	// 65. Valid Number
+	// Validate if a given string can be interpreted as a decimal number.
+	/*
+	Numbers 0-9
+	Exponent - "e"
+	Positive/negative sign - "+"/"-"
+	Decimal point - "."
+	*/
+	bool isNumber(string s) {
+		return isNumber(s.c_str());
+	}
+
+	bool isNumber(const char* s) {
+		char* rp;
+		strtod(s, &rp);
+		if (rp == s) return false;
+		for (; *rp; ++rp) {
+			if (!isspace(*rp)) return false;
+		}
+		return true;
+	}
 };

@@ -387,6 +387,18 @@
     <ClInclude Include="HPMisc.h">
       <Filter>Header Files\Algorithms\Math\HighPrecision</Filter>
     </ClInclude>
+    <ClInclude Include="DPEditDistance.h">
+      <Filter>Header Files\Algorithms\DynamicProgramming\1D</Filter>
+    </ClInclude>
+    <ClInclude Include="GridsInPlace.h">
+      <Filter>Header Files\DataStructures\Spatial</Filter>
+    </ClInclude>
+    <ClInclude Include="SortCount.h">
+      <Filter>Header Files\Algorithms\Sorts</Filter>
+    </ClInclude>
+    <ClInclude Include="DPCounts.h">
+      <Filter>Header Files\Algorithms\DynamicProgramming\1D</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

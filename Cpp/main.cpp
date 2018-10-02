@@ -28,6 +28,8 @@
 /// Greedy
 #include "Greedy.h"
 
+#include "Scanning.h"
+
 /// Math
 /// High Precision
 #include "BigInt.h"

@@ -73,6 +73,135 @@ class Permutations {
 		return true;
 	}
 
+	// 77. Combinations
+	// Given two integers n and k, return all possible combinations of k numbers out of 1 ... n.
+public:
+	vector<vector<int>> combine(int n, int k) {
+		vector<vector<int>> res;
+		vector<int> path;
+		int depth = 0;
+		combineDFS(res, path, 1, n, k, 0);
+		return res;
+	}
+
+	void combineDFS(vector<vector<int>> &res, vector<int> &path, int cur, int n, int k, int depth) {
+		if (depth == k) {
+			vector<int> new_path(k);
+			for (int i = 0; i < k; ++i) new_path[i] = path[i];
+			res.push_back(new_path);
+			return;
+		}
+
+		for (int i = cur; i <= n - (k - depth - 1); ++i) {
+			path.push_back(i);
+			combineDFS(res, path, i + 1, n, k, depth + 1);
+			path.pop_back();
+		}
+	}
+
+	// 78. Subsets
+	// Given a set of distinct integers, nums, return all possible subsets (the power set).
+	vector<vector<int>> subsets(vector<int>& nums) {
+		vector<vector<int>> res;
+		vector<int> path;
+		sort(nums.begin(), nums.end());
+
+		subsetsDFS(nums, nums.begin(), path, res);
+		return res;
+	}
+
+	static void subsetsDFS(
+		const vector<int> &S, vector<int>::iterator start,
+		vector<int> &path, vector<vector<int> > &result) {
+		result.push_back(path);
+		for (auto i = start; i < S.end(); i++) {
+			if (i != start && *i == *(i - 1)) continue;
+			path.push_back(*i);
+			subsetsDFS(S, i + 1, path, result);
+			path.pop_back();
+		}
+	}
+
+	// 90. Subsets II
+	// Given a collection of integers that might contain duplicates, nums, return all possible subsets (the power set).
+	vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+		const int n = (int)nums.size();
+		sort(nums.begin(), nums.end());
+
+		vector<int> uniques(nums);
+		vector<int> counts(n, 1);
+
+		int k = 0;
+		for (int i = 1; i < n; ++i) {
+			if (nums[i] == uniques[k]) {
+				++counts[k];
+			}
+			else {
+				uniques[++k] = nums[i];
+			}
+		}
+		++k;
+
+		vector<vector<int>> ans;
+		vector<int> path;
+		subsetWithDupDFS(uniques, counts, k, 0, path, ans);
+		return ans;
+	}
+
+	void subsetWithDupDFS(vector<int>& uniques, vector<int>& counts, int n, int dep, vector<int> &path, vector<vector<int>> &ans) {
+		if (dep >= n) {
+			ans.push_back(path);
+			return;
+		}
+		subsetWithDupDFS(uniques, counts, n, dep + 1, path, ans);
+
+		for (int i = 1; i <= counts[dep]; ++i) {
+			path.push_back(uniques[dep]);
+			subsetWithDupDFS(uniques, counts, n, dep + 1, path, ans);
+		}
+		for (int i = 0; i < counts[dep]; ++i) path.pop_back();
+	}
+
+	// 93. Restore IP Addresses
+	// Given a string containing only digits, restore it by returning all possible valid IP address combinations.
+	// Input: "25525511135"
+	// Output: ["255.255.11.135", "255.255.111.35"]
+	vector<string> restoreIpAddresses(string s) {
+		vector<string> ans;
+		if (s.empty() || s.size() < 4) return ans;
+		restoreIpAddressesDFS(ans, s, "", 0);
+		return ans;
+	}
+
+
+	void restoreIpAddressesDFS(vector<string> &ans, string s, string path, int depth) {
+		if (depth >= 4) {
+			ans.push_back(path);
+			return;
+		}
+		if (s.empty() || s.size() < 4 - depth || s.size() > 3 * (4 - depth)) return;
+
+		if (depth == 3) {
+			if (s[0] == '0') {
+				if (s.size() != 1) return;
+				return restoreIpAddressesDFS(ans, s.substr(1), path + s.substr(0, 1), depth + 1);
+			}
+			int ip = stoi(s);
+			if (ip <= 255) return restoreIpAddressesDFS(ans, "", path + s, depth + 1);
+			return;
+		}
+		if (s[0] == '0') return restoreIpAddressesDFS(ans, s.substr(1), path + s.substr(0, 1) + ".", depth + 1);
+
+		if (depth < 0) return;
+
+		for (int i = 0; i < 2; ++i) if (s.size() >= i + 1) {
+			restoreIpAddressesDFS(ans, s.substr(i + 1), path + s.substr(0, i + 1) + ".", depth + 1);
+		}
+
+		if (stoi(s.substr(0, 3)) <= 255 && s.size() >= 3) restoreIpAddressesDFS(ans, s.substr(3), path + s.substr(0, 3) + ".", depth + 1);
+	}
+
+
 	// 47. Permutations II
 	// Given a collection of numbers that might contain duplicates, return all possible unique permutations.
 	/*
@@ -142,6 +271,41 @@ public:
 			if (pos + 1 < n) sort(nums.begin() + pos + 1, nums.end());
 	}
 
+	// 60. Permutation Sequence
+	// Given n and k, return the kth permutation sequence.
+public:
+	string getPermutation(int n, int k) {
+		string s(n, '0');
+		string result;
+		for (int i = 0; i < n; ++i)
+			s[i] += i + 1;
+		return kth_permutation(s, k);
+	}
+
+private:
+	int factorial(int n) {
+		int result = 1;
+		for (int i = 1; i <= n; ++i)
+			result *= i;
+		return result;
+	}
+
+	template<typename Sequence>
+	Sequence kth_permutation(const Sequence &seq, int k) {
+		const int n = (int)seq.size();
+		Sequence S(seq);
+		Sequence result;
+		int base = factorial(n - 1);
+		--k;
+		for (int i = n - 1; i > 0; k %= base, base /= i, --i) {
+			auto a = next(S.begin(), k / base);
+			result.push_back(*a);
+			S.erase(a);
+		}
+		result.push_back(S[0]);
+		return result;
+	}
+
 	// 17. Letter Combinations of a Phone Number
 	// Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent.
 	// Input: "23"
@@ -205,4 +369,62 @@ private:
 			sol.pop_back();
 		}
 	}
+
+	// 95. Unique Binary Search Trees II
+	// Given an integer n, generate all structurally unique BST's (binary search trees) that store values 1 ... n.
+	/*
+	Input: 3
+	Output:
+	[
+	  [1,null,3,2],
+	  [3,2,null,1],
+	  [3,1,null,null,2],
+	  [2,1,3],
+	  [1,null,2,null,3]
+	]
+	Explanation:
+	The above output corresponds to the 5 unique BST's shown below:
+
+	   1         3     3      2      1
+		\       /     /      / \      \
+		 3     2     1      1   3      2
+		/     /       \                 \
+	   2     1         2                 3
+	*/
+	vector<TreeNode*> generateTrees(int n) {
+		vector<TreeNode*> ans;
+		if (n == 0) return ans;
+		return generateTrees(1, n);
+	}
+	// 1 2 3
+
+	TreeNode* cloneTree(TreeNode* root) {
+		if (root == NULL) return NULL;
+		TreeNode* node = new TreeNode(root->val);
+		node->left = cloneTree(root->left);
+		node->right = cloneTree(root->right);
+		return node;
+	}
+
+	vector<TreeNode*> generateTrees(int lowerbound, int upperbound) {
+		vector<TreeNode*> ans;
+		if (upperbound < lowerbound) {
+			ans.push_back(nullptr);
+			return ans;
+		}
+		for (int k = lowerbound; k <= upperbound; ++k) {
+			vector<TreeNode*> left = generateTrees(lowerbound, k - 1);
+			vector<TreeNode*> right = generateTrees(k + 1, upperbound);
+			for (auto i : left) {
+				for (auto j : right) {
+					TreeNode *root = new TreeNode(k);
+					root->left = i;
+					root->right = j;
+					ans.push_back(root);
+				}
+			}
+		}
+		return ans;
+	}
+
 };

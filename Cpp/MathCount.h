@@ -2,19 +2,8 @@
 #include "common.h"
 
 namespace Counts {
-	// # of unique paths from top left to bottom right.
-	// f[i][j] = f[i-1][j] + f[i][j-1]
-	int uniquePathsDP(int m, int n) {
-		vector<int> f(n, 0);
-		f[0] = 1;
-		for (int i = 0; i < m; ++i) {
-			for (int j = 1; j < n; ++j) {
-				f[j] = f[j] + f[j - 1];
-			}
-		}
-		return f[n - 1];
-	}
-
+	// 62. Unique Paths [M]
+	// See DPGrid.h
 	// In total, there are m+n-2 steps, in which m-1 downwards steps
 	// C_{m+n-2}^{m-1}
 
@@ -35,31 +24,8 @@ namespace Counts {
 		return factor(n, k + 1) / factor(n - k);
 	}
 
-	long long uniquePathC(int m, int n) {
+	long long uniquePath(int m, int n) {
 		return combination(m + n - 2, max(m - 1, n - 1));
-	}
-
-	int uniquePathsWithObstacles(Grid& obstacleGrid) {
-		int m = (int)obstacleGrid.size();
-		int n = (int)obstacleGrid[0].size();
-
-		if (n == 0 || m == 0 || obstacleGrid[0][0] || obstacleGrid[m - 1][n - 1]) return 0;
-
-		vector<int> f(n, 0);
-		f[0] = 1;
-
-		for (auto i = 0; i < m; ++i) {
-			f[0] = f[0] == 0 ? 0 : (!obstacleGrid[i][0]);
-			for (int j = 1; j < n; ++j) 
-				if (!obstacleGrid[i][j]) {
-					f[j] = f[j] + f[j - 1];
-				}
-				else {
-					f[j] = 0;
-				}
-		}
-
-		return f[n - 1];
 	}
 
 	// 357. Count Numbers with Unique Digits
@@ -75,20 +41,6 @@ namespace Counts {
 		}
 		return res;
 	}
-
-	// 70. Climbing Stairs
-	// you are climbing a stair case. It takes n steps to reach to the top.
-	// Each time you can either climb 1 or 2 steps.
-	// In how many distinct ways can you climb to the top ?
-	int climbStairs(int n) {
-		if (n <= 0) return 0;
-		vector<int> f(3, 1);
-		for (int i = 2; i <= n; ++i) {
-			f[i % 3] = f[(i - 1) % 3] + f[(i - 2) % 3];
-		}
-		return f[n % 3];
-	}
-
 
 	int maxRegionsByALine(int n) {
 		// f[n] = f[n-1] + n

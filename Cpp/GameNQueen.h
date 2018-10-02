@@ -6,6 +6,8 @@ class NQueens {
 	int NQtotal;
 	int NQn;
 
+	// 51. N-Queens
+	// Given an integer n, return all distinct solutions to the n-queens puzzle.
 	vector<vector<string>> solveNQueens(int n)
 	{
 		NQresult.clear();
@@ -66,6 +68,9 @@ class NQueens {
 		}
 	}
 
+public:
+	// 52. N-Queens II
+	// Given an integer n, return the number of distinct solutions to the n-queens puzzle.
 	int totalNQueens(int n) {
 		NQresult.clear();
 		NQn = n;
@@ -73,5 +78,4 @@ class NQueens {
 		bitNQueensSimple(0, 0, 0);
 		return NQtotal;
 	}
-
 };

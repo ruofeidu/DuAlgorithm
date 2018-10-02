@@ -17,7 +17,8 @@ namespace TestLinkedList {
 		return dummy.next;
 	}
 
-	// reverse a linked list between
+	// 92. Reverse Linked List II
+	// Reverse a linked list from position m to n. Do it in one-pass.
 	ListNode* reverseBetween(ListNode* head, int m, int n) {
 		auto dummy = ListNode{ 0 };
 		dummy.next = head;
@@ -31,7 +32,6 @@ namespace TestLinkedList {
 		//   0, 1, 2, 3, 4, 5
 		//   |        p  cur
 		// dummy
-
 		auto *head2 = p;
 		p = p->next;
 		auto *cur = p->next;
@@ -202,5 +202,123 @@ namespace TestLinkedList {
 			first = false;
 		}
 		return ans;
+	}
+
+	// 61. Rotate List
+	// Given a linked list, rotate the list to the right by k places, where k is non-negative.
+	ListNode* rotateRight(ListNode* head, int k) {
+		if (head == nullptr) return nullptr;
+		ListNode *node = head, *nodeRotate = head;
+		int cnt = 1;
+		while (node->next != nullptr) {
+			node = node->next;
+			++cnt;
+		}
+		k = k % cnt;
+
+		node = head;
+		cnt = 0;
+		while (node->next != nullptr) {
+			node = node->next;
+			if (cnt >= k) nodeRotate = nodeRotate->next;
+			++cnt;
+		}
+		node->next = head;
+		node = nodeRotate->next;
+		nodeRotate->next = nullptr;
+		return node;
+	}
+
+	// 83. Remove Duplicates from Sorted List [E]
+	// Given a sorted linked list, delete all duplicates such that each element appear only once.
+	ListNode* deleteDuplicates(ListNode* head) {
+		if (head == nullptr)
+			return nullptr;
+		ListNode* ans = new ListNode(0);
+		ans->next = head;
+		ListNode* prev = head;
+		ListNode* node = head;
+		int curval = head->val;
+		while (node->next != NULL) {
+			if (curval != node->next->val) {
+				node = node->next;
+				prev = node;
+				curval = node->val;
+				continue;
+			}
+			else {
+				while (node->next != nullptr && curval == node->next->val)
+					node = node->next;
+
+				prev->next = node->next;
+				if (node == nullptr)
+					break;
+				curval = node->val;
+			}
+		}
+		return ans->next;
+	}
+
+	// 82. Remove Duplicates from Sorted List II [M]
+	// Given a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list.
+	ListNode* deleteDuplicates2(ListNode* head) {
+		if (head == nullptr)
+			return nullptr;
+		ListNode* ans = new ListNode(0);
+		ans->next = head;
+		ListNode* prev = ans;
+		ListNode* node = head;
+		int curval = head->val;
+		while (node->next != nullptr) {
+			if (curval != node->next->val) {
+				prev = node;
+				node = node->next;
+				curval = node->val;
+				continue;
+			}
+			else {
+				while (node->next != nullptr && curval == node->next->val)
+					node = node->next;
+				node = node->next;
+				prev->next = node;
+				if (node == nullptr) break;
+				curval = node->val;
+			}
+		}
+		return ans->next;
+	}
+
+	// 86. Partition List
+	// Given a linked list and a value x, partition it such that all nodes less than x come before nodes greater than or equal to x.
+	// You should preserve the original relative order of the nodes in each of the two partitions.
+	// Input: head = 1->4->3->2->5->2, x = 3
+	// Output: 1->2->2->4->3->5
+	ListNode* partition(ListNode* head, int x) {
+		ListNode* less = new ListNode(0);
+		ListNode* lessNode = less;
+		ListNode* more = new ListNode(0);
+		ListNode* moreNode = more;
+
+		ListNode* node = head;
+		if (node == NULL) return node;
+
+		while (node != NULL) {
+			if (node->val < x) {
+				lessNode->next = node;
+				lessNode = node;
+			}
+			else {
+				moreNode->next = node;
+				moreNode = node;
+			}
+			node = node->next;
+		}
+
+		if (lessNode == NULL) return more->next;
+		if (moreNode == NULL) return less->next;
+
+		lessNode->next = more->next;
+		moreNode->next = NULL;
+		return less->next;
 	}
 }

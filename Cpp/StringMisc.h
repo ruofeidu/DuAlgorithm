@@ -133,4 +133,67 @@ class RegularMatchQuestionStar {
 		while (*pp == '*') ++pp;
 		return (*pp == '\0');
 	}
+
+	// 68. Text Justification
+	// Given an array of words and a width maxWidth, format the text such that each line has exactly maxWidth characters and is fully (left and right) justified.
+	vector<string> fullJustify(vector<string>& words, int maxWidth) {
+		auto n = words.size();
+		int curWidth = 0;
+		int preID = 0;
+		int curID = -1;
+		vector<string> ans;
+
+		while (curID + 1 < n) {
+			++curID;
+			int extraSpace = (curWidth == 0) ? 0 : 1;
+			if (curWidth == 0 && words[curID].size() > maxWidth) {
+				ans.push_back(words[curID]);
+				++preID;
+				continue;
+			}
+			if (curWidth + extraSpace + words[curID].size() <= maxWidth) {
+				curWidth += extraSpace + words[curID].size();
+				continue;
+			}
+			else {
+				int numCurLine = curID - preID;
+				--curID;
+				if (numCurLine == 1) {
+					string res = words[curID] + string(maxWidth - words[curID].size(), ' ');
+					ans.push_back(res);
+					cout << res << endl;
+					preID = curID + 1;
+					curWidth = 0;
+					continue;
+				}
+				else {
+					int numSpace = (maxWidth - curWidth) / (numCurLine - 1);
+					int extraSpace = (maxWidth - curWidth) % (numCurLine - 1);
+					string res = "";
+					for (int i = preID; i < preID + extraSpace; ++i) {
+						res += words[i] + string(numSpace + 1 + 1, ' ');
+					}
+					for (int i = preID + extraSpace; i < preID + numCurLine; ++i) {
+						res += words[i];
+						if (i != preID + numCurLine - 1) res += string(numSpace + 1, ' ');
+					}
+					cout << res << endl;
+					ans.push_back(res);
+					preID = curID + 1;
+					curWidth = 0;
+					continue;
+				}
+			}
+		}
+		string last = "";
+		for (int i = preID; i < n; ++i) {
+			if (i != preID) last += " ";
+			last += words[i];
+		}
+		curWidth = last.size();
+		last += string(maxWidth - curWidth, ' ');
+		cout << last << endl;
+		ans.push_back(last);
+		return ans;
+	}
 };

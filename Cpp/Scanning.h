@@ -48,6 +48,36 @@ namespace Scanning {
 		return ans;
 	}
 
+	// 53. Maximum Subarray
+	// Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
+	// Time: O(n)
+	int maxSubArray(vector<int>& nums) {
+		const int n = (int)nums.size();
+		if (n == 0) return 0;
+		int ans = nums[0], curmax = ans;
+		for (int i = 1; i < n; ++i) {
+			curmax = max(curmax + nums[i], nums[i]);
+			ans = max(ans, curmax);
+		}
+		return ans;
+	}
+
+	// 55. Jump Game
+	// Given an array of non-negative integers, you are initially positioned at the first index of the array.
+	// Each element in the array represents your maximum jump length at that position.
+	// Determine if you are able to reach the last index.
+	bool canJump(vector<int>& nums) {
+		size_t n = nums.size();
+		int res = 0;
+		bool* vd = new bool[n];
+		memset(vd, false, n * sizeof(bool));
+
+		for (int i = 0; i < n; ++i) if (nums[i] > 0 && i <= res) {
+			res = max(res, nums[i] + i);
+		}
+		return res >= n - 1;
+	}
+
 	int removeDuplicatesTwice(vector<int>& nums) {
 		int n = (int)nums.size();
 		if (n <= 2) return n;
@@ -92,7 +122,7 @@ namespace Scanning {
 		int res = 0;
 		sort(nums.begin(), nums.end());
 		for (int i = 0; i < nums.size() - 2; ++i) {
-			int left = i + 1, right = nums.size() - 1;
+			int left = i + 1, right = (int)nums.size() - 1;
 			while (left < right) {
 				if (nums[i] + nums[left] + nums[right] < target) {
 					res += right - left;
@@ -132,5 +162,101 @@ namespace Scanning {
 			left = prev_right + 1;
 		}
 		return 0;
+	}
+
+	// 76. Minimum Window Substring [H]
+	// Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n).
+	// Input: S = "ADOBECODEBANC", T = "ABC"
+	// Output: "BANC"
+	string minWindow(string s, string t) {
+		int m = (int)s.size(), n = (int)t.size();
+
+		int MAX_CHAR = 256;
+		vector<int> t_count(MAX_CHAR);
+		vector<int> s_count(MAX_CHAR);
+		int total_match = 0;
+		int min_match = INT_MAX;
+		string ans = "";
+
+		for (int i = 0; i < n; ++i) {
+			++t_count[t[i]];
+		}
+
+		int l = 0, r = 0;
+		bool go_forward = true;
+
+		// ADOBECODEBANC
+		while (r < m && l <= r) {
+			if (go_forward) {
+				++s_count[s[r]];
+				if (t_count[s[r]] > 0 && s_count[s[r]] <= t_count[s[r]]) {
+					++total_match;
+				}
+			}
+
+			if (total_match >= n) {
+				if (r - l + 1 < min_match) {
+					min_match = r - l + 1;
+					ans = s.substr(l, r - l + 1);
+					//cout << ans << endl; 
+				}
+				--s_count[s[l]];
+				if (t_count[s[l]] > 0 && s_count[s[l]] < t_count[s[l]]) {
+					--total_match;
+				}
+				++l;
+				go_forward = false;
+			}
+			else {
+				++r;
+				go_forward = true;
+			}
+		}
+		return ans;
+	}
+
+	// 904. Fruit Into Baskets [E]
+	// You have two baskets, and each basket can carry any quantity of fruit, but you want each basket to only carry one type of fruit each.
+	// What is the total amount of fruit you can collect with this procedure?
+	int totalFruit(vector<int>& tree) {
+		const int n = (int)tree.size();
+		if (n <= 2)
+			return n;
+
+		int l = 0, r = 0;
+		int A = tree[0], a = 1, B = -1, b = 0;
+		int res = 1;
+
+		while (r < n - 1) {
+			int C = tree[++r];
+
+			if (A == C)
+				++a;
+			else
+			if (B == C)
+				++b;
+			else
+			if (b == 0) {
+				B = C;
+				++b;
+			}
+			else
+			if (a == 0) {
+				A = C;
+				++a;
+			}
+			else {
+				while (a > 0 && b > 0) {
+					if (tree[l++] == A)
+						--a;
+					else
+						--b;
+				}
+				--r;
+				continue;
+			}
+			res = max(res, r - l + 1);
+		}
+		return res;
 	}
 }

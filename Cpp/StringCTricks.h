@@ -129,4 +129,13 @@ namespace StringTricks {
 		}
 		return true;
 	}
+
+	// 58. Length of Last Word
+	int lengthOfLastWord(string s) {
+		//from the reverse iterator, find the first alphabetic letter
+		auto first = find_if(s.rbegin(), s.rend(), ::isalpha);
+		//find the first which is not
+		auto last = find_if_not(first, s.rend(), ::isalpha);
+		return (int)distance(first, last);
+	}
 }

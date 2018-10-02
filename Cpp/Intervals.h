@@ -1,7 +1,8 @@
 #pragma once
 #include "common.h"
 
-namespace TestIntervals{
+namespace TestIntervals {
+	// 56. Merge Intervals
 	// Time: O(n log n)
 	// Extra Space: O(1)
 	// Given a collection of intervals, merge all overlapping intervals.
@@ -65,6 +66,7 @@ namespace TestIntervals{
 		return res;
 	}
 
+	// 57. Insert Interval
 	// Given a set of sorted non-overlapping intervals, 
 	// insert a new interval into the intervals (merge if necessary).
 	// Time: O(N)
