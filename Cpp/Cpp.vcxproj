@@ -138,6 +138,7 @@
     <ClInclude Include="PatternAbstractFactory.h" />
     <ClInclude Include="DPKnapsack.h" />
     <ClInclude Include="PatternRAII.h" />
+    <ClInclude Include="SegmentTreeX2.h" />
     <ClInclude Include="RedBlackTree.h" />
     <ClInclude Include="RMQ.h" />
     <ClInclude Include="SearchBFS.h" />

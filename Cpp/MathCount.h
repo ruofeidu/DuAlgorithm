@@ -1,28 +1,28 @@
 #pragma once
 #include "common.h"
 
+// calc n!/(start-1)!
+static long long factor(int n, int start = 1) {
+	long long res = 1;
+	for (int i = start; i <= n; ++i)
+		res *= i;
+	return res;
+}
+
+// calc C_n^k
+static long long combination(int n, int k) {
+	if (k == 0)
+		return 1;
+	if (k == 1)
+		return n;
+	return factor(n, k + 1) / factor(n - k);
+}
+
 namespace Counts {
 	// 62. Unique Paths [M]
 	// See DPGrid.h
 	// In total, there are m+n-2 steps, in which m-1 downwards steps
 	// C_{m+n-2}^{m-1}
-
-	// calc n!/(start-1)!
-	static long long factor(int n, int start = 1) {
-		long long res = 1;
-		for (int i = start; i <= n; ++i)
-			res *= i;
-		return res;
-	}
-
-	// calc C_n^k
-	static long long combination(int n, int k) {
-		if (k == 0)
-			return 1;
-		if (k == 1)
-			return n;
-		return factor(n, k + 1) / factor(n - k);
-	}
 
 	long long uniquePath(int m, int n) {
 		return combination(m + n - 2, max(m - 1, n - 1));

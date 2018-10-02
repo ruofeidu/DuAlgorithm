@@ -39,12 +39,12 @@ namespace GeoPoints {
 	int maxPoints2(vector<Point>& points) {
 		int n = (int)points.size();
 		if (n <= 0) return 0;
-		unordered_map<float, int> map;
+		unordered_map<float, int> dict;
 		int ans = 1;
 		const float EPS = 1e-6f;
 		float INF = 1e6;
 		for (int i = 0; i < n; ++i) {
-			map.clear();
+			dict.clear();
 			int num_origin = 1;
 			int cur_max = 0;
 			for (int j = 0; j < n; ++j) if (i != j) {
@@ -53,14 +53,14 @@ namespace GeoPoints {
 						num_origin++;
 						continue;
 					}
-					if (map.find(INF) != map.end()) map[INF]++; else map[INF] = 1;
-					cur_max = max(cur_max, map[INF]);
+					if (dict.find(INF) != dict.end()) dict[INF]++; else dict[INF] = 1;
+					cur_max = max(cur_max, dict[INF]);
 				}
 				else {
 					float k = (float)(points[j].y - points[i].y) / (points[j].x - points[i].x);
 
-					if (map.find(k) != map.end()) map[k]++; else map[k] = 1;
-					cur_max = max(cur_max, map[k]);
+					if (dict.find(k) != dict.end()) dict[k]++; else dict[k] = 1;
+					cur_max = max(cur_max, dict[k]);
 				}
 			}
 			ans = max(ans, cur_max + num_origin);

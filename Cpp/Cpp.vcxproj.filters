@@ -270,9 +270,6 @@
     <ClInclude Include="Multisets.h">
       <Filter>Header Files\DataStructures\Tree\BST</Filter>
     </ClInclude>
-    <ClInclude Include="SegmentTrees.h">
-      <Filter>Header Files\DataStructures\Tree\BST</Filter>
-    </ClInclude>
     <ClInclude Include="Treaps.h">
       <Filter>Header Files\DataStructures\Tree\BST</Filter>
     </ClInclude>
@@ -398,6 +395,12 @@
     </ClInclude>
     <ClInclude Include="DPCounts.h">
       <Filter>Header Files\Algorithms\DynamicProgramming\1D</Filter>
+    </ClInclude>
+    <ClInclude Include="SegmentTreeX2.h">
+      <Filter>Header Files\DataStructures\Spatial</Filter>
+    </ClInclude>
+    <ClInclude Include="SegmentTrees.h">
+      <Filter>Header Files\DataStructures\Spatial</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
