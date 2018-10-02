@@ -4,11 +4,12 @@
 
 /// Dynamic Programming
 #include "DPLinear.h"
-#include "DPNumbers.h"
-#include "DPLCS.h"
+#include "DPCounts.h"
 #include "DPKnapsack.h"
-#include "DPStock.h"
+#include "DPLCS.h"
 #include "DPLIS.h"
+#include "DPNumbers.h"
+#include "DPStock.h"
 
 #include "DPGrid.h"
 
@@ -17,17 +18,25 @@
 /// Games
 #include "GameTheory.h"
 #include "GameNim.h"
+#include "GameGo.h"
+#include "GameSudoku.h"
 #include "GameNQueen.h"
 #include "GameTicTacToe.h"
 
 /// Graph Theory
 #include "GraphDijkstra.h"
 #include "GraphMisc.h"
+#include "GraphFloyd.h"
+#include "GraphPrim.h"
+#include "GraphBipartite.h"
 #include "GraphNetworkFlow.h"
 
 /// Greedy
 #include "Greedy.h"
 
+#include "Palindrome.h"
+#include "RMQ.h"
+#include "RSQ.h"
 #include "Scanning.h"
 
 /// Math
@@ -37,6 +46,8 @@
 #include "HPMisc.h"
 
 #include "MathCount.h"
+#include "MathDeduction.h"
+#include "MathMatrix.h"
 #include "MathMisc.h"
 #include "MathMods.h"
 #include "MathNumbers.h"
@@ -63,14 +74,19 @@
 #include "SortBubble.h"
 #include "SortInsert.h"
 #include "SortTiny.h"
+#include "SortSTL.h"
+#include "SortCount.h"
 
 /// Strings
 #include "StringCTricks.h"
 #include "StringKMP.h"
 #include "StringRabinKarp.h"
+#include "StringSTL.h"
+#include "StringMisc.h"
 
 // Data Structures
 /// linear
+#include "ArrayInPlace.h"
 #include "Intervals.h"
 #include "LinkedLists.h"
 #include "Queues.h"
@@ -87,7 +103,11 @@
 
 /// spatial
 #include "Grids.h"
+#include "GridsInPlace.h"
 #include "QuadTrees.h"
+#include "Octree.h"
+#include "SegmentTrees.h"
+#include "SegmentTreeX2.h"
 
 /// strings
 #include "StringSuffixArrays.h"
@@ -97,13 +117,19 @@
 #include "BinarySearchTrees.h"
 #include "Heaps.h"
 #include "Multisets.h"
-#include "SegmentTrees.h"
+#include "RedBlackTree.h"
 #include "Treaps.h"
+
+/// operating systems
+#include "LFUCache.h"
+#include "LRUCache.h"
+#include "Times.h"
 
 // Design Patterns
 #include "PatternAbstractFactory.h"
 #include "PatternFactory.h"
 #include "PatternSingleton.h"
+#include "PatternRAII.h"
 
 namespace TestTreap {
 	Treap<int> t;

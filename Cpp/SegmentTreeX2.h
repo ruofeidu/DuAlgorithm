@@ -95,7 +95,7 @@ namespace SegmentTreeX2 {
 
 	int main()
 	{
-		int n, i, num, l, r, c = 0; double area, x1, x2, y1, y2; while (cin >> n, n) {
+		int n, i, num, l = 0, r, c = 0; double area, x1, x2, y1, y2; while (cin >> n, n) {
 			for (i = 0; i < n; i++) {
 				cin >> x1 >> y1 >> x2 >> y2;
 				Line[2 * i].x = x1; Line[2 * i].y1 = y1; Line[2 * i].y2 = y2; Line[2 * i].s = 1;
@@ -117,8 +117,6 @@ namespace SegmentTreeX2 {
 					Delete(1, l, r);
 				area += ST[1].m * (Line[i + 1].x -
 					Line[i].x);
-
-
 			}
 			cout << "Test case #" << ++c << endl << "Total explored area : ";
 			cout << fixed << setprecision(2) << area << endl << endl;

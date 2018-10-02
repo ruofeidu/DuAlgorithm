@@ -1,7 +1,7 @@
 #pragma once
 #include "common.h"
 
-namespace DP1D {
+class DP1D {
 	// 42. Trapping Rain Water
 	// Given n non-negative integers representing an elevation map where the width of each bar is 1, 
 	// compute how much water it is able to trap after raining.
@@ -80,4 +80,87 @@ namespace DP1D {
 		return min(min(dp.back()[0], dp.back()[1]), dp.back()[2]);
 	}
 
-}
+
+	// 135. Candy [H]
+	// There are N children standing in a line. Each child is assigned a rating value. You are giving candies to these children subjected to the following requirements : Each child must have at least one candy. Children with a higher rating get more candies than their neighbors. What is the minimum candies you must give ?
+	// 1, 2, 3, 4, 5 ==>
+	// 3, 2, 1, 2, 3 ==>
+	// 1, 2, 1, 2, 1
+	int candy(vector<int>& ratings) {
+		const int n = (int)ratings.size();
+		int ans = 0;
+		vector<int> f(n, 1); // longest increasing from left
+		vector<int> g(n, 1); // longest increasing from right
+		for (int i = 1; i < n; ++i) {
+			if (ratings[i] > ratings[i - 1]) f[i] = f[i - 1] + 1;
+		}
+		for (int i = n - 2; i >= 0; --i) {
+			if (ratings[i] > ratings[i + 1]) g[i] = g[i + 1] + 1;
+		}
+		for (int i = 0; i < n; ++i) {
+			// cout << f[i] << "\t" << g[i] << endl; 
+			ans += max(f[i], g[i]);
+		}
+		return ans;
+	}
+
+	// 139. Word Break
+	// Given a non-empty string s and a dictionary wordDict containing a list of non-empty words, determine if s can be segmented into a space-separated sequence of one or more dictionary words.
+	bool wordBreak(string s, unordered_set<string>& wordDict) {
+		const int n = (int)s.size(), m = (int)wordDict.size();
+		if (n <= 0) return false;
+		vector<bool> f(n + 1);
+		f[0] = true;
+		for (int i = 1; i <= n; ++i) {
+			for (int j = 1; j <= i; ++j) if (f[j - 1]) {
+				if (wordDict.find(s.substr(j - 1, i - j + 1)) != wordDict.end()) {
+					f[i] = true;
+					break;
+				}
+			}
+		}
+		return f[n];
+	}
+
+	// 140. Word Break II
+	// Given a non-empty string s and a dictionary wordDict containing a list of non-empty words, add spaces in s to construct a sentence where each word is a valid dictionary word. Return all such possible sentences.
+	vector<string> wordBreak2(string s, unordered_set<string>& wordDict) {
+		const int n = (int)s.size(), m = (int)wordDict.size();
+		vector<string> ans;
+		if (n <= 0) return ans;
+		vector<bool> f(n + 1);
+		vector<vector<int>> p(n + 1);
+		f[0] = true;
+		for (int i = 1; i <= n; ++i) {
+			for (int j = 1; j <= i; ++j) if (f[j - 1]) {
+				if (wordDict.find(s.substr(j - 1, i - j + 1)) != wordDict.end()) {
+					f[i] = true;
+					p[i].push_back(j - 1);
+				}
+			}
+		}
+		if (!f[n]) return ans;
+		findWordBreak(ans, f, p, s, n, "");
+		return ans;
+	}
+
+
+	void findWordBreak(vector<string> &ans, vector<bool> &f, vector<vector<int>> &p, string &s, int n, string path) {
+		if (n <= 0) {
+			ans.push_back(path);
+			return;
+		}
+		if (!f[n]) return;
+		for (int i = 0; i < p[n].size(); ++i) {
+			int j = p[n][i];
+			string newpath = path;
+			if (newpath.empty()) {
+				newpath = s.substr(j, n - j);
+			}
+			else {
+				newpath = s.substr(j, n - j) + " " + newpath;
+			}
+			findWordBreak(ans, f, p, s, j, newpath);
+		}
+	}
+};

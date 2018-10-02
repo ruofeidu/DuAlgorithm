@@ -19,7 +19,7 @@ namespace DPCounts {
 	// A message containing letters from A-Z is being encoded to numbers using the following mapping: 'Z' -> 26
 	// Given a non - empty string containing only digits, determine the total number of ways to decode it.
 	int numDecodings(string s) {
-		int n = s.size();
+		const int n = (int)s.size();
 		if (n == 0) return 0;
 		vector<int> f(n + 1, 0);
 		f[0] = 1;
@@ -43,7 +43,6 @@ namespace DPCounts {
 		return f[n];
 	}
 
-
 	// 96. Unique Binary Search Trees
 	// Given n, how many structurally unique BST's (binary search trees) that store values 1 ... n?
 	int numTrees(int n) {
@@ -57,5 +56,27 @@ namespace DPCounts {
 			}
 		}
 		return f[n];
+	}
+
+	// 115. Distinct Subsequences
+	// Given a string S and a string T, count the number of distinct subsequences of S which equals T.
+	// A subsequence of a string is a new string which is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (ie, "ACE" is a subsequence of "ABCDE" while "AEC" is not).
+	int numDistinct(string s, string t) {
+		const int n = (int)s.size(), m = (int)t.size();
+		if (n < m || n < 1 || m < 1) return 0;
+		vector<vector<int>> f(n + 1, vector<int>(m + 1, 0));
+
+
+		f[0][0] = 1;
+		for (int i = 1; i <= n; ++i) {
+			f[i][0] = 1;
+			for (int j = 1; j <= min(i, m); ++j) {
+				f[i][j] = f[i - 1][j];
+				if (s[i - 1] == t[j - 1]) {
+					f[i][j] += f[i - 1][j - 1];
+				}
+			}
+		}
+		return f[n][m];
 	}
 }

@@ -14,7 +14,7 @@ namespace Times {
 			weekday = (day + 2 * month + 3 * (month + 1) / 5 + year + year / 4 + 5) % 7;
 		}
 		else {
-			weekday = (day + 2 * month + 3 * (month + 1) / 5 + year + year / 4 - year / 100 + y / 400) % 7;
+			weekday = (day + 2 * month + 3 * (month + 1) / 5 + year + year / 4 - year / 100 + year / 400) % 7;
 		}
 		return weekday;
 	}

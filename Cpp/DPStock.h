@@ -5,6 +5,7 @@ class StockProblems {
 public:
 	// 121. Best Time to Buy and Sell Stock
 	// condition: buy and sell once
+	// Say you have an array for which the ith element is the price of a given stock on day i. If you were only permitted to complete at most one transaction(i.e., buy one and sell one share of the stock), design an algorithm to find the maximum profit. Note that you cannot sell a stock before you buy one.
 	int maxProfit_once(vector<int>& prices) {
 		int n = (int)prices.size();
 		if (n == 0) return 0;
@@ -17,9 +18,9 @@ public:
 		return ans;
 	}
 
-
 	// 122. Best Time to Buy and Sell Stock II
 	// condition: buy and sell multiple times, can in the same day
+	// Say you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find the maximum profit.You may complete as many transactions as you like(i.e., buy one and sell one share of the stock multiple times).
 	int maxProfit_infinite_times(vector<int>& prices) {
 		if (prices.size() < 2) return 0;
 		int sum = 0;
@@ -30,9 +31,9 @@ public:
 		return sum;
 	}
 
-
 	// 123. Best Time to Buy and Sell Stock III
 	// condition: buy and sell m times (m = 2)
+	// Say you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find the maximum profit.You may complete at most two transactions. Note: You may not engage in multiple transactions at the same time(i.e., you must sell the stock before you buy again).
 	int maxProfit_m_times(vector<int>& prices) {
 		int n = (int)prices.size();
 		if (n == 0) return 0;

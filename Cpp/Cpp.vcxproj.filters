@@ -106,6 +106,9 @@
     <Filter Include="Header Files\MachineLearning">
       <UniqueIdentifier>{a41b4946-20b8-4044-8910-887d89152941}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\DataStructures\OperatingSystems">
+      <UniqueIdentifier>{7a46c197-45f3-41a3-87ed-0f93d68ad8cc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h">
@@ -401,6 +404,18 @@
     </ClInclude>
     <ClInclude Include="SegmentTrees.h">
       <Filter>Header Files\DataStructures\Spatial</Filter>
+    </ClInclude>
+    <ClInclude Include="MathDeduction.h">
+      <Filter>Header Files\Algorithms\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="LRUCache.h">
+      <Filter>Header Files\DataStructures\OperatingSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="LFUCache.h">
+      <Filter>Header Files\DataStructures\OperatingSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="GameGo.h">
+      <Filter>Header Files\Algorithms\Games</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

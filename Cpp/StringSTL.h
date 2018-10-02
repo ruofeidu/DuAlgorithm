@@ -5,18 +5,18 @@ namespace StringSTL {
 	// O(N + M)
 	void find() {
 		string str("There are two needles in this haystack with needles.");
-		string str2("needle");
+		string key("needle");
 
-		size_t found = str.find(str2);
+		size_t found = str.find(key);
 		if (found != string::npos)
 			cout << "first 'needle' found at: " << found << '\n';
 
-		string str("The sixth sick sheik's sixth sheep's sick.");
-		string key("sixth");
+		string str2("The sixth sick sheik's sixth sheep's sick.");
+		string key2("sixth");
 
-		size_t found = str.rfind(key);
+		found = str2.rfind(key2);
 		if (found != std::string::npos)
-			str.replace(found, key.length(), "seventh");
+			str2.replace(found, key2.length(), "seventh");
 
 		cout << str << '\n';
 	}

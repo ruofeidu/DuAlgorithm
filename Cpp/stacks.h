@@ -99,25 +99,6 @@ namespace Stacks {
 		return ans;
 	}
 
-	// 114 O(n) Time, O(log n) Space
-	void flatten(TreeNode* root) {
-		if (root == nullptr) return;
-		stack<TreeNode*> s;
-		s.push(root);
-
-		while (!s.empty()) {
-			auto p = s.top();
-			s.pop();
-
-			if (p->right) s.push(p->right);
-			if (p->left) s.push(p->left);
-
-			p->left = nullptr;
-			if (!s.empty()) p->right = s.top();
-		}
-	}
-
-
 	// 20. Valid Parentheses
 	// Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
 	bool isValid(string s)
@@ -162,4 +143,44 @@ namespace Stacks {
 		delete[] f;
 		return ans;
 	}
+
+	// 150. Evaluate Reverse Polish Notation [M]
+	// Evaluate the value of an arithmetic expression in Reverse Polish Notation. Valid operators are + , -, *, / .Each operand may be an integer or another expression.
+	int evalRPN(vector<string>& tokens) {
+		// reverse Polish Notation
+		const int ERROR_CODE = INT_MIN;
+		stack<int> stk;
+		for (string s : tokens) {
+			if (!s.compare("+")) {
+				if (stk.size() < 2) return ERROR_CODE;
+				int a = stk.top(); stk.pop();
+				int b = stk.top(); stk.pop();
+				stk.push(b + a);
+			}
+			else if (!s.compare("-")) {
+				if (stk.size() < 2) return ERROR_CODE;
+				int a = stk.top(); stk.pop();
+				int b = stk.top(); stk.pop();
+				stk.push(b - a);
+			}
+			else if (!s.compare("*")) {
+				if (stk.size() < 2) return ERROR_CODE;
+				int a = stk.top(); stk.pop();
+				int b = stk.top(); stk.pop();
+				stk.push(b * a);
+			}
+			else if (!s.compare("/")) {
+				if (stk.size() < 2) return ERROR_CODE;
+				int a = stk.top(); stk.pop();
+				int b = stk.top(); stk.pop();
+				stk.push(b / a);
+			}
+			else {
+				stk.push(stoi(s));
+			}
+		}
+
+		return (int)round(stk.top());
+	}
+
 }

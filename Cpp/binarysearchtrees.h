@@ -24,17 +24,9 @@ private:
 	}
 
 public:
-	template<typename T>
-	TreeNode* sortedArrayToBST(T first, T last) {
-		const auto length = distance(first, last);
-		if (length <= 0) return nullptr;
-		auto mid = first + length / 2;
-		TreeNode* node = new TreeNode(*mid);
-		node->left = sortedArrayToBST(first, mid);
-		node->right = sortedArrayToBST(mid + 1, last);
-		return node;
-	}
-
+	// 109. Convert Sorted List to Binary Search Tree
+	// Given a singly linked list where elements are sorted in ascending order, convert it to a height balanced BST.
+	// For this problem, a height - balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.
 	TreeNode* sortedListToBST(ListNode* head) {
 		int len = 0;
 		ListNode *node = head;
@@ -45,6 +37,7 @@ public:
 		return sortedListToBST(head, 0, len - 1);
 	}
 
+public:
 	// Time: O(n); Space O(log n)
 	TreeNode* sortedListToBST(ListNode* &head, int start, int end) {
 		if (start > end) return nullptr;
@@ -57,6 +50,22 @@ public:
 		return parent;
 	}
 
+public:
+	// 108. Convert Sorted Array to Binary Search Tree
+	// Given an array where elements are sorted in ascending order, convert it to a height balanced BST.
+	// For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.
+	template<typename T>
+	TreeNode* sortedArrayToBST(T first, T last) {
+		const auto length = distance(first, last);
+		if (length <= 0) return nullptr;
+		auto mid = first + length / 2;
+		TreeNode* node = new TreeNode(*mid);
+		node->left = sortedArrayToBST(first, mid);
+		node->right = sortedArrayToBST(mid + 1, last);
+		return node;
+	}
+
+public:
 	int balanceHeight(TreeNode* root) {
 		if (root == nullptr) return 0;
 		int l = balanceHeight(root->left);
@@ -64,6 +73,11 @@ public:
 		if (l < 0 || r < 0 || abs(l - r) > 1) return -1;
 		return max(l, r) + 1;
 	}
+
+	// 110. Balanced Binary Tree
+	// Given a binary tree, determine if it is height-balanced.
+	// For this problem, a height - balanced binary tree is defined as:
+	// a binary tree in which the depth of the two subtrees of every node never differ by more than 1.
 
 	bool isBalanced(TreeNode* root) {
 		return balanceHeight(root) >= 0;

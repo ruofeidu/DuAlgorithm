@@ -17,6 +17,45 @@ namespace Geometry {
 	bool operator <= (const Point3f &a, const Point3f &b) {
 		return a.x <= b.x && a.y <= b.y && a.z <= b.z;
 	}
+
+
+	struct Ray3f {
+		glm::vec3 o;     ///< Ray origin
+		glm::vec3 d;    ///< Ray direction
+		glm::vec3 dRcp; ///< Componentwise reciprocals of the ray direction
+		float mint;     ///< Minimum position on the ray segment
+		float maxt;     ///< Maximum position on the ray segment
+	};
+
+	struct Frame {
+
+	};
+
+	struct Intersection {
+		/// Position of the surface intersection
+		Point3f p;
+		/// Unoccluded distance along the ray
+		float t;
+		/// UV coordinates, if any
+		Point2f uv;
+		/// Pointer to the associated mesh
+		// const Mesh *mesh;
+
+		/// Shading frame (based on the shading normal)
+		Frame shFrame;
+		/// Geometric frame (based on the true geometry)
+		Frame geoFrame;
+
+		/// Create an uninitialized intersection record
+		Intersection() { }
+
+		/// Return a human-readable summary of the intersection record
+		std::string toString() const;
+	};
+
+	const size_t MIN_NUM_TRIANGLES = 10;
+	const int OCTREE_DEPTH_LIMIT = 7;
+
 	struct BoundingBox3f {
 		Point3f min;
 		Point3f max;
@@ -26,7 +65,7 @@ namespace Geometry {
 		BoundingBox3f(Point3f _min, Point3f _max) :min(_min), max(_max) {};
 		BoundingBox3f() :min(0), max(0) {};
 
-		bool overlaps(const BoundingBox3f &bbox, bool strict = false) const {
+		bool overlaps(const BoundingBox3f &bbox, bool strict = false) {
 			if (strict) {
 				return (bbox.min < max) && (min < bbox.max);
 			}
@@ -36,7 +75,7 @@ namespace Geometry {
 		}
 
 		/// Check if a ray intersects a bounding box
-		bool rayIntersect(const Ray3f &ray) const {
+		bool rayIntersect(const Ray3f &ray) {
 			float nearT = -std::numeric_limits<float>::infinity();
 			float farT = std::numeric_limits<float>::infinity();
 
@@ -100,24 +139,17 @@ namespace Geometry {
 
 	};
 
-	struct Ray3f {
-		glm::vec3 o;     ///< Ray origin
-		glm::vec3 d;    ///< Ray direction
-		glm::vec3 dRcp; ///< Componentwise reciprocals of the ray direction
-		float mint;     ///< Minimum position on the ray segment
-		float maxt;     ///< Maximum position on the ray segment
-	};
 
 	struct Mesh {
 		int numTriangles;
 
 		Mesh() : numTriangles(0) {};
 		//// Return an axis-aligned bounding box containing the given triangle
-		BoundingBox3f getBoundingBox(uint32_t index) const {
+		BoundingBox3f getBoundingBox(uint32_t index) {
 			// minmax
 			return BoundingBox3f();
 		}
-		BoundingBox3f getBoundingBox() const {
+		BoundingBox3f getBoundingBox() {
 			// minmax
 			return BoundingBox3f();
 		}
@@ -168,34 +200,6 @@ namespace Geometry {
 		}
 	};
 
-	struct Frame {
-
-	};
-
-	struct Intersection {
-		/// Position of the surface intersection
-		Point3f p;
-		/// Unoccluded distance along the ray
-		float t;
-		/// UV coordinates, if any
-		Point2f uv;
-		/// Pointer to the associated mesh
-		const Mesh *mesh;
-
-		/// Shading frame (based on the shading normal)
-		Frame shFrame;
-		/// Geometric frame (based on the true geometry)
-		Frame geoFrame;
-
-		/// Create an uninitialized intersection record
-		Intersection() : mesh(nullptr) { }
-
-		/// Return a human-readable summary of the intersection record
-		std::string toString() const;
-	};
-
-	const size_t MIN_NUM_TRIANGLES = 10;
-	const int OCTREE_DEPTH_LIMIT = 7;
 
 	class Octree
 	{
@@ -278,7 +282,7 @@ namespace Geometry {
 				if (item->triangles.size() < MIN_NUM_TRIANGLES || (item->parent && item->parent->depth > OCTREE_DEPTH_LIMIT)) {
 					++m_total_nodes;
 					++m_leaf_nodes;
-					m_total_triangles += item->triangles.size();
+					m_total_triangles += (int)item->triangles.size();
 					item->node = new LeafNode(item->triangles);
 					if (item->parent != nullptr) item->parent->child[item->child_id] = item->node;
 					m_stack.pop();
@@ -369,7 +373,7 @@ namespace Geometry {
 						if (_shadowRay) return;
 						_ray.maxt = _its.t = t;
 						_its.uv = Point2f(u, v);
-						_its.mesh = m_mesh;
+						// _its.mesh = m_mesh;
 						resIndex = triIndex;
 						foundIntersection = true;
 					}
@@ -420,7 +424,7 @@ namespace Geometry {
 			m_total_triangles = 0;
 			this->m_mesh = _mesh;
 			TriIndexList initialTriSet(m_mesh->getTriangleCount());
-			for (uint32_t i = 0; i < m_mesh->getTriangleCount(); ++i)
+			for (int i = 0; i < m_mesh->getTriangleCount(); ++i)
 				initialTriSet[i] = i;
 
 			m_box = _mesh->getBoundingBox();

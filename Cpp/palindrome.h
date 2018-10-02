@@ -97,4 +97,83 @@ namespace Palindrome {
 		}
 		return true;
 	}
+
+	// 125. Valid Palindrome
+	// Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
+	bool isPalindrome(string s) {
+		const int n = (int)s.size();
+		if (n == 0) return true;
+		transform(s.begin(), s.end(), s.begin(), ::tolower);
+		auto l = s.begin(), r = prev(s.end());
+
+		while (l < r) {
+			if (!::isalnum(*l)) ++l;
+			else if (!::isalnum(*r)) --r;
+			else if (*l != *r) return false;
+			else { ++l, --r; }
+		}
+		return true;
+	}
+
+	// 131. Palindrome Partitioning
+	// Given a string s, partition s such that every substring of the partition is a palindrome. Return all possible palindrome partitioning of s.
+	vector<vector<string>> partition(string s) {
+		// Time Complexity: average: O(n^2), worst: O(n^2 * 2^n)
+		// Space Complexity: average: O(1), worst: O(2^n)
+		const int n = (int)s.size();
+		vector<vector<bool>> p(n, vector<bool>(n, 0));
+
+		for (int i = n - 1; i >= 0; --i)
+			for (int j = i; j < n; ++j)
+				p[i][j] = s[i] == s[j] && ((j - i < 2) || p[i + 1][j - 1]);
+
+		vector<vector<vector<string>>> sub_palins(n, vector<vector<string>>());
+		for (int i = n - 1; i >= 0; --i) {
+			for (int j = i; j < n; ++j)
+				if (p[i][j]) {
+					const string palindrome = s.substr(i, j - i + 1);
+					if (j + 1 < n) {
+						for (auto v : sub_palins[j + 1]) {
+							v.insert(v.begin(), palindrome);
+							sub_palins[i].push_back(v);
+						}
+					}
+					else {
+						sub_palins[i].push_back(vector<string> { palindrome });
+					}
+				}
+		}
+
+		return sub_palins[0];
+	}
+
+	// 132. Palindrome Partitioning II [H]
+	// Given a string s, partition s such that every substring of the partition is a palindrome. Return the minimum cuts needed for a palindrome partitioning of s.
+	/*
+	Input: "aab"
+	Output: 1
+	Explanation: The palindrome partitioning ["aa","b"] could be produced using 1 cut.
+	*/
+	int minCut(string s) {
+		const int len = (int)s.size();
+		vector<vector<bool>> P(len, vector<bool>(len, false));
+		Vector dp(len + 1, 0);
+		for (int i = 0; i <= len; ++i) {
+			dp[i] = len - i - 1;
+		}
+		for (int i = 0; i < len; ++i) {
+			for (int j = 0; j < len; ++j) {
+				P[i][j] = false;
+			}
+		}
+		for (int i = len - 1; i >= 0; --i) {
+			for (int j = i; j < len; ++j) {
+				if (s[i] == s[j] && (j - i <= 1 || P[i + 1][j - 1])) {
+					P[i][j] = true;
+					dp[i] = min(dp[i], dp[j + 1] + 1);
+				}
+			}
+		}
+		return dp[0];
+	}
 }

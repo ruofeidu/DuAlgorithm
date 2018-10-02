@@ -235,4 +235,17 @@ class BinarySearch {
 
 		return result;
 	}
+
+	// 129. Sum Root to Leaf Numbers
+	// Given a binary tree containing digits from 0-9 only, each root-to-leaf path could represent a number. An example is the root - to - leaf path 1->2->3 which represents the number 123. Find the total sum of all root - to - leaf numbers.
+	int sumNumbers(TreeNode *root) {
+		return sumNumbersDFS(root, 0);
+	}
+
+	int sumNumbersDFS(TreeNode *root, int sum) {
+		if (!root) return 0;
+		int cursum = 10 * sum + root->val;
+		if (!root->left && !root->right) return cursum;
+		return sumNumbersDFS(root->left, cursum) + sumNumbersDFS(root->right, cursum);
+	}
 };

@@ -309,4 +309,11 @@ namespace BitsManipulation {
 		}
 		return distance;
 	}
+
+	// 136. Single Number
+	// Given a non-empty array of integers, every element appears twice except for one. Find that single one.
+	int singleNumber(vector<int>& nums) {
+		// int ans = 0;  for (int x : nums) ans ^= x;  return ans; 
+		return accumulate(nums.cbegin(), nums.cend(), 0, std::bit_xor<int>());
+	}
 };

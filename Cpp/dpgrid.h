@@ -22,6 +22,23 @@ public:
 		return f[n - 1];
 	}
 
+	// 120. Triangle
+	// Given a triangle, find the minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below.
+	int minimumTotal(vector<vector<int>>& triangle) {
+		const int n = (int)triangle.size();
+		if (n <= 0) return 0;
+		vector<vector<int>> f(2, vector<int>(n + 1));
+		for (int j = 0; j < n; ++j) f[(n - 1) % 2][j] = triangle[n - 1][j];
+
+
+		for (int i = n - 2; i >= 0; --i) {
+			for (int j = 0; j < i + 1; ++j) {
+				f[i % 2][j] = triangle[i][j] + min(f[(i + 1) % 2][j], f[(i + 1) % 2][j + 1]);
+			}
+		}
+		return f[0][0];
+	}
+
 	vector<pair<int, int>> pacificAtlanticAnother(Grid& matrix) {
 		int n = (int)matrix.size();
 		int m = n ? (int)matrix[0].size() : 0;

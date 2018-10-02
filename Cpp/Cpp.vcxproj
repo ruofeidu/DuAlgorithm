@@ -123,6 +123,7 @@
     <ClInclude Include="DuConfig.h" />
     <ClInclude Include="DuTimer.h" />
     <ClInclude Include="DuUtils.h" />
+    <ClInclude Include="GameGo.h" />
     <ClInclude Include="GameSudoku.h" />
     <ClInclude Include="Geo3D.h" />
     <ClInclude Include="GeoPoints.h" />
@@ -132,6 +133,9 @@
     <ClInclude Include="GraphKruskal.h" />
     <ClInclude Include="GraphPrim.h" />
     <ClInclude Include="GridsInPlace.h" />
+    <ClInclude Include="LFUCache.h" />
+    <ClInclude Include="LRUCache.h" />
+    <ClInclude Include="MathDeduction.h" />
     <ClInclude Include="MathMatrix.h" />
     <ClInclude Include="MathSampling.h" />
     <ClInclude Include="Octree.h" />

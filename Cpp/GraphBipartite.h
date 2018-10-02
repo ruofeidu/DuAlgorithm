@@ -4,7 +4,7 @@
 namespace GraphBiparite {
 	bool isBipartite(vector<vector<int>>& graph) {
 		unordered_map<int, int> col;
-		int n = graph.size();
+		const int n = (int)graph.size();
 		for (int i = 0; i < n; ++i) {
 			if (col.count(i)) {
 				continue;

@@ -55,7 +55,7 @@ class StringMisc {
 				if (pos == unused.end() || pos->second == 0) break;
 				if (--pos->second == 0) unused.erase(pos);
 			}
-			if (unused.size() == 0) ans.push_back(distance(s.begin(), i));
+			if (unused.size() == 0) ans.push_back((int)distance(s.begin(), i));
 		}
 		return ans;
 	}
@@ -146,13 +146,13 @@ class RegularMatchQuestionStar {
 		while (curID + 1 < n) {
 			++curID;
 			int extraSpace = (curWidth == 0) ? 0 : 1;
-			if (curWidth == 0 && words[curID].size() > maxWidth) {
+			if (curWidth == 0 && (int)words[curID].size() > maxWidth) {
 				ans.push_back(words[curID]);
 				++preID;
 				continue;
 			}
-			if (curWidth + extraSpace + words[curID].size() <= maxWidth) {
-				curWidth += extraSpace + words[curID].size();
+			if (curWidth + extraSpace + (int)words[curID].size() <= maxWidth) {
+				curWidth += extraSpace + (int)words[curID].size();
 				continue;
 			}
 			else {
@@ -190,7 +190,7 @@ class RegularMatchQuestionStar {
 			if (i != preID) last += " ";
 			last += words[i];
 		}
-		curWidth = last.size();
+		curWidth = (int)last.size();
 		last += string(maxWidth - curWidth, ' ');
 		cout << last << endl;
 		ans.push_back(last);

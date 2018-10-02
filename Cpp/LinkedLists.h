@@ -102,6 +102,9 @@ namespace TestLinkedList {
 		return head;
 	}
 
+
+	// 138. Copy List with Random Pointer
+	// A linked list is given such that each node contains an additional random pointer which could point to any node in the list or null. Return a deep copy of the list.
 	// deep copy of a linked list with an additional pointer
 	RandomListNode* copyRandomList(RandomListNode* head) {
 		// insert the copied node after the original one.
@@ -138,6 +141,7 @@ namespace TestLinkedList {
 		return prev;
 	}
 
+	// 143. Reorder List
 	// Given a singly linked list L0 -> L1 -> Ln-1 -> Ln,
 	// reorder it to: L0 -> Ln -> L1 -> Ln-1 -> L2 -> Ln-2
 	// O(n) time
@@ -320,5 +324,36 @@ namespace TestLinkedList {
 		lessNode->next = more->next;
 		moreNode->next = NULL;
 		return less->next;
+	}
+
+	// 141. Linked List Cycle
+	// Given a linked list, determine if it has a cycle in it.
+	bool hasCycle(ListNode *head) {
+		if (!head) return false;
+		ListNode *fast = head, *slow = head;
+		while (fast && slow && slow->next && fast->next) {
+			fast = fast->next->next;
+			slow = slow->next;
+			if (fast == slow) return true;
+		}
+		return false;
+	}
+
+	// 142. Linked List Cycle II [M]
+	// Given a linked list, return the node where the cycle begins. If there is no cycle, return null.
+	ListNode *detectCycle(ListNode *head) {
+		ListNode *slow = head, *fast = head;
+		while (fast && fast->next) {
+			slow = slow->next; fast = fast->next->next;
+			if (slow == fast) {
+				ListNode *slow2 = head;
+				while (slow2 != slow) {
+					slow2 = slow2->next;
+					slow = slow->next;
+				}
+				return slow2;
+			}
+		}
+		return nullptr;
 	}
 }
