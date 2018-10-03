@@ -356,4 +356,34 @@ namespace TestLinkedList {
 		}
 		return nullptr;
 	}
+
+	// 160. Intersection of Two Linked Lists
+	// Write a program to find the node at which the intersection of two singly linked lists begins.
+	ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+		auto a = headA, b = headB;
+		ListNode *tailA = nullptr, *tailB = nullptr;
+		while (a && b) {
+			if (a == b) {
+				return a;
+			}
+			if (a->next)
+				a = a->next;
+			else if (!tailA) {
+				tailA = a;
+				a = headB;
+			}
+			else
+				break;
+
+			if (b->next)
+				b = b->next;
+			else if (!tailB) {
+				tailB = b;
+				b = headA;
+			}
+			else
+				break;
+		}
+		return nullptr;
+	}
 }

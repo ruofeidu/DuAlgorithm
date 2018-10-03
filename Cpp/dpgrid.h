@@ -194,7 +194,8 @@ public:
 
 
 	// 174. Dungeon Game
-	// https://leetcode.com/problems/dungeon-game/
+	// Write a function to determine the knight's minimum initial health so that he is able to rescue the princess.
+	// top left to bottom right
 	int calculateMinimumHP(vector<vector<int> > &dungeon) {
 		int m = (int)dungeon.size();
 		int n = (int)dungeon[0].size();

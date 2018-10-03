@@ -118,4 +118,19 @@ namespace Number2Words {
 		}
 		return ans;
 	}
+
+	// 168. Excel Sheet Column Title
+	string convertToTitle(int n) {
+		string ans = "";
+		while (n > 0) {
+			int d = n % 26 - 1;
+			n = (int)floor(n / 26);
+			if (d < 0) {
+				d = 25;
+				n -= 1;
+			}
+			ans = (char)(65 + d) + ans;
+		}
+		return ans;
+	}
 };

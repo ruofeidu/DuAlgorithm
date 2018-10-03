@@ -105,6 +105,45 @@ class BinarySearch {
 		return false;
 	}
 
+	// 153. Find Minimum in Rotated Sorted Array
+	// no duplicates
+	int findMinNoDuplicates(vector<int>& nums) {
+		int l = 0, r = (int)nums.size() - 1;
+		while (l < r) {
+			int p = (l + r) >> 1;
+			if (nums[p] > nums[r])
+				l = p + 1;
+			else
+				if (nums[p] < nums[p - 1])
+					return nums[p];
+				else
+					r = p - 1;
+		}
+		return nums[l];
+	}
+
+	// 154. Find Minimum in Rotated Sorted Array II [H]
+	// with duplicates
+private:
+	int findMin(vector<int>& nums, int l, int r) {
+		while (l < r) {
+			int p = (l + r) >> 1;
+			if (nums[p] > nums[r])
+				l = p + 1;
+			else if (nums[p] < nums[p - 1])
+				return nums[p];
+			else if (nums[p] < nums[r])
+				r = p - 1;
+			else
+				return min(min(findMin(nums, l, p - 1), findMin(nums, p + 1, r)), nums[p]);
+		}
+		return nums[l];
+	}
+public:
+	int findMin(vector<int>& nums) {
+		return findMin(nums, 0, (int)nums.size() - 1);
+	}
+
 	// 34. Find First and Last Position of Element in Sorted Array
 	// Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
 	/*

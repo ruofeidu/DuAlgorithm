@@ -66,6 +66,17 @@ namespace Counts {
 		return combination(2 * k - 4, k - 2) / (k - 1);
 	}
 
+	// 172. Factorial Trailing Zeroes
+	// Given an integer n, return the number of trailing zeroes in n!.
+	int trailingZeroes(int n) {
+		int res = 0;
+		while (n > 0) {
+			res += n / 5;
+			n /= 5;
+		}
+		return res;
+	}
+
 	// Josephus problem
 	
 }

@@ -21,6 +21,22 @@ namespace Hashmaps {
 		return res;
 	}
 
+	// 167. Two Sum II - Input array is sorted
+	// Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number.
+	vector<int> twoSumSorted(vector<int>& numbers, int target) {
+		int l = 0, r = (int)numbers.size() - 1;
+		while (l < r) {
+			int s = numbers[l] + numbers[r];
+			if (s > target)
+				--r;
+			else if (s < target)
+				++l;
+			else
+				return{ l + 1, r + 1 };
+		}
+		return{};
+	}
+
 	// 15. 3Sum
 	vector<vector<int>> threeSum(vector<int>& nums) {
 		vector<vector<int>> result;
