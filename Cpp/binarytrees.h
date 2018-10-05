@@ -375,4 +375,13 @@ namespace BinaryTrees {
 		connect(level.next);
 	}
 
+	// 226. Invert Binary Tree [E]
+	TreeNode* invertTree(TreeNode* root) {
+		if (!root)
+			return nullptr;
+		auto t = invertTree(root->left);
+		root->left = invertTree(root->right);
+		root->right = t;
+		return root;
+	}
 }

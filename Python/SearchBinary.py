@@ -44,3 +44,30 @@ def findMin(self, nums):
 	:rtype: int
 	"""
 	return self.bsearch(nums, 0, len(nums) - 1)
+    
+    
+# 209. Minimum Size Subarray Sum
+# Given an array of n positive integers and a positive integer s, find the minimal length of a contiguous subarray of which the sum ≥ s. If there isn't one, return 0 instead.
+def minSubArrayLen(self, s, nums):
+    """
+    :type s: int
+    :type nums: List[int]
+    :rtype: int
+    """
+    l, r, cur = 0, 0, 0
+    ans = len(nums) + 1
+    
+    while r < len(nums):
+        cur += nums[r]    
+        if cur >= s:
+            # print(l, r, cur)
+            ans = min(ans, r - l + 1)
+            cur -= nums[l]
+            l += 1
+            if r < l:
+                r += 1
+            cur -= nums[r]
+        else:
+            r += 1
+            
+    return 0 if ans == len(nums) + 1 else ans

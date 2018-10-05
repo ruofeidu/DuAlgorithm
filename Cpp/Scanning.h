@@ -1,7 +1,24 @@
 #pragma once
 #include "common.h"
 
-namespace Scanning {
+class Scanning {
+	// 209. Minimum Size Subarray Sum [M]
+	// Given an array of n positive integers and a positive integer s, find the minimal length of a contiguous subarray of which the sum >= s. If there isn't one, return 0 instead.
+	// Solution: Linear scanning with a left pointer
+	// Time: O(n)
+	int minSubArrayLen(int s, vector<int>& nums) {
+		int l = -1, res = INT_MAX, sum = 0, n = (int)nums.size();
+		for (int i = 0; i < n; ++i) {
+			sum += nums[i];
+			while (sum >= s) {
+				res = min(res, i - l);
+				sum -= nums[++l];
+			}
+		}
+		return res != INT_MAX ? res : 0;
+	}
+
+
 	// 849. Maximize Distance to Closest Person
 	int maxDistToClosest(vector<int>& seats) {
 		int res = 0, cnt = 0;
@@ -117,6 +134,62 @@ namespace Scanning {
 		return majority;
 	}
 
+	// 229. Majority Element II [M]
+	// Given an integer array of size n, find all elements that appear more than |_ n/3 _| times.
+	vector<int> majorityElementII(vector<int>& nums) {
+		// 1,1,1,2,2,2,3,3,3,1,2
+		// 3,2,1,3,2,1,3,2,1
+		// 1,2,3,4
+		const int n = (int)nums.size();
+		int top1 = INT_MIN, top2 = INT_MIN;
+		int cnt1 = 0, cnt2 = 0;
+
+		for (int x : nums) {
+			if (cnt2 <= 0 && x != top1) {
+				top2 = x;
+				cnt2 = 1;
+			}
+			else
+			if (cnt1 <= 0 && x != top2) {
+				top1 = x;
+				cnt1 = 1;
+			}
+			else
+			if (x == top1) {
+				++cnt1;
+				--cnt2;
+			}
+			else
+			if (x == top2) {
+				++cnt2;
+				--cnt1;
+			}
+			else {
+				--cnt1;
+				--cnt2;
+			}
+
+			if (cnt2 > cnt1) {
+				swap(top1, top2);
+				swap(cnt2, cnt1);
+			}
+		}
+		vector<int> ans;
+		if (checkOneThird(nums, top2)) ans.push_back(top2);
+		if (top2 != top1 && checkOneThird(nums, top1)) ans.push_back(top1);
+		return ans;
+	}
+
+	bool checkOneThird(vector<int>& nums, int target) {
+		const int n = (int)nums.size();
+		int times = 0;
+		for (int x : nums) if (x == target) {
+			++times;
+			if (times > floor((double)n / 3)) return true;
+		}
+		return false;
+	}
+
 	int threeSumSmaller(vector<int>& nums, int target) {
 		if (nums.size() < 3) return 0;
 		int res = 0;
@@ -168,50 +241,101 @@ namespace Scanning {
 	// Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n).
 	// Input: S = "ADOBECODEBANC", T = "ABC"
 	// Output: "BANC"
+	// Solution: Sliding-window Scanning with two pointers, use a hash map to remember the counts in T
+	// Time: O(n)
 	string minWindow(string s, string t) {
-		int m = (int)s.size(), n = (int)t.size();
+		// Use a vector storing the counts of t's characters
+		// +: uneliminated chars in t
+		// -: overflow chars in s
+		vector<int> d(128, 0);
+		for (const auto &c : t)
+			++d[(int)c];
 
-		int MAX_CHAR = 256;
-		vector<int> t_count(MAX_CHAR);
-		vector<int> s_count(MAX_CHAR);
-		int total_match = 0;
-		int min_match = INT_MAX;
-		string ans = "";
+		int n = (int)s.size(), m = (int)t.size();
+		int l = 0, cnt = 0;
+		int res = -1, len = INT_MAX;
 
-		for (int i = 0; i < n; ++i) {
-			++t_count[t[i]];
-		}
-
-		int l = 0, r = 0;
-		bool go_forward = true;
-
-		// ADOBECODEBANC
-		while (r < m && l <= r) {
-			if (go_forward) {
-				++s_count[s[r]];
-				if (t_count[s[r]] > 0 && s_count[s[r]] <= t_count[s[r]]) {
-					++total_match;
+		for (int r = 0; r < n; ++r) {
+			if (--d[(int)s[r]] >= 0)
+				++cnt;
+			while (cnt == m) {
+				if (len > r - l + 1) {
+					len = r - l + 1;
+					res = l;
 				}
+				if (++d[s[l++]] > 0)
+					--cnt;
 			}
+		}
+		return res >= 0 ? s.substr(res, len) : "";
+	}
 
-			if (total_match >= n) {
-				if (r - l + 1 < min_match) {
-					min_match = r - l + 1;
-					ans = s.substr(l, r - l + 1);
-					//cout << ans << endl; 
+	// 632. Smallest Range [H][VH]
+	// You have k lists of sorted integers in ascending order. Find the smallest range that includes at least one number from each of the k lists. 
+	/*
+	Input:[[4,10,15,24,26], [0,9,12,20], [5,18,22,30]]
+	Output: [20,24]
+	Explanation: 
+	List 1: [4, 10, 15, 24,26], 24 is in range [20,24].
+	List 2: [0, 9, 12, 20], 20 is in range [20,24].
+	List 3: [5, 18, 22, 30], 22 is in range [20,24].
+	*/
+	vector<int> smallestRange(vector<vector<int>>& nums) {
+		// merge everything to a sorted array with group id
+		// the problem is converted to minimum window substring
+		vector<pair<int, int>> a;
+		for (int i = 0; i < (int)nums.size(); ++i) {
+			for (int x : nums[i])
+				a.push_back({ x, i });
+		}
+		sort(a.begin(), a.end());
+
+		int l = 0, n = (int)a.size(), k = (int)nums.size(), cnt = 0, len = INT_MAX;
+		vector<int> d(k, 0), res;
+
+		// sliding window scanning with two pointers to find the minimum range
+		for (int r = 0; r < n; ++r) {
+			if (d[a[r].second]++ == 0)
+				++cnt;
+			while (cnt == k) {
+				auto al = a[l].first, ar = a[r].first;
+				if (len > ar - al) {
+					len = ar - al;
+					res = { al, ar };
 				}
-				--s_count[s[l]];
-				if (t_count[s[l]] > 0 && s_count[s[l]] < t_count[s[l]]) {
-					--total_match;
-				}
-				++l;
-				go_forward = false;
+				if (--d[a[l++].second] == 0)
+					--cnt;
+			}
+		}
+		return res;
+	}
+
+	// 228. Summary Ranges [M]
+	// Given a sorted integer array without duplicates, return the summary of its ranges.
+	// Input:  [0,1,2,4,5,7]
+	// Output: ["0->2", "4->5", "7"]
+	vector<string> summaryRanges(vector<int>& nums) {
+		vector<string> ans;
+		if (nums.empty()) return ans;
+		int l = nums[0], r = l;
+
+		for (size_t i = 1; i < nums.size(); ++i) {
+			if (nums[i] == r + 1) {
+				++r;
 			}
 			else {
-				++r;
-				go_forward = true;
+				if (r > l)
+					ans.push_back(to_string(l) + "->" + to_string(r));
+				else
+					ans.push_back(to_string(l));
+				l = nums[i];
+				r = l;
 			}
 		}
+		if (r > l)
+			ans.push_back(to_string(l) + "->" + to_string(r));
+		else
+			ans.push_back(to_string(l));
 		return ans;
 	}
 
@@ -259,4 +383,4 @@ namespace Scanning {
 		}
 		return res;
 	}
-}
+};

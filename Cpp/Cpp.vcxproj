@@ -128,11 +128,14 @@
     <ClInclude Include="Geo3D.h" />
     <ClInclude Include="GeoPoints.h" />
     <ClInclude Include="GeoPolygons.h" />
+    <ClInclude Include="GeoRect.h" />
     <ClInclude Include="GraphBipartite.h" />
     <ClInclude Include="GraphFloyd.h" />
     <ClInclude Include="GraphKruskal.h" />
     <ClInclude Include="GraphPrim.h" />
+    <ClInclude Include="GraphTopologicalSort.h" />
     <ClInclude Include="GridsInPlace.h" />
+    <ClInclude Include="HashSets.h" />
     <ClInclude Include="LFUCache.h" />
     <ClInclude Include="LRUCache.h" />
     <ClInclude Include="MathDeduction.h" />

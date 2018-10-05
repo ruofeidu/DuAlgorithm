@@ -195,26 +195,16 @@ namespace Hashmaps {
 		return res.substr(1);
 	}
 
-	// 217. Contains Duplicate
-	// Given an array of integers, find if the array contains any duplicates. 
-	// Your function should return true if any value appears at least twice in the array, 
-	// and it should return false if every element is distinct.
-	bool containsDuplicate(vector<int>& nums) {
-		unordered_map<int, bool> m;
-		for (int x : nums) {
-			if (m.find(x) != m.end()) return true;
-			m[x] = true;
-		}
-		return false;
-	}
-
 	// 219. Contains Duplicate II
 	// Given an array of integers and an integer k, find out whether there are two distinct indices i and j in the array such that nums[i] = nums[j] and the difference between i and j is at most k.
 	bool containsNearbyDuplicate(vector<int>& nums, int k) {
 		unordered_map<int, int> m;
 		int i = 0;
 		for (int x : nums) {
-			if (m.find(x) != m.end() && i - m[x] <= k) return true; else m[x] = i;
+			if (m.count(x) && i - m[x] <= k)
+				return true;
+			else
+				m[x] = i;
 			++i;
 		}
 		return false;
@@ -349,4 +339,21 @@ namespace Hashmaps {
 		return res;
 	}
 
+	// 205. Isomorphic Strings [E][VE]
+	// Given two strings s and t, determine if they are isomorphic.
+	bool isIsomorphic(string s, string t) {
+		if (s.size() != t.size())
+			return false;
+		vector<int> f(256, -1), g(256, -1);
+		for (size_t i = 0; i < s.size(); ++i) {
+			if (f[s[i]] < 0 && g[t[i]] < 0) {
+				f[s[i]] = t[i];
+				g[t[i]] = s[i];
+			}
+			else if (f[s[i]] != t[i]) {
+				return false;
+			}
+		}
+		return true;
+	}
 }

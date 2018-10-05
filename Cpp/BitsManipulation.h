@@ -284,7 +284,7 @@ namespace BitsManipulation {
 	// 201. Bitwise AND of Numbers Range
 	// Given a range [m, n] where 0 <= m <= n <= 2147483647, return the bitwise AND of all numbers in this range, inclusive
 	// Insight: for the range [m, n], if n > m, the lowest bit is always 0.
-	// the only case that lowest bit will become 1 is when m==n, and the lowest bit is 1
+	// Edge case: if m==n && (m&1) return 1 => m & n
 	int rangeBitwiseAnd(int m, int n) {
 		while (m < n) {
 			n = n & (n - 1);

@@ -150,9 +150,9 @@ namespace Palindrome {
 	// 132. Palindrome Partitioning II [H]
 	// Given a string s, partition s such that every substring of the partition is a palindrome. Return the minimum cuts needed for a palindrome partitioning of s.
 	/*
-	Input: "aab"
-	Output: 1
-	Explanation: The palindrome partitioning ["aa","b"] could be produced using 1 cut.
+		Input: "aab"
+		Output: 1
+		Explanation: The palindrome partitioning ["aa","b"] could be produced using 1 cut.
 	*/
 	int minCut(string s) {
 		const int len = (int)s.size();
@@ -176,4 +176,24 @@ namespace Palindrome {
 		}
 		return dp[0];
 	}
+
+	// 214. Shortest Palindrome [H]
+	// Given a string s, you are allowed to convert it to a palindrome by adding characters in front of it. Find and return the shortest palindrome you can find by performing this transformation.
+	/*
+		Input: "aacecaaa"
+		Output: "aaacecaaa"
+	*/
+	string shortestPalindrome(string s) {
+		string r = s;
+		reverse(r.begin(), r.end());
+		string t = s + "#" + r;
+		vector<int> p(t.size(), 0);
+		for (int i = 1; i < t.size(); ++i) {
+			int j = p[i - 1];
+			while (j > 0 && t[i] != t[j]) j = p[j - 1];
+			p[i] = (j += t[i] == t[j]);
+		}
+		return r.substr(0, s.size() - p[t.size() - 1]) + s;
+	}
+
 }

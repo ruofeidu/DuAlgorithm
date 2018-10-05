@@ -22,7 +22,6 @@ namespace Randoms {
 	}
 
 	// rand(): Returns a pseudo-random integral number in the range between 0 and RAND_MAX (32767).
-
 }
 
 // 381. Insert Delete GetRandom O(1) - Duplicates allowed

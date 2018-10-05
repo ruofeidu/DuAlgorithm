@@ -123,6 +123,7 @@ public:
 
 
 
+public:
 	// 85. Maximal Rectangle [M]
 	// Given a 2D binary matrix filled with 0's and 1's, find the largest rectangle containing only 1's and return its area.
 	/*
@@ -131,65 +132,67 @@ public:
 	1 1 1 1 1
 	1 0 0 1 0
 	*/
-public:
 	int maximalRectangle(vector<vector<char> > &matrix) {
-		if (matrix.empty()) return 0;
-		const int m = (int)matrix.size();
-		const int n = (int)matrix[0].size();
-		vector<int> H(n, 0);
-		vector<int> L(n, 0);
-		vector<int> R(n, n);
-		int ret = 0;
-		for (int i = 0; i < m; ++i) {
-			int left = 0, right = n;
+		if (matrix.empty())
+			return 0;
+		const int n = (int)matrix.size(), m = (int)matrix[0].size();
+		vector<int> H(n, 0), L(n, 0), R(n, n);
+		int res = 0;
+		for (int i = 0; i < n; ++i) {
+			int l = 0, r = m;
 			// calculate L(i, j) from left to right
 			for (int j = 0; j < n; ++j) {
 				if (matrix[i][j] == '1') {
 					++H[j];
-					L[j] = max(L[j], left);
+					L[j] = max(L[j], l);
 				}
 				else {
-					left = j + 1;
+					l = j + 1;
 					H[j] = 0; L[j] = 0; R[j] = n;
 				}
 			}
 			// calculate R(i, j) from right to left
 			for (int j = n - 1; j >= 0; --j) {
 				if (matrix[i][j] == '1') {
-					R[j] = min(R[j], right);
-					ret = max(ret, H[j] * (R[j] - L[j]));
+					R[j] = min(R[j], r);
+					res = max(res, H[j] * (R[j] - L[j]));
 				}
 				else {
-					right = j;
+					r = j;
 				}
-			}
-		}
-		return ret;
-	};
-
-	// 221. Maximal Square
-	int maximalSquare(vector<vector<char> >& matrix) {
-		int res = 0;
-		for (int i = 0; i < matrix.size(); ++i) {
-			vector<int> v(matrix[i].size(), 0);
-			for (int j = i; j < matrix.size(); ++j) {
-				for (int k = 0; k < matrix[j].size(); ++k) {
-					if (matrix[j][k] == '1') ++v[k];
-				}
-				res = max(res, getSquareArea(v, j - i + 1));
 			}
 		}
 		return res;
-	}
-	int getSquareArea(vector<int> &v, int k) {
-		if (v.size() < k) return 0;
-		int count = 0;
-		for (int i = 0; i < v.size(); ++i) {
-			if (v[i] != k) count = 0;
-			else ++count;
-			if (count == k) return k * k;
+	};
+
+	// 221. Maximal Square [M]
+	// Given a 2D binary matrix filled with 0's and 1's, find the largest square containing only 1's and return its area.
+	// Time: O(nm), Space: O(m)
+	int maximalSquare(vector<vector<char>>& a) {
+		if (a.empty())
+			return 0;
+		const int n = (int)a.size(), m = (int)a[0].size();
+		Grid f(2, vector<int>(m, 0));
+		int res = 0;
+
+		for (int j = 0; j < m; ++j) {
+			f[0][j] = a[0][j] - '0';
+			res = max(res, f[0][j]);
 		}
-		return 0;
+
+		for (int i = 1; i < n; ++i) {
+			f[i % 2][0] = a[i][0] - '0';
+			for (int j = 0; j < m; ++j) {
+				if (a[i][j] == '1') {
+					f[i % 2][j] = min(f[i % 2][j - 1], min(f[(i - 1) % 2][j], f[(i - 1) % 2][j - 1])) + 1;
+					res = max(res, f[i % 2][j]);
+				}
+				else {
+					f[i % 2][j] = 0;
+				}
+			}
+		}
+		return res * res;
 	}
 
 

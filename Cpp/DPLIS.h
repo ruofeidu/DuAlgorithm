@@ -1,10 +1,12 @@
 #pragma once
 #include "common.h"
 
-// Longest Increasing Subsequence (LCS)
+// Longest Increasing Subsequence (LIS)
 namespace LISProblems {
 	// 300. Longest Increasing Subsequence
 	// Given an unsorted array of integers, find the length of longest increasing subsequence.
+	// f[i] = max{ f[j] } + 1, a[j] < a[i], f[i] ascending, lower_bound
+	// Time: O(n log n)
 	int lengthOfLIS(vector<int>& nums) {
 		vector<int> f;
 		const int n = (int)nums.size();
@@ -23,7 +25,23 @@ namespace LISProblems {
 				if (f[mid] < x) l = mid + 1;
 				else r = mid;
 			}
-			if (r >= f.size()) f.push_back(x); else f[r] = x;
+			if (r >= f.size())
+				f.push_back(x);
+			else
+				f[r] = x;
+		}
+		return (int)f.size();
+	}
+
+	// Using STL
+	int lengthOfLIS_STL(vector<int>& nums) {
+		vector<int> f;
+		for (auto x : nums) {
+			auto it = lower_bound(f.begin(), f.end(), x);
+			if (it == f.end())
+				f.emplace_back(x);
+			else
+				*it = x;
 		}
 		return (int)f.size();
 	}

@@ -213,6 +213,49 @@ public:
 			broken.second = current;
 		}
 	}
+
+	// 230. Kth Smallest Element in a BST [M]
+	// Given a binary search tree, write a function kthSmallest to find the kth smallest element in it.
+	int kthSmallest(TreeNode* root, int k) {
+		return kthSmallestDFS(root, k);
+	}
+	int kthSmallestDFS(TreeNode* root, int &k) {
+		if (!root) return -1;
+		int val = kthSmallestDFS(root->left, k);
+		if (!k) return val;
+		if (!--k) return root->val;
+		return kthSmallestDFS(root->right, k);
+	}
+
+
+	int kthSmallestNonRecursive(TreeNode* root, int k) {
+		int cnt = 0;
+		stack<TreeNode*> s;
+		TreeNode *p = root;
+		while (p || !s.empty()) {
+			while (p) {
+				s.push(p);
+				p = p->left;
+			}
+			p = s.top(); s.pop();
+			++cnt;
+			if (cnt == k) return p->val;
+			p = p->right;
+		}
+		return 0;
+	}
+
+	// 285. Inorder Successor in BST
+	TreeNode* inorderSuccessor(TreeNode* root, TreeNode* p) {
+		if (!root) return NULL;
+		if (root->val <= p->val) {
+			return inorderSuccessor(root->right, p);
+		}
+		else {
+			TreeNode *left = inorderSuccessor(root->left, p);
+			return left ? left : root;
+		}
+	}
 };
 
 

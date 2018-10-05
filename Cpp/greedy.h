@@ -1,6 +1,37 @@
 #pragma once
 #include "common.h"
+
 namespace Greedy {
+	// 630. Course Schedule III [H]
+	// There are n different online courses numbered from 1 to n. Each course has some duration(course length) t and closed on dth day. A course should be taken continuously for t days and must be finished before or on the dth day. You will start at the 1st day.
+	// Given n online courses represented by pairs(t, d), your task is to find the maximal number of courses that can be taken.
+	// Solution: Greedy
+	// Time: O(n)
+	// Proof: Sort by end date, if the current course cannot be completed, we have to remove one course
+	// if we remove something longer than the maximum one, 
+	// it is possible we can have a smaller end date which yields the next one to the schedule -> contradictory!
+	int scheduleCourse(vector<vector<int>>& courses) {
+		sort(courses.begin(), courses.end(), [](const vector<int>& a, const vector<int>& b) {
+			return a[1] < b[1];
+		});
+
+		// a max heap
+		priority_queue<int> h;
+		// time
+		int t = 0;
+
+		for (const auto &c : courses) {
+			h.emplace(c[0]);
+			t += c[0];
+			if (t > c[1]) {
+				t -= h.top();
+				h.pop();
+			}
+		}
+		return (int)h.size();
+	}
+
+	// 853. Car Fleet [M]
 	// Given positions and speeds of cars and a target destination, count number of fleets
 	// Time:  O(n log n)
 	// Space: O(n)

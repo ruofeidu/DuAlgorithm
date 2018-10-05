@@ -28,38 +28,103 @@ private:
 	stack<int> s1, s2;
 };
 
-namespace Stacks {
-	// 224. Basic Calculator
+class Stacks {
+	// 224. Basic Calculator [H]
 	/*
-		"1 + 1" = 2
-		" 2-1 + 2 " = 3
-		"(1+(4+5+2)-3)+(6+8)" = 23
+		"3-(2+5) = -4
 	 */
-	int calculate(string s) {
-		int res = 0;
+	// The expression string may contain open ( and closing parentheses ), the plus + or minus sign -, non-negative integers and empty spaces.
+	// Solution: Maintain a stack of - or (
+	int calculateI(string s) {
+		int res = 0, n = (int)s.size();
 		vector<int> sign(2, 1);
-		for (int i = 0; i < s.size(); ++i) {
+		for (int i = 0; i < n; ++i) {
 			char c = s[i];
+			// read a number
 			if (c >= '0') {
 				int num = 0;
-				while (i < s.size() && s[i] >= '0') {
+				while (i < n && s[i] >= '0') {
 					num = 10 * num + s[i++] - '0';
 				}
+				--i;
 				res += sign.back() * num;
 				sign.pop_back();
-				--i;
 			}
-			else if (c == ')') sign.pop_back();
-			else if (c != ' ') sign.emplace_back(sign.back() * (c == '-' ? -1 : 1));
+			else if (c == ')')
+				sign.pop_back();
+			// read a '-' or '('
+			else if (c != ' ')
+				sign.emplace_back(sign.back() * (c == '-' ? -1 : 1));
 		}
 		return res;
 	}
 
-	/**
-	* 402. Remove K Digits
-	Input: num = "1432219", k = 3
-	Output: "1219"
-	Explanation: Remove the three digits 4, 3, and 2 to form the new number 1219 which is the smallest.
+	// 227. Basic Calculator II [M]
+	// Support +, -, *, /.
+	int calculate(string s) {
+		stack<int64_t> operands;
+		stack<char> operators;
+		string operand;
+		for (int i = (int)s.length() - 1; i >= 0; --i) {
+			if (isdigit(s[i])) {
+				operand.push_back(s[i]);
+				if (i == 0 || !isdigit(s[i - 1])) {
+					reverse(operand.begin(), operand.end());
+					operands.emplace(stol(operand));
+					operand.clear();
+				}
+			}
+			else if (s[i] == ')' || s[i] == '*' ||
+				s[i] == '/') {
+				operators.emplace(s[i]);
+			}
+			else if (s[i] == '+' || s[i] == '-') {
+				while (!operators.empty() && (operators.top() == '*' ||
+					operators.top() == '/')) {
+					compute(operands, operators);
+				}
+				operators.emplace(s[i]);
+			}
+			else if (s[i] == '(') {
+				// operators at least one element, i.e. ')'.
+				while (operators.top() != ')') {
+					compute(operands, operators);
+				}
+				operators.pop();
+			}
+		}
+		while (!operators.empty()) {
+			compute(operands, operators);
+		}
+		return (int)operands.top();
+	}
+
+	void compute(stack<int64_t>& operands, stack<char>& operators) {
+		const int64_t left = operands.top();
+		operands.pop();
+		const int64_t right = operands.top();
+		operands.pop();
+		const char op = operators.top();
+		operators.pop();
+		if (op == '+') {
+			operands.emplace(left + right);
+		}
+		else if (op == '-') {
+			operands.emplace(left - right);
+		}
+		else if (op == '*') {
+			operands.emplace(left * right);
+		}
+		else if (op == '/') {
+			operands.emplace(left / right);
+		}
+	}
+
+	// 402. Remove K Digits
+	/*
+		Input: num = "1432219", k = 3
+		Output: "1219"
+		Explanation: Remove the three digits 4, 3, and 2 to form the new number 1219 which is the smallest.
 	*/
 	string removeKdigits(string num, int k) {
 		string res = "";
@@ -182,5 +247,4 @@ namespace Stacks {
 
 		return (int)round(stk.top());
 	}
-
-}
+};

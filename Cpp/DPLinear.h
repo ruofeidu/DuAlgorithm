@@ -192,4 +192,25 @@ class DP1D {
 
 		return f[n % 3];
 	}
+
+	// 213. House Robber II [M]
+	// All houses at this place are arranged in a circle.
+	int rob2(vector<int>& nums) {
+		const int n = (int)nums.size();
+		if (n <= 1)
+			return nums.empty() ? 0 : nums[0];
+		return max(rob2(nums, 0, n - 1), rob2(nums, 1, n));
+	}
+
+	int rob2(vector<int> &nums, int l, int r) {
+		if (r - l <= 1)
+			return nums[l];
+		vector<int> f(r, 0);
+		f[l] = nums[l];
+		f[l + 1] = max(nums[l], nums[l + 1]);
+		for (int i = l + 2; i < r; ++i) {
+			f[i] = max(nums[i] + f[i - 2], f[i - 1]);
+		}
+		return f.back();
+	}
 };

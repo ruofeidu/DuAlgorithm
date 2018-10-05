@@ -103,5 +103,12 @@ struct Point {
 	Point(int a, int b) : x(a), y(b) {}
 };
 
+
+// Notations
+
 using Vector = vector<int>;
+using Vector2 = vector<pair<int, int>>;
 using Grid = vector<Vector>;
+using BVector = vector<bool>;
+using BGrid = vector<BVector>;
+using Matrix = Grid;

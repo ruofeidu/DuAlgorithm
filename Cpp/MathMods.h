@@ -10,6 +10,30 @@ namespace Mods{
 		return y;
 	}
 
+	// Bit-level GCD
+	int kgcd(int x, int y) {
+		if (!x || !y) return max(x, y);
+		if (!(x & 1) && !(y & 1)) return kgcd(x >> 1, y >> 1) << 1;
+		else if (!(y & 1)) return kgcd(x, y >> 1);
+		else if (!(x & 1)) return kgcd(x >> 1, y);
+		else return kgcd(abs(x - y), min(x, y));
+	}
+
+	// Extended GCD
+	// gcd(a, b) = a * x + b * y
+	int extgcd(int a, int b, int &x, int &y) {
+		if (!b) {
+			x = 1;
+			y = 0;
+			return a;
+		}
+		int d = extgcd(b, a % b, x, y);
+		int t = x;
+		x = y;
+		y = t - a / b * y;
+		return d;
+	}
+
 	// LCM: Lowest Common Multiple
 	int lcm(int x, int y) {
 		return x * y == 0 ? 0 : x * y / gcd(x, y);
@@ -23,7 +47,7 @@ namespace Mods{
 			if (b & 1)
 				res *= y % n;
 			y = y * y % n;
-			b = b >> 1;
+			b >>= 1;
 		}
 		return res;
 	}
@@ -54,32 +78,7 @@ namespace Mods{
 		return res;
 	}
 
-	// advanced gcd
-	int kgcd(int x, int y) {
-		if (!x || !y) return max(x, y);
-		if (!(x & 1) && !(y & 1)) return kgcd(x >> 1, y >> 1) << 1;
-		else if (!(y & 1)) return kgcd(x, y >> 1);
-		else if (!(x & 1)) return kgcd(x >> 1, y);
-		else return kgcd(abs(x - y), min(x, y));
-	}
-
-	// extended gcd
-	// gcd(a, b) = a * x + b * y
-	int extgcd(int a, int b, int &x, int &y) {
-		if (!b) {
-			x = 1;
-			y = 0;
-			return a;
-		}
-		int d = extgcd(b, a % b, x, y);
-		int t = x;
-		x = y;
-		y = t - a / b * y;
-		return d;
-	}
-
-	// mode equation solver
-	// a * x = b % n
+	// Modular equation solver: a * x = b % n
 	vector<int> modeq(int a, int b, int n) {
 		int x, y;
 		int d = extgcd(a, n, x, y);

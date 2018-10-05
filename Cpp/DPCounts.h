@@ -79,4 +79,22 @@ namespace DPCounts {
 		}
 		return f[n][m];
 	}
+
+	// 629. K Inverse Pairs Array [H]
+	// Given two integers n and k, find how many different arrays consist of numbers from 1 to n such that there are exactly k inverse pairs. Since the answer may be very large, the answer should be modulo 10^9 + 7.
+	int kInversePairs(int n, int k) {
+		static const int M = 1000000007;
+		vector<vector<int>> f(2, vector<int>(k + 1));
+		f[0][0] = 1;
+		for (int i = 1; i <= n; ++i) {
+			f[i % 2][0] = 1;
+			for (int j = 1; j <= k; ++j) {
+				f[i % 2][j] = (f[i % 2][j - 1] + f[(i - 1) % 2][j]) % M;
+				if (j - i >= 0) {
+					f[i % 2][j] = (f[i % 2][j] - f[(i - 1) % 2][j - i] + M) % M;
+				}
+			}
+		}
+		return f[n % 2][k];
+	}
 }

@@ -77,29 +77,45 @@ namespace HeapAlgos {
 		return (int)q.size();
 	}
 
+	// 215. Kth Largest Element in an Array [M]
+	// Max heap
+	// Time: O(n log k)
+	// Space: O(k)
+	int findKthLargest(vector<int>& nums, int k) {
+		if (nums.empty() || k == 0)
+			return -1;
+		priority_queue<int> h;
+		for (auto x : nums) {
+			h.push(-x);
+			if (h.size() > k)
+				h.pop();
+		}
+		return -h.top();
+	}
+
 	// 295. Find Median from Data Stream
 	// [2,3,4] , the median is 3
 	// [2,3], the median is (2 + 3) / 2 = 2.5
 	class MedianFinder {
 	private:
-		priority_queue<int> small, large;
+		priority_queue<int> min_heap, max_heap;
 	public:
 		// Adds a number into the heap in O(log N)
 		//  2, 3
 		//  3
 		void addNum(int num) {
-			small.push(num);
-			large.push(-small.top());
-			small.pop();
-			if (small.size() < large.size()) {
-				small.push(-large.top());
-				large.pop();
+			max_heap.push(num);
+			min_heap.push(-max_heap.top());
+			max_heap.pop();
+			if (max_heap.size() < min_heap.size()) {
+				max_heap.push(-min_heap.top());
+				min_heap.pop();
 			}
 		}
 
 		// Returns the median of small and large
 		double findMedian() {
-			return small.size() > large.size() ? small.top() : 0.5 * (small.top() - large.top());
+			return max_heap.size() > min_heap.size() ? max_heap.top() : 0.5 * (max_heap.top() - min_heap.top());
 		}
 	};
 }

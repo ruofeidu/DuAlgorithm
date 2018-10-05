@@ -420,6 +420,15 @@
     <ClInclude Include="SortBucket.h">
       <Filter>Header Files\Algorithms\Sorts</Filter>
     </ClInclude>
+    <ClInclude Include="HashSets.h">
+      <Filter>Header Files\DataStructures\Hashing</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphTopologicalSort.h">
+      <Filter>Header Files\Algorithms\GraphTheory</Filter>
+    </ClInclude>
+    <ClInclude Include="GeoRect.h">
+      <Filter>Header Files\DataStructures\Geometry</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

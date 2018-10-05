@@ -2,19 +2,18 @@
 #include "common.h"
 
 namespace TestLinkedList {
-	// reverse a linked list
-	// 0  1->2->3
-	//    0->t->1
-	//       0->t->2->1
+	// 206. Reverse Linked List
+	// Input: 1->2->3->4->5->NULL
+	// Output: 5->4->3->2->1->NULL
 	ListNode* reverseList(ListNode* head) {
-		auto dummy = ListNode{0};
+		auto h = ListNode{0};
 		while (head) {
 			auto t = head->next;
-			head->next = dummy.next;
-			dummy.next = head;
+			head->next = h.next;
+			h.next = head;
 			head = t;
 		}
-		return dummy.next;
+		return h.next;
 	}
 
 	// 92. Reverse Linked List II
@@ -231,6 +230,21 @@ namespace TestLinkedList {
 		node = nodeRotate->next;
 		nodeRotate->next = nullptr;
 		return node;
+	}
+
+	// 203. Remove Linked List Elements [E]
+	ListNode* removeElements(ListNode* head, int val) {
+		while (head && head->val == val) {
+			head = head->next;
+		}
+		auto v = head;
+		while (v) {
+			while (v->next && v->next->val == val) {
+				v->next = v->next->next;
+			}
+			v = v->next;
+		}
+		return head;
 	}
 
 	// 83. Remove Duplicates from Sorted List [E]
