@@ -177,4 +177,19 @@ class DP1D {
 		}
 		return res;
 	}
+
+	// 198. House Robber [E]
+	// You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security system connected and it will automatically contact the police if two adjacent houses were broken into on the same night. Max.
+	int rob(vector<int>& nums) {
+		const int n = (int)nums.size();
+		if (n == 0) return 0;
+		vector<int> f(3); // f[i] = maximum from 0 .. i - 1
+		f[1] = nums[0];
+
+		for (int i = 2; i <= n; ++i) {
+			f[i % 3] = max(f[(i - 1) % 3], f[(i - 2) % 3] + nums[i - 1]);
+		}
+
+		return f[n % 3];
+	}
 };

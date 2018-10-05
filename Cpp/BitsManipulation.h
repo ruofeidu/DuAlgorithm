@@ -310,6 +310,17 @@ namespace BitsManipulation {
 		return distance;
 	}
 
+	// 191. Number of 1 Bits
+	// Takes an unsigned integer and returns the number of '1' bits it has (also known as the Hamming weight).
+	int hammingWeight(uint32_t n) {
+		int ans = 0;
+		while (n > 0) {
+			ans += n & 1;
+			n >>= 1;
+		}
+		return ans;
+	}
+
 	// 136. Single Number
 	// Given a non-empty array of integers, every element appears twice except for one. Find that single one.
 	int singleNumber(vector<int>& nums) {
