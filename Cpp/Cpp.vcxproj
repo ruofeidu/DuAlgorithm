@@ -136,6 +136,7 @@
     <ClInclude Include="GraphTopologicalSort.h" />
     <ClInclude Include="GridsInPlace.h" />
     <ClInclude Include="HashSets.h" />
+    <ClInclude Include="LCA.h" />
     <ClInclude Include="LFUCache.h" />
     <ClInclude Include="LRUCache.h" />
     <ClInclude Include="MathDeduction.h" />

@@ -44,21 +44,22 @@ namespace StringTricks {
 		cout << ss1 << " " << ss2 << " " << ss3 << " " << ss4 << " " << ss5 << endl;
 	}
 
+	// 242. Valid Anagram
 	// Write a method to decide if two strings are anagrams or not.
 	bool isAnagram(string s, string t) {
-		if (s.length() != t.length() || s == "" || t == "")
+		if (s.size() != t.size())
 			return false;
 
-		int len = (int)s.length();
-		int c[256];
-		memset(c, 0, sizeof(c));
-		for (int i = 0; i < len; ++i) {
-			++c[(int)s[i]];
-			--c[(int)t[i]];
-		}
-		for (int i = 0; i < 256; ++i)
-			if (c[i] != 0)
+		vector<int> cnt(128, 0);
+
+		for (const auto& c : s)
+			++cnt[(int)tolower(c)];
+
+		for (const auto& c : t) {
+			--cnt[(int)tolower(c)];
+			if (cnt[(int)tolower(c)] < 0)
 				return false;
+		}
 		return true;
 	}
 

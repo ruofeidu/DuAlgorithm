@@ -16,7 +16,7 @@ namespace SortInsert {
 		}
 		ListNode* curHead = dummy;
 		for (int i = 0; i < N; ++i) {
-			// find minimum from [i … N - 1]
+			// find minimum from [i ?N - 1]
 			ListNode* minNode = curHead;
 			ListNode* curNode = curHead;
 			int curMin = INT_MAX;
@@ -27,7 +27,7 @@ namespace SortInsert {
 				}
 				curNode = curNode->next;
 			}
-			// ...curHead-> …      minNode-> trueMinNode -> …
+			// ...curHead-> ?     minNode-> trueMinNode -> ?
 			ListNode* trueMinNode = minNode->next;
 			cout << trueMinNode->val << endl;
 			minNode->next = trueMinNode->next;

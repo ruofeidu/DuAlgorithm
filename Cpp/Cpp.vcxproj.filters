@@ -429,6 +429,9 @@
     <ClInclude Include="GeoRect.h">
       <Filter>Header Files\DataStructures\Geometry</Filter>
     </ClInclude>
+    <ClInclude Include="LCA.h">
+      <Filter>Header Files\DataStructures\Tree</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

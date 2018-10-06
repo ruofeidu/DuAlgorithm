@@ -383,4 +383,47 @@ class Scanning {
 		}
 		return res;
 	}
+
+	// 238. Product of Array Except Self [M]
+	// Given an array nums of n integers where n > 1,  return an array output such that output[i] is equal to the product of all the elements of nums except nums[i].
+	// Solution: maintain l as the left product except itself
+	// scan from right to left, maintain with the current product and multiple by it
+	vector<int> productExceptSelf(vector<int>& nums) {
+		const int n = (int)nums.size();
+		vector<int> l(n, 1);
+		if (nums.empty())
+			return l;
+
+		int r = 1;
+		for (int i = 1; i < n; ++i)
+			l[i] = l[i - 1] * nums[i - 1];
+		for (int i = n - 2; i >= 0; --i) {
+			r *= nums[i + 1];
+			l[i] *= r;
+		}
+		return l;
+	}
+
+	// 274. H-Index
+	int hIndex(vector<int>& citations) {
+		const int n = (int)citations.size();
+		int ans = 0;
+		sort(citations.begin(), citations.end(), greater<int>());
+
+
+		for (int i = 0; i < n; ++i) {
+			if (i >= citations[i]) return i;
+		}
+		return n;
+	}
+
+	// 275. H-Index II
+	int hIndexII(vector<int>& citations) {
+		const int n = (int)citations.size();
+		int ans = 0;
+		for (int i = 0; i < n; ++i) {
+			ans = max(ans, min(n - i, citations[i]));
+		}
+		return ans;
+	}
 };

@@ -384,4 +384,19 @@ namespace BinaryTrees {
 		root->right = t;
 		return root;
 	}
+
+	// 257. Binary Tree Paths [E]
+	vector<string> binaryTreePaths(TreeNode* root) {
+		vector<string> res;
+		if (root) binaryTreePathsDFS(root, "", res);
+		return res;
+	}
+	void binaryTreePathsDFS(TreeNode *root, string out, vector<string> &res) {
+		out += to_string(root->val);
+		if (!root->left && !root->right) res.push_back(out);
+		else {
+			if (root->left) binaryTreePathsDFS(root->left, out + "->", res);
+			if (root->right) binaryTreePathsDFS(root->right, out + "->", res);
+		}
+	}
 }

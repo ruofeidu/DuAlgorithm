@@ -197,6 +197,48 @@ class Palindrome:
                     return x % 1337
                 j -= 1
         return -1
+		
+	# 234. Palindrome Linked List
+	# Given a singly linked list, determine if it is a palindrome.
+	def isPalindrome(self, head):
+        """
+        :type head: ListNode
+        :rtype: bool
+        """
+        if head is None or head.next is None:
+            return True
+        root = ListNode(0)
+        root.next = head
+        n, v = 0, head
+        while v is not None:
+            v = v.next
+            n += 1
+        h = n >> 1
+        c, v, p, vn = 0, head, root, head.next
+        # x->1->2<-2<-1
+        # 0: p, v, vn = x, 1, 2
+        # 1: p, v, vn = 1, 2, 2
+        # 2: p, v, vn = 2, 2, -1
+        # 3: p, v, vn = 2, -1, x
+        
+        tail = vn
+        while vn is not None:
+            p = v
+            v = vn
+            if v is not None:
+                tail = v
+            vn = vn.next
+            c += 1
+            if c > h:
+                v.next = p
+        
+        # I am too lazy to restore the list
+        for _ in range(h):
+            if head.val != tail.val:
+                return False
+            head = head.next
+            tail = tail.next
+        return True
 
 
 p = Palindrome()

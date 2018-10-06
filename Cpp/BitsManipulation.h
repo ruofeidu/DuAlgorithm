@@ -327,4 +327,35 @@ namespace BitsManipulation {
 		// int ans = 0;  for (int x : nums) ans ^= x;  return ans; 
 		return accumulate(nums.cbegin(), nums.cend(), 0, std::bit_xor<int>());
 	}
+
+	// 137. Single Number II
+	int singleNumberII(vector<int>& nums) {
+		const int L = sizeof(int) * 8;
+		vector<int> count(L, 0);
+		for (int x : nums) {
+			for (int i = 0; i < L; ++i) {
+				count[i] += (x >> i) & 1;
+				count[i] %= 3;
+			}
+		}
+		for (int i = 0; i < L; ++i)
+			count[i] <<= i;
+		return accumulate(count.cbegin(), count.cend(), 0, std::plus<int>());
+	}
+
+	// 260. Single Number III
+	// Given an array of numbers nums, in which exactly two elements appear only once and all the other elements appear exactly twice. Find the two elements that appear only once.
+	vector<int> singleNumberIII(vector<int>& nums) {
+		int s = 0;
+		unordered_set<int> v;
+		for (auto &x : nums) {
+			s ^= x;
+			v.emplace(x);
+		}
+		for (auto &x : nums) {
+			if (v.count(s ^ x))
+				return{ x, s^x };
+		}
+		return{ -1, -1 };
+	}
 };

@@ -111,4 +111,47 @@ private:
 			sol.pop_back();
 		}
 	}
+
+public:
+	// 241. Different Ways to Add Parentheses
+	// Given a string of numbers and operators, return all possible results from computing all the different possible ways to group numbers and operators. The valid operators are +, - and *.
+	vector<int> diffWaysToCompute(string s) {
+		const int n = (int)s.size();
+		vector<vector<vector<int>>> d(n + 1, vector<vector<int>>(n + 1));
+		return diffWaysToComputeDFS(s, 0, n, d);
+	}
+
+private:
+	vector<int> diffWaysToComputeDFS(const string& s, const int l, const int r, vector<vector<vector<int>>>& d) {
+		if (!d[l][r].empty()) {
+			return d[l][r];
+		}
+		vector<int> res;
+		for (int i = l; i < r; ++i) {
+			const auto c = s[i];
+			if (c == '+' || c == '-' || c == '*') {
+				auto left = diffWaysToComputeDFS(s, l, i, d);
+				auto right = diffWaysToComputeDFS(s, i + 1, r, d);
+				for (const auto& x : left) {
+					for (const auto& y : right) {
+						if (c == '+') {
+							res.emplace_back(x + y);
+						}
+						else if (c == '-') {
+							res.emplace_back(x - y);
+						}
+						else {
+							res.emplace_back(x * y);
+						}
+					}
+				}
+			}
+		}
+		// If the input string contains only number.
+		if (res.empty()) {
+			res.emplace_back(stoi(s.substr(l, r - l)));
+		}
+		d[l][r] = res;
+		return d[l][r];
+	}
 };

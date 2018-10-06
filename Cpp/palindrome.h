@@ -196,4 +196,8 @@ namespace Palindrome {
 		return r.substr(0, s.size() - p[t.size() - 1]) + s;
 	}
 
+	// 234. Palindrome Linked List [E]
+	// Given a singly linked list, determine if it is a palindrome.
+	// See Python
+
 }

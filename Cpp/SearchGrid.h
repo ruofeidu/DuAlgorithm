@@ -2,7 +2,8 @@
 #include "common.h"
 
 class SearchGrid {
-	// 240. Search a 2D Matrix II
+	// 240. Search a 2D Matrix II [M]
+	// Write an efficient algorithm that searches for a value in an m x n matrix.
 	/*
 		[1,   4,  7, 11, 15],
 		[2,   5,  8, 12, 19],
@@ -24,8 +25,6 @@ class SearchGrid {
 		}
 		return false;
 	}
-
-
 
 	inline bool valid(int y, int x, int n, int m) {
 		return y >= 0 && y <= n - 1 && x >= 0 && x <= m - 1;

@@ -184,6 +184,7 @@ public:
 		return false;
 	}
 
+
 	// 162. Find peak element in an array [E]
 	int findPeakElement(vector<int>& nums) {
 		int n = (int)nums.size();

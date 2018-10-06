@@ -32,6 +32,8 @@ namespace Number2Words {
 		return join(res, " ");
 	}
 
+	// 273. Integer to English Words
+	// Convert a non-negative integer to its english words representation. Given input is guaranteed to be less than 231 - 1.
 	string numberToWords(int num) {
 		if (num == 0) {
 			return "Zero";
