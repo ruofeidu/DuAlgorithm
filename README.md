@@ -55,13 +55,20 @@ My collection of algorithms, data structures, and design patterns in C++, Python
 * Kruskal: O(E log V)
 * Prim: O(E + V log V) Fibonacci heap and adjacency list
 #### Network Flow
-* Graham
+* Graham, BFS for sparse biparate graph
+** O(VE)
 * Hopcroft-Carp
-* Kuhn Munkras
-* Max Flow = Min Cut
-* Dinic
+** O(V^0.5 E)
+* Kuhn Munkras 
+** O(VE^2)
+* Max Flow = Min Cut = minimum set to remove for cutting the graph
+** O(N^3)
+* Dinic 
+** O(V^2 E)
 * HLPP
+** O(V^3)
 * MinCostMaxFlow
+** SPFA << O(VEf)
 ##### SPFA
 ### Greedy
 * Heap
