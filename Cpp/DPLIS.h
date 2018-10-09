@@ -46,6 +46,23 @@ namespace LISProblems {
 		return (int)f.size();
 	}
 
+	// Backup: O(n^2)
+	int lengthOfLISN2(vector<int>& nums) {
+		const auto n = nums.size();
+		if (n == 0) return 0;
+		vector<int> f(n + 1);
+		f[0] = 1;
+		int ans = 1;
+		for (size_t i = 1; i < n; ++i) {
+			f[i] = 1;
+			for (size_t j = 0; j < i; ++j) if (nums[i] > nums[j]) {
+				f[i] = max(f[i], f[j] + 1);
+				ans = max(ans, f[i]);
+			}
+		}
+		return ans;
+	}
+
 	// 675. Longest Continuous Increasing Subsequence
 	// Given an unsorted array of integers, find the length of longest continuous increasing subsequence (subarray).
 	int findLengthOfLCIS(vector<int>& nums) {

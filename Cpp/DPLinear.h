@@ -22,48 +22,6 @@ class DP1D {
 		return ans;
 	}
 
-	// 300. Longest Increasing Subsequence
-	// O(n^2)
-	int lengthOfLISN2(vector<int>& nums) {
-		const auto n = nums.size();
-		if (n == 0) return 0;
-		vector<int> f(n + 1);
-		f[0] = 1;
-		int ans = 1;
-		for (size_t i = 1; i < n; ++i) {
-			f[i] = 1;
-			for (size_t j = 0; j < i; ++j) if (nums[i] > nums[j]) {
-				f[i] = max(f[i], f[j] + 1);
-				ans = max(ans, f[i]);
-			}
-		}
-		return ans;
-	}
-
-	// O(N log N)
-	int lengthOfLIS(vector<int>& nums) {
-		vector<int> f;
-		const auto n = nums.size();
-		for (int x : nums) {
-			int l = 0, r = (int)f.size();
-			// find the first element in f, that is not greater than x
-			// 4, 2, 4, 5, 3, 7 =>
-			// 4
-			// 2
-			// 2, 4
-			// 2, 4, 5
-			// 2, 3, 5
-			// 2, 3, 5, 7
-			while (l < r) {
-				int mid = (l + r) >> 1;
-				if (f[mid] < x) l = mid + 1;
-				else r = mid;
-			}
-			if (r >= f.size()) f.emplace_back(x); else f[r] = x;
-		}
-		return (int)f.size();
-	}
-
 	// 256. Paint House
 	// k = 3
 	// There are a row of n houses, each house can be painted with one of the k colors. 
