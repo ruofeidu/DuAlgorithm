@@ -288,4 +288,20 @@ public:
 		if (!root->left && !root->right) return cursum;
 		return sumNumbersDFS(root->left, cursum) + sumNumbersDFS(root->right, cursum);
 	}
+
+	// 315. Count of Smaller Numbers After Self
+	// You are given an integer array nums and you have to return a new counts array. The counts array has the property where counts[i] is the number of smaller elements to the right of nums[i].
+	// Time:  O(nlogn)
+	// Space: O(n)
+	vector<int> countSmaller(vector<int>& nums) {
+		const int n = (int)nums.size();
+		vector<int> ans(n);
+		vector<int> low;
+		for (int i = n - 1; i >= 0; --i) {
+			int d = (int)distance(low.begin(), lower_bound(low.begin(), low.end(), nums[i]));
+			ans[i] = d;
+			low.insert(low.begin() + d, nums[i]);
+		}
+		return ans;
+	}
 };

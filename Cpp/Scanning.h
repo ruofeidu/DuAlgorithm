@@ -426,4 +426,57 @@ class Scanning {
 		}
 		return ans;
 	}
+
+	// 306. Additive Number [M]
+	// Given a string containing only digits '0'-'9', write a function to determine if it's an additive number.
+	// 112358
+	// Time:  O(n^3)
+	// Space: O(n)
+	bool isAdditiveNumber(string num) {
+		const auto n = num.size();
+
+		for (size_t i = 1; i < n; ++i) {
+			for (size_t j = i + 1; j < n; ++j) {
+				auto a = num.substr(0, i), b = num.substr(i, j - i);
+				if ((a.size() > 1 && a[0] == '0') ||
+					(b.size() > 1 && b[0] == '0'))
+					continue;
+				auto next = add(a, b);
+				string cur = a + b + next;
+				size_t p = a.size() + b.size();
+				while (cur.size() < n) {
+					if (num.substr(p, next.size()) != cur.substr(p, next.size()))
+						break;
+					p += next.size();
+					a = b;
+					b = next;
+					next = add(a, b);
+					cur += next;
+				}
+				if (cur.size() == n && num.substr(p, next.size()) == cur.substr(p, next.size()))
+					return true;
+				// if (cur == num) return true;
+			}
+		}
+		return false;
+	}
+
+	string add(const string &a, const string &b) {
+		string res;
+		const int n = (int)a.size(), m = (int)b.size();
+
+		int carry = 0;
+		for (int i = 0; i < max(n, m); ++i) {
+			int x = i < n ? a[n - i - 1] - '0' : 0;
+			int y = i < m ? b[m - i - 1] - '0' : 0;
+			int sum = carry + x + y;
+			carry = sum / 10;
+			sum %= 10;
+			res.push_back('0' + sum);
+		}
+		if (carry)
+			res.push_back('0' + carry);
+		reverse(res.begin(), res.end());
+		return res;
+	}
 };

@@ -78,17 +78,22 @@ namespace BitsManipulation {
 		return res;
 	}
 
-	// 318.
+	// 318. Maximum Product of Word Lengths [M]
 	// Given a list of words, find the maximum value of length(word[i]) * length(word[j]) where the two words do not share common letters
+	// Time:  O(nlogn) ~ O(n^2)
+	// Space: O(n)
+	// See SortCount
 	int maxProduct(vector<string>& words) {
+		const int n = (int)words.size();
 		int ans = 0;
-		int n = (int)words.size();
 
 		vector<int> mask(n);
 		for (int i = 0; i < n; ++i) {
-			for (char c : words[i]) mask[i] |= (1 << (c - 'a'));
-			for (int j = 0; j < i; ++j) if (!(mask[i] & mask[j]))
-				ans = max(ans, int(words[i].size() * words[j].size()));
+			for (char c : words[i])
+				mask[i] |= (1 << (c - 'a'));
+			for (int j = 0; j < i; ++j)
+				if (!(mask[i] & mask[j]))
+					ans = max(ans, int(words[i].size() * words[j].size()));
 		}
 		return ans;
 	}
