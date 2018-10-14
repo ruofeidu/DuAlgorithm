@@ -6,7 +6,7 @@
  * lower_bound(x) returns the first element that >= x
  **/
 namespace Multisets{
-	// 327. Count of Range Sum
+	// 327. Count of Range Sum [H]
 	// Given an integer array nums, return the number of range sums that lie in [lower, upper] inclusive.
 	// a:	1, 2, 3, 4, 5
 	// sum:	1, 3, 6, 10, 15

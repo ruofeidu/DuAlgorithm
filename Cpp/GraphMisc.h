@@ -79,5 +79,27 @@ private:
 		vector<int> res(unvd.begin(), unvd.end());
 		return res;
 	}
+
+	// 332. Reconstruct Itinerary [M]
+	// Given a list of airline tickets represented by pairs of departure and arrival airports [from, to], reconstruct the itinerary in order. All of the tickets belong to a man who departs from JFK. Thus, the itinerary must begin with JFK.
+	using ItineraryGraph = unordered_map<string, multiset<string>>;
+
+	vector<string> findItinerary(vector<pair<string, string>> tickets) {
+		vector<string> ans;
+		ItineraryGraph graph;
+		for (auto &t : tickets)
+			graph[t.first].insert(t.second);
+		DFS(graph, "JFK", ans);
+		return vector<string>(ans.rbegin(), ans.rend());
+	}
+
+	void DFS(ItineraryGraph& g, string s, vector<string> &ans) {
+		while (g[s].size()) {
+			string t = *g[s].begin();
+			g[s].erase(g[s].begin());
+			DFS(g, t, ans);
+		}
+		ans.emplace_back(s);
+	}
 };
 

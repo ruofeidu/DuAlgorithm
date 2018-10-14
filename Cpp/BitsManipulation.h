@@ -43,8 +43,34 @@ namespace BitsManipulation {
 
 	// 231. Power of Two
 	bool isPowerOfTwo(int n) {
+		// Insight: only the highest bit is 1
+		return (n > 0) && (!(n & (n - 1)));
 		return n <= 0 ? false : n == (n & (n ^ (n - 1)));
-		// return (n > 0) && (!(n & (n - 1))); // both correct
+
+		int cnt = 0;
+		while (n > 0) {
+			cnt += (n & 1);
+			n >>= 1;
+		}
+		return cnt == 1;
+	}
+
+	// 342. Power of Four [M]
+	bool isPowerOfFour(int n) {
+		return (n > 0 && int(log10(n) / log10(4)) - log10(n) / log10(4) == 0);
+
+		// Insight: the every 2 last bin digits are 0s
+		return n > 0 && (n & (n - 1)) == 0 &&
+			((n & 0b01010101010101010101010101010101) == n);
+		// 0b01010101010101010101010101010101 = 0x55555555
+
+		while (n && !(n & 0b11)) {
+			n >>= 2;
+		}
+		return (n == 1);
+
+		// Insight II: 4^x - 1 can be divided by 3 and is power of 2
+		return n > 0 && !(n & (n - 1)) && (n - 1) % 3 == 0;
 	}
 
 	// 266. Palindrome Permutation
@@ -99,7 +125,7 @@ namespace BitsManipulation {
 	}
 
 
-	// 338. Counting Bits
+	// 338. Counting Bits [M]
 	// For every numbers i in the range 0 <= i <= num calculate the number of 1's in their binary representation and return them as an array.
 	/**
 	* 0    0000    0
@@ -362,5 +388,30 @@ namespace BitsManipulation {
 				return{ x, s^x };
 		}
 		return{ -1, -1 };
+	}
+
+	// Fast SQRT
+	// 15 times faster than the classical float sqrt. // Reasonably accurate up to root(32500) // Source: http://supp.iar.com/FilesPublic/SUPPORT/000419/AN-G-002.pdf
+	unsigned int root(unsigned int x) {
+		unsigned int a, b;
+		b = x;
+		a = x = 0x3f;
+		x = b / x;
+		a = x = (x + a) >> 1;
+		x = b / x;
+		a = x = (x + a) >> 1;
+		x = b / x;
+		x = (x + a) >> 1;
+		return(x);
+	}
+
+	// From Quake 3
+	float inv_sqrt(float x) {
+		float half = 0.5 * x;
+		int i = *((int *)&x);
+		i = 0x5f3759df - (i >> 1);
+		x = *((float *)&i);
+		x = x * (1.5 - (half * x * x));
+		return x;
 	}
 };

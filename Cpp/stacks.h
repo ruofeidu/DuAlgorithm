@@ -247,4 +247,63 @@ class Stacks {
 
 		return (int)round(stk.top());
 	}
+
+	// 341. Flatten Nested List Iterator [M]
+	// Given a nested list of integers, implement an iterator to flatten it. Each element is either an integer, or a list -- whose elements may also be integers or other lists.
+	// Input: [[1,1],2,[1,1]]
+	// Output: [1, 1, 2, 1, 1]
+	// Explanation : By calling next repeatedly until hasNext returns false, the order of elements returned by next should be : [1, 1, 2, 1, 1].
+
+	class NestedInteger {
+	private:
+		int m_val = INT_MIN;
+		vector<NestedInteger> m_vec;
+	public:
+		// Return true if this NestedInteger holds a single integer, rather than a nested list.
+		bool isInteger() {
+			return m_vec.empty() && m_val > INT_MIN;
+		}
+			
+		// Return the single integer that this NestedInteger holds, if it holds a single integer
+		// The result is undefined if this NestedInteger holds a nested list
+		int getInteger() {
+			return m_val;
+		}
+			
+		// Return the nested list that this NestedInteger holds, if it holds a nested list
+		// The result is undefined if this NestedInteger holds a single integer
+		const vector<NestedInteger> &getList() {
+			return m_vec;
+		}
+	};
+
+	class NestedIterator {
+	public:
+		NestedIterator(vector<NestedInteger> &nestedList) {
+			for (int i = nestedList.size() - 1; i >= 0; --i) {
+				s.push(nestedList[i]);
+			}
+		}
+
+		int next() {
+			NestedInteger t = s.top(); s.pop();
+			return t.getInteger();
+		}
+
+		bool hasNext() {
+			while (!s.empty()) {
+				NestedInteger t = s.top();
+				if (t.isInteger()) return true;
+				s.pop();
+				for (int i = t.getList().size() - 1; i >= 0; --i) {
+					s.push(t.getList()[i]);
+				}
+			}
+			return false;
+		}
+
+	private:
+		stack<NestedInteger> s;
+
+	};
 };

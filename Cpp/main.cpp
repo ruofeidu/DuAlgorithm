@@ -114,6 +114,8 @@
 #include "Tries.h"
 
 /// trees
+#include "BinaryTreeMisc.h"
+#include "BinaryTreeOrders.h"
 #include "BinarySearchTrees.h"
 #include "Heaps.h"
 #include "Multisets.h"

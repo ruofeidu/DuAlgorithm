@@ -109,6 +109,9 @@
     <Filter Include="Header Files\DataStructures\OperatingSystems">
       <UniqueIdentifier>{7a46c197-45f3-41a3-87ed-0f93d68ad8cc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\DesignPatterns\SystemDesign">
+      <UniqueIdentifier>{c52e85d9-9159-4666-a697-6276c9dfe285}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h">
@@ -276,9 +279,6 @@
     <ClInclude Include="Treaps.h">
       <Filter>Header Files\DataStructures\Tree\BST</Filter>
     </ClInclude>
-    <ClInclude Include="BinaryTrees.h">
-      <Filter>Header Files\DataStructures\Tree</Filter>
-    </ClInclude>
     <ClInclude Include="PatternAbstractFactory.h">
       <Filter>Header Files\DesignPatterns</Filter>
     </ClInclude>
@@ -431,6 +431,15 @@
     </ClInclude>
     <ClInclude Include="LCA.h">
       <Filter>Header Files\DataStructures\Tree</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryTreeOrders.h">
+      <Filter>Header Files\DataStructures\Tree</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryTreeMisc.h">
+      <Filter>Header Files\DataStructures\Tree</Filter>
+    </ClInclude>
+    <ClInclude Include="Twitter.h">
+      <Filter>Header Files\DesignPatterns\SystemDesign</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -200,4 +200,72 @@ namespace Palindrome {
 	// Given a singly linked list, determine if it is a palindrome.
 	// See Python
 
+	// 336. Palindrome Pairs [H]
+	// Given a list of unique words, find all pairs of distinct indices (i, j) in the given list, so that the concatenation of the two words, i.e. words[i] + words[j] is a palindrome.
+	bool isP(string s) {
+		if (s.empty() || s.size() == 1) return true;
+		int l = 0, r = s.size() - 1;
+		while (l < r) {
+			if (s[l++] != s[r--]) return false;
+		}
+		return true;
+	}
+
+	vector<vector<int>> palindromePairs(vector<string>& words) {
+		unordered_map<string, int> map;
+		vector<vector<int>> ans;
+		int n = words.size();
+		if (n == 0) return ans;
+
+		vector<vector<bool>> visited(n, vector<bool>(n));
+
+		for (int i = 0; i < words.size(); ++i) map[words[i]] = i;
+		for (int i = 0; i < words.size(); ++i) {
+			visited[i][i] = true;
+			string s = words[i];
+			int n = s.size();
+
+			if (n == 0) {
+				for (int j = 0; j < words.size(); ++j) if (i != j && isP(words[j])) {
+					if (!visited[i][j]) {
+						ans.push_back(vector<int>{i, j});
+						visited[i][j] = true;
+					}
+					if (!visited[j][i]) {
+						ans.push_back(vector<int>{j, i});
+						visited[j][i] = true;
+					}
+				}
+				continue;
+			}
+
+			for (int len = 0; len <= n; ++len) {
+				if (!isP(s.substr(n - len, len))) continue;
+				string r = s.substr(0, n - len);
+				reverse(r.begin(), r.end());
+				if (map.find(r) != map.end() && !visited[i][map[r]]) {
+					ans.push_back(vector<int>{i, map[r]});
+					visited[i][map[r]] = true;
+				}
+			}
+
+
+			for (int len = 1; len < n; ++len) {
+
+				//			    if (i == 3) cout << s.substr(0, len) << " " << s.substr(len, n-len) << endl; 
+
+
+				if (!isP(s.substr(0, len))) continue;
+				string r = s.substr(len, n - len);
+				reverse(r.begin(), r.end());
+				if (map.find(r) != map.end() && !visited[map[r]][i]) {
+					ans.push_back(vector<int>{map[r], i});
+					visited[map[r]][i] = true;
+				}
+			}
+		}
+
+
+		return ans;
+	}
 }

@@ -44,6 +44,16 @@ My collection of algorithms, data structures, and design patterns in C++, Python
 #### Probability
 ##### Shuffle
 * Time: O(N), scan and swap a[i] with a[random(i,n-1)].
+##### Basic
+* Random variables, union, joint distribution, conditional probabilities, chain rule, marginalization, Baye's Rule
+* P(A|B) = P(B|A) * P(A) / P(B)
+* P(AB) = P(A|B)P(B)
+* P(ABC) = P(A,B | C) P(C) = P(A|BC)P(BC) = P(A|BC) P(B|C) P(C)
+* rand(0,1): unifiorm
+* Y~ uniform (0,1)
+* X = Y_1 ..  Y_n i.i.d. ~ Gaussian(0,1)
+* X = rand(0,1) + rand(0,1) + rand(0,1) + rand(0,1) + rand(0,1)......(100000 times)
+
 #### Sampling
 * Compute the CDF of the 1D distribution
 * Derive the inverse of the CDF

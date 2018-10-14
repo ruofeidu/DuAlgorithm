@@ -117,6 +117,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ArrayInPlace.h" />
+    <ClInclude Include="BinaryTreeOrders.h" />
     <ClInclude Include="dirent.h" />
     <ClInclude Include="DPCounts.h" />
     <ClInclude Include="DPEditDistance.h" />
@@ -153,7 +154,7 @@
     <ClInclude Include="BigInt.h" />
     <ClInclude Include="SearchBinary.h" />
     <ClInclude Include="BinarySearchTrees.h" />
-    <ClInclude Include="BinaryTrees.h" />
+    <ClInclude Include="BinaryTreeMisc.h" />
     <ClInclude Include="BitsManipulation.h" />
     <ClInclude Include="SearchGrid.h" />
     <ClInclude Include="SortBubble.h" />
@@ -222,6 +223,7 @@
     <ClInclude Include="Treaps.h" />
     <ClInclude Include="StringCTricks.h" />
     <ClInclude Include="Tries.h" />
+    <ClInclude Include="Twitter.h" />
     <ClInclude Include="UnionSets.h" />
   </ItemGroup>
   <ItemGroup>

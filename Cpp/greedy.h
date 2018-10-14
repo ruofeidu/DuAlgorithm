@@ -71,4 +71,29 @@ namespace Greedy {
 		}
 		if (total_gas < total_cost) return -1; else return start;
 	}
+
+	// 330. Patching Array
+	// Given a sorted positive integer array nums and an integer n, add/patch elements to the array such that any number in range [1, n] inclusive can be formed by the sum of some elements in the array. Return the minimum number of patches required.
+	// Time: O(M + log N)
+	// Space: O(1)
+	int minPatches(vector<int>& nums, int n) {
+		// nums = [1, 2, 4, 11, 30], n = 50
+		// 1,2,4 => [0, 8), add 8
+		// 1,2,4,8 => [0, 16), no need for 16 because 1+4+11
+		// 1,2,4,8,11 => [0, 27), add 27
+		const int M = (int)nums.size();
+		int i = 0, res = 0;
+		const long long N = (long long)n;
+		long long miss = 1;
+		while (miss <= N) {
+			if (i < M && nums[i] <= miss) {
+				miss += nums[i++];
+			}
+			else {
+				miss += miss;
+				++res;
+			}
+		}
+		return res;
+	}
 }

@@ -409,4 +409,38 @@ namespace TestLinkedList {
 		}
 		return nullptr;
 	}
+
+	// 328. Odd Even Linked List [M][E]
+	// Given a singly linked list, group all odd nodes together followed by the even nodes. Please note here we are talking about the node number and not the value in the nodes.
+	ListNode* oddEvenList(ListNode* head) {
+		if (!head || !(head->next))
+			return head;
+		/*
+		for (auto odd = head, cur = odd->next; cur && cur->next; cur = cur->next) {
+		ListNode* even = odd->next;
+		odd->next = cur->next;
+		odd = odd->next;
+		cur->next = odd->next;
+		odd->next = even;
+		}
+		*/
+
+		ListNode* odd = head, *even = head->next;
+		ListNode* cur_odd = odd, *cur_even = even;
+		bool is_odd = true;
+		for (ListNode* cur = even->next; cur; cur = cur->next) {
+			if (is_odd) {
+				cur_odd->next = cur;
+				cur_odd = cur;
+			}
+			else {
+				cur_even->next = cur;
+				cur_even = cur;
+			}
+			is_odd = !is_odd;
+		}
+		cur_odd->next = even;
+		cur_even->next = nullptr;
+		return odd;
+	}
 }

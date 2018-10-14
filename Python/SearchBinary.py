@@ -1,3 +1,5 @@
+import math
+
 # 153. Find Minimum in Rotated Sorted Array
 # Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
 # Find the minimum element. You may assume no duplicate exists in the array.
@@ -71,3 +73,42 @@ def minSubArrayLen(self, s, nums):
             r += 1
             
     return 0 if ans == len(nums) + 1 else ans
+    
+    
+def new_sqrt(x, digits):
+    x *= 100 ** digits
+    l, r = 0, x
+    min_p = l
+    min_delta = ceil(x / 2 / (100 ** (digits >> 1)))
+    
+    while l <= r:
+        p = (l + r) >> 1
+        delta = p * p - x
+        abs_delta = abs(delta)
+        # print(l, r, p, delta)
+        if abs_delta < min_delta:
+            if delta == 0:
+                return p * (0.1 ** digits)
+            elif delta > 0:
+                r = p - 1
+            else:
+                l = p + 1
+            min_delta = abs_delta
+            min_p = p
+        elif delta > 0:
+            r = p - 1
+        else:
+            l = p + 1
+            
+    return min_p * (0.1 ** digits)
+    pass
+
+print(224**2)
+print(124**2)
+print(new_sqrt(5, 2))
+
+for i in range(100000):
+    a, b = new_sqrt(i, 3), math.sqrt(i)
+    #if abs(a-b) > 0.001:
+    print(i, a, b)
+

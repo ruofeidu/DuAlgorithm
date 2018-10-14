@@ -1,13 +1,17 @@
 #pragma once
 #include "common.h"
 
-namespace Mods{
+class Mods{
 	// GCD: Greatest common divisor using binary Euclidean algorithm. 
 	// Thus, the time complexity is O(log(a.b)) = O(log (a + b)) = O(log n).
 	int gcd(int x, int y) {
 		if (!x || !y) return max(x, y);
-		for (int t; t = x % y; x = y, y = t);
-		return y;
+		while (y != 0) {
+			int t = y;
+			y = x % y;
+			x = t;
+		}
+		return x;
 	}
 
 	// Bit-level GCD
@@ -91,6 +95,18 @@ namespace Mods{
 		return res;
 	}
 
+	// 365. Water and Jug Problem [M]
+	// You are given two jugs with capacities x and y litres. There is an infinite amount of water supply available. You need to determine whether it is possible to measure exactly z litres using these two jugs.
+	// Time:  O(logn), n is the max of (x, y)
+	// Space: O(1)
+	// Bézout's identity (also called Bézout's lemma) 
+	// https://en.wikipedia.org/wiki/B%C3%A9zout%27s_identity
+	// Let a and b be integers with greatest common divisor d. Then, there exist integers x and y such that ax + by = d. More generally, the integers of the form ax + by are exactly the multiples of d.
+	bool canMeasureWater(int x, int y, int z) {
+		return z == 0 || (z <= x + y && z % gcd(x, y) == 0);
+	}
+
+
 	// Chinese remainder theorem
 	// The remainders of the Euclidean division of an integer n by several integers, then one can determine uniquely the remainder of the division of n by the product of these integers, under the condition that the divisors are pairwise coprime.
 	int china(vector<int> &b, vector<int> &w, int k) {
@@ -107,7 +123,9 @@ namespace Mods{
 
 	// 326. Power of Three
 	bool isPowerOfThree(int n) {
-		return (n > 0 && 1162261467 % n == 0);
+		static const int MAX_LOG3 = log(numeric_limits<int>::max()) / log(3);
+		static const int MAX_POW3 = pow(3, MAX_LOG3); // 3**19
+		return (n > 0 && MAX_POW3 % n == 0);
 		return (n > 0 && int(log10(n) / log10(3)) - log10(n) / log10(3) == 0);
 	}
 
@@ -139,4 +157,59 @@ namespace Mods{
 		return res.back();
 	}
 	// Super Ugly Number see DPLinear
-}
+
+	// 367. Valid Perfect Square
+	/*
+	1 = 1
+	4 = 1 + 3
+	9 = 1 + 3 + 5
+	16 = 1 + 3 + 5 + 7
+	25 = 1 + 3 + 5 + 7 + 9
+	36 = 1 + 3 + 5 + 7 + 9 + 11
+	....
+	1+3+...+(2n-1) = (2n-1 + 1)n/2 = n*n
+	*/
+	bool isPerfectSquare2(int num) {
+		int i = 1;
+		while (num > 0) {
+			num -= i;
+			i += 2;
+		}
+		return num == 0;
+	}
+
+	// Time: log(N)
+	bool isPerfectSquare(int num) {
+		long long n = (long long)num;
+		long long x = n;
+		while (x * x > n) {
+			x = (x + n / x) / 2;
+		}
+		return x * x == n;
+	}
+
+	// 372. Super Pow
+public:
+	int superPow(int a, vector<int>& b) {
+		const int SPMOD = 1337;
+		int res = 1;
+		for (const auto& digit : b) {
+			res = superPow(res, 10, SPMOD) * superPow(a, digit, SPMOD) % SPMOD;
+		}
+		return res;
+	}
+
+private:
+	int superPow(int a, int n, int b) {
+		int res = 1;
+		int x = a % b;
+		while (n) {
+			if (n & 1) {
+				res = res * x % b;
+			}
+			n >>= 1;
+			x = x * x % b;
+		}
+		return res % b;
+	}
+};

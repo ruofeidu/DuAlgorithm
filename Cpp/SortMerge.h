@@ -74,7 +74,7 @@ namespace MergeSort {
 		return mergeTwoLists(left, right);
 	}
 
-	// 327. Count of Range Sum
+	// 327. Count of Range Sum [H]
 	// Given an integer array nums, return the number of range sums that lie in [lower, upper] inclusive.
 	// Time: O(N log N), see multiset.h for BST solution
 	// Space: O(N)

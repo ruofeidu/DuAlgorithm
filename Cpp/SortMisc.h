@@ -2,6 +2,7 @@
 #include "common.h"
 namespace SortMisc {
 
+	// 280. Wiggle Sort [L][M]
 	// Given an unsorted array nums, reorder it in-place such that nums[0] <= nums[1] >= nums[2] <= nums[3]...
 	// O(n) time and O(1) space
 	void wiggleSort(vector<int> &nums) {
@@ -13,7 +14,7 @@ namespace SortMisc {
 		}
 	}
 
-	// 324. Wiggle Sort II
+	// 324. Wiggle Sort II [M]
 	// Given an unsorted array nums, reorder it such that nums[0] < nums[1] > nums[2] < nums[3]....
 	// O(n) time and O(1) space
 	void wiggleSortStrict(vector<int>& nums) {
@@ -21,11 +22,14 @@ namespace SortMisc {
 		int n = (int)nums.size(), i = 0, j = 0, k = n - 1;
 		auto midptr = nums.begin() + n / 2;
 		nth_element(nums.begin(), midptr, nums.end());
-		int mid = *midptr;
+		int median = *midptr;
 		while (j <= k) {
-			if (A(j) > mid) swap(A(i++), A(j++));
-			else if (A(j) < mid) swap(A(j), A(k--));
-			else ++j;
+			if (A(j) > median)
+				swap(A(i++), A(j++));
+			else if (A(j) < median)
+				swap(A(j), A(k--));
+			else
+				++j;
 		}
 	}
 

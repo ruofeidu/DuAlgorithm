@@ -94,4 +94,22 @@ class DPTree {
 		}
 		return res;
 	}
+
+	// 337. House Robber III [M]
+	// It will automatically contact the police if two directly-linked houses were broken into on the same night. Determine the maximum amount of money the thief can rob tonight without alerting the police.
+	// Tree DP
+	int rob(TreeNode* root) {
+		auto res = robDP(root);
+		return max(res.first, res.second);
+	}
+
+	pair<int, int> robDP(TreeNode* root) {
+		if (!root)
+			return{ 0, 0 };
+
+		auto l = robDP(root->left);
+		auto r = robDP(root->right);
+		return{ root->val + l.second + r.second,
+			max(l.first, l.second) + max(r.first, r.second) };
+	}
 };

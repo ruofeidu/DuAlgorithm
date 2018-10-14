@@ -2,7 +2,7 @@
 #include "common.h"
 
 // Longest Increasing Subsequence (LIS)
-namespace LISProblems {
+class LISProblems {
 	// 300. Longest Increasing Subsequence
 	// Given an unsorted array of integers, find the length of longest increasing subsequence.
 	// f[i] = max{ f[j] } + 1, a[j] < a[i], f[i] ascending, lower_bound
@@ -63,8 +63,9 @@ namespace LISProblems {
 		return ans;
 	}
 
-	// 675. Longest Continuous Increasing Subsequence
+	// 675. Longest Continuous Increasing Subsequence [H]
 	// Given an unsorted array of integers, find the length of longest continuous increasing subsequence (subarray).
+	// Time: O(NM)
 	int findLengthOfLCIS(vector<int>& nums) {
 		int res = 0, cnt = 0, n = (int)nums.size();
 		for (int i = 0; i < n; ++i) {
@@ -78,4 +79,40 @@ namespace LISProblems {
 		}
 		return res;
 	}
-}
+
+	// 329. Longest Increasing Path in a Matrix [H]
+	int longestIncreasingPath(vector<vector<int>>& matrix) {
+		if (matrix.empty() || matrix[0].empty())
+			return 0;
+		const int n = (int)matrix.size(), m = (int)matrix[0].size();
+		int ans = 1;
+
+		// f[i][j] indicates the longest path starting from (i, j)
+		vector<vector<int>> f(n, vector<int>(m, 0));
+		for (int i = 0; i < n; ++i) {
+			for (int j = 0; j < m; ++j) {
+				ans = max(ans, dfs(matrix, f, i, j));
+			}
+		}
+		return ans;
+	}
+
+	int dfs(vector<vector<int>>& matrix, vector<vector<int>> &f, int i, int j) {
+		//cout << i << " " << j << endl; 
+		if (f[i][j])
+			return f[i][j];
+		vector<vector<int>> dirs = { { 0, -1 },{ -1, 0 },{ 0, 1 },{ 1, 0 } };
+		int cur_max = 1;
+		const int n = (int)matrix.size(), m = (int)matrix[0].size();
+		for (auto d : dirs) {
+			int y = i + d[0], x = j + d[1];
+			if (y < 0 || y >= n || x < 0 || x >= m || matrix[y][x] <= matrix[i][j])
+				continue;
+			//cout << "=> " << y << ' ' << x << ' ' << endl;
+			int val = dfs(matrix, f, y, x);
+			cur_max = max(cur_max, 1 + val);
+		}
+		f[i][j] = cur_max;
+		return cur_max;
+	}
+};
