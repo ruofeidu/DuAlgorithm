@@ -1,7 +1,7 @@
 #pragma once
 #include "common.h"
 
-class Mods{
+namespace Mods {
 	// GCD: Greatest common divisor using binary Euclidean algorithm. 
 	// Thus, the time complexity is O(log(a.b)) = O(log (a + b)) = O(log n).
 	int gcd(int x, int y) {
@@ -120,11 +120,13 @@ class Mods{
 		}
 		return a > 0 ? a : a + n;
 	}
+};
 
+class MathModsProblems {
 	// 326. Power of Three
 	bool isPowerOfThree(int n) {
-		static const int MAX_LOG3 = log(numeric_limits<int>::max()) / log(3);
-		static const int MAX_POW3 = pow(3, MAX_LOG3); // 3**19
+		static const int MAX_LOG3 = (int)(log(numeric_limits<int>::max()) / log(3));
+		static const int MAX_POW3 = (int)pow(3, MAX_LOG3); // 3**19
 		return (n > 0 && MAX_POW3 % n == 0);
 		return (n > 0 && int(log10(n) / log10(3)) - log10(n) / log10(3) == 0);
 	}

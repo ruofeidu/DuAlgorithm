@@ -280,7 +280,7 @@ class Stacks {
 	class NestedIterator {
 	public:
 		NestedIterator(vector<NestedInteger> &nestedList) {
-			for (int i = nestedList.size() - 1; i >= 0; --i) {
+			for (int i = (int)nestedList.size() - 1; i >= 0; --i) {
 				s.push(nestedList[i]);
 			}
 		}
@@ -295,7 +295,7 @@ class Stacks {
 				NestedInteger t = s.top();
 				if (t.isInteger()) return true;
 				s.pop();
-				for (int i = t.getList().size() - 1; i >= 0; --i) {
+				for (int i = (int)t.getList().size() - 1; i >= 0; --i) {
 					s.push(t.getList()[i]);
 				}
 			}

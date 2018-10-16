@@ -204,7 +204,7 @@ namespace Palindrome {
 	// Given a list of unique words, find all pairs of distinct indices (i, j) in the given list, so that the concatenation of the two words, i.e. words[i] + words[j] is a palindrome.
 	bool isP(string s) {
 		if (s.empty() || s.size() == 1) return true;
-		int l = 0, r = s.size() - 1;
+		int l = 0, r = (int)s.size() - 1;
 		while (l < r) {
 			if (s[l++] != s[r--]) return false;
 		}
@@ -214,28 +214,30 @@ namespace Palindrome {
 	vector<vector<int>> palindromePairs(vector<string>& words) {
 		unordered_map<string, int> map;
 		vector<vector<int>> ans;
-		int n = words.size();
-		if (n == 0) return ans;
+		const int N = (int)words.size();
+		if (N == 0) return ans;
 
-		vector<vector<bool>> visited(n, vector<bool>(n));
+		vector<vector<bool>> visited(N, vector<bool>(N));
 
-		for (int i = 0; i < words.size(); ++i) map[words[i]] = i;
-		for (int i = 0; i < words.size(); ++i) {
+		for (int i = 0; i < N; ++i) 
+			map[words[i]] = i;
+		for (int i = 0; i < N; ++i) {
 			visited[i][i] = true;
 			string s = words[i];
-			int n = s.size();
+			const int n = (int)s.size();
 
 			if (n == 0) {
-				for (int j = 0; j < words.size(); ++j) if (i != j && isP(words[j])) {
-					if (!visited[i][j]) {
-						ans.push_back(vector<int>{i, j});
-						visited[i][j] = true;
+				for (int j = 0; j < N; ++j) 
+					if (i != j && isP(words[j])) {
+						if (!visited[i][j]) {
+							ans.push_back(vector<int>{i, j});
+							visited[i][j] = true;
+						}
+						if (!visited[j][i]) {
+							ans.push_back(vector<int>{j, i});
+							visited[j][i] = true;
+						}
 					}
-					if (!visited[j][i]) {
-						ans.push_back(vector<int>{j, i});
-						visited[j][i] = true;
-					}
-				}
 				continue;
 			}
 

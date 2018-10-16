@@ -95,6 +95,31 @@ class DPTree {
 		return res;
 	}
 
+	// 437. Path Sum III [E]
+	// Time: O(N)
+	// Space: O(h)
+	// Insight: current sum - previous sum = sum
+	// number of previous sum can be memorized in hash table
+	using Dict = unordered_map<int, int>;
+
+	int pathSumIII(TreeNode* root, int sum) {
+		if (!root)
+			return 0;
+		Dict dict({ { 0,1 } });
+		return pathSum(root, dict, 0, sum);
+	}
+
+	int pathSum(TreeNode* root, Dict& dict, int cur, int sum) {
+		if (!root)
+			return 0;
+		cur += root->val;
+		int res = dict.count(cur - sum) ? dict[cur - sum] : 0;
+		++dict[cur];
+		res += pathSum(root->left, dict, cur, sum) + pathSum(root->right, dict, cur, sum);
+		--dict[cur];
+		return res;
+	}
+
 	// 337. House Robber III [M]
 	// It will automatically contact the police if two directly-linked houses were broken into on the same night. Determine the maximum amount of money the thief can rob tonight without alerting the police.
 	// Tree DP
