@@ -4,6 +4,7 @@
 namespace TestHeap {
 	// priority_queue is by default a max heap
 	priority_queue<int> max_heap;
+	priority_queue< pair<int, int> > max_pair_heap;
 
 	// priority_queue supports a constructor that requires two extra arguments to make it min heap.
 	priority_queue <int, vector<int>, greater<int> > min_heap;

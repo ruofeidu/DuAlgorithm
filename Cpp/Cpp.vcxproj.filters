@@ -106,11 +106,14 @@
     <Filter Include="Header Files\MachineLearning">
       <UniqueIdentifier>{a41b4946-20b8-4044-8910-887d89152941}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\DataStructures\OperatingSystems">
-      <UniqueIdentifier>{7a46c197-45f3-41a3-87ed-0f93d68ad8cc}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\DesignPatterns\SystemDesign">
       <UniqueIdentifier>{c52e85d9-9159-4666-a697-6276c9dfe285}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\OperatingSystems">
+      <UniqueIdentifier>{9760fa46-f218-4cfe-9a36-ca4e2afff6dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\DataStructures\Architectures">
+      <UniqueIdentifier>{7a46c197-45f3-41a3-87ed-0f93d68ad8cc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -327,9 +330,6 @@
     <ClInclude Include="SortMisc.h">
       <Filter>Header Files\Algorithms\Sorts</Filter>
     </ClInclude>
-    <ClInclude Include="SortSTL.h">
-      <Filter>Header Files\Algorithms\Sorts</Filter>
-    </ClInclude>
     <ClInclude Include="PatternRAII.h">
       <Filter>Header Files\DesignPatterns</Filter>
     </ClInclude>
@@ -409,10 +409,10 @@
       <Filter>Header Files\Algorithms\Math</Filter>
     </ClInclude>
     <ClInclude Include="LRUCache.h">
-      <Filter>Header Files\DataStructures\OperatingSystems</Filter>
+      <Filter>Header Files\DataStructures\Architectures</Filter>
     </ClInclude>
     <ClInclude Include="LFUCache.h">
-      <Filter>Header Files\DataStructures\OperatingSystems</Filter>
+      <Filter>Header Files\DataStructures\Architectures</Filter>
     </ClInclude>
     <ClInclude Include="GameGo.h">
       <Filter>Header Files\Algorithms\Games</Filter>
@@ -440,6 +440,24 @@
     </ClInclude>
     <ClInclude Include="Twitter.h">
       <Filter>Header Files\DesignPatterns\SystemDesign</Filter>
+    </ClInclude>
+    <ClInclude Include="CppOO.h">
+      <Filter>Header Files\QuickReferences</Filter>
+    </ClInclude>
+    <ClInclude Include="SharedPointers.h">
+      <Filter>Header Files\OperatingSystems</Filter>
+    </ClInclude>
+    <ClInclude Include="GameRock.h">
+      <Filter>Header Files\Algorithms\Games</Filter>
+    </ClInclude>
+    <ClInclude Include="STLLinear.h">
+      <Filter>Header Files\DataStructures\Linear</Filter>
+    </ClInclude>
+    <ClInclude Include="STLAlgorithms.h">
+      <Filter>Header Files\Algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="STLSort.h">
+      <Filter>Header Files\Algorithms\Sorts</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

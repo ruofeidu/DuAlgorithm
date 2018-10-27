@@ -6,14 +6,16 @@ namespace DPEditDistance {
 	// Given two words word1 and word2, find the minimum number of operations required to convert word1 to word2.
 	// Operations: insert, delete, and replace
 	int minDistance(string word1, string word2) {
-		int n = word1.size();
-		int m = word2.size();
-		if (n == 0 && m == 0) return 0;
+		const int n = word1.size(), m = word2.size();
+		if (n == 0 && m == 0)
+			return 0;
 
 		vector<vector<int>> f(n + 1, vector<int>(m + 1));
 
-		for (int i = 0; i <= n; ++i) f[i][0] = i;
-		for (int j = 0; j <= m; ++j) f[0][j] = j;
+		for (int i = 0; i <= n; ++i) 
+			f[i][0] = i;
+		for (int j = 0; j <= m; ++j) 
+			f[0][j] = j;
 
 		for (int i = 1; i <= n; ++i) {
 			for (int j = 1; j <= m; ++j) {
@@ -43,13 +45,12 @@ namespace DPEditDistance {
 	}
 
 	// 87. Scramble String [H][VH]
-	// Given a string s1, we may represent it as a binary tree by partitioning it to two non-empty substrings recursively.
-	// To scramble the string, we may choose any non-leaf node and swap its two children.
-	// Given two strings s1 and s2 of the same length, determine if s2 is a scrambled string of s1.
+	// Given a string s1, we may represent it as a binary tree by partitioning it to two non-empty substrings recursively. To scramble the string, we may choose any non-leaf node and swap its two children. Given two strings s1 and s2 of the same length, determine if s2 is a scrambled string of s1.
 	// Time: O(N^4)
 	bool isScramble(string s1, string s2) {
 		const int N = s1.size();
-		if (s2.size() != N) return false;
+		if (s2.size() != N)
+			return false;
 		// length, starting i, starting j
 		vector<vector<vector<bool>>> f(N + 1, vector<vector<bool>>(N, vector<bool>(N)));
 
@@ -95,15 +96,14 @@ namespace DPEditDistance {
 
 		for (int i = 1; i <= N; ++i) {
 			f[i][0] = (f[i - 1][0] && s3[i - 1] == s2[i - 1]);
-			if (f[i][0]) printf("f[%d][%d] = T\t", i, 0); else printf("f[%d][%d] = F\t", i, 0);
+			printf("f[%d][%d] = %s\t", i, 0, f[i][0] ? "T" : "F");
 			for (int j = 1; j <= i; ++j) {
-				if (f[i - 1][j] && s3[i - 1] == s2[i - j - 1]) f[i][j] = true;
-				if (f[i - 1][j - 1] && s3[i - 1] == s1[j - 1]) f[i][j] = true;
-				//if (f[i][j]) printf("f[%d][%d] = T\t", i, j); else printf("f[%d][%d] = F\t", i, j);
+				if (f[i - 1][j] && s3[i - 1] == s2[i - j - 1])
+					f[i][j] = true;
+				if (f[i - 1][j - 1] && s3[i - 1] == s1[j - 1])
+					f[i][j] = true;
 			}
-			//printf("\n");
 		}
-
 		return f[N][m];
 	}
 }

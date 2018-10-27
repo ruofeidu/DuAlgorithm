@@ -118,6 +118,7 @@
   <ItemGroup>
     <ClInclude Include="ArrayInPlace.h" />
     <ClInclude Include="BinaryTreeOrders.h" />
+    <ClInclude Include="CppOO.h" />
     <ClInclude Include="dirent.h" />
     <ClInclude Include="DPCounts.h" />
     <ClInclude Include="DPEditDistance.h" />
@@ -125,6 +126,7 @@
     <ClInclude Include="DuTimer.h" />
     <ClInclude Include="DuUtils.h" />
     <ClInclude Include="GameGo.h" />
+    <ClInclude Include="GameRock.h" />
     <ClInclude Include="GameSudoku.h" />
     <ClInclude Include="Geo3D.h" />
     <ClInclude Include="GeoPoints.h" />
@@ -157,6 +159,7 @@
     <ClInclude Include="BinaryTreeMisc.h" />
     <ClInclude Include="BitsManipulation.h" />
     <ClInclude Include="SearchGrid.h" />
+    <ClInclude Include="SharedPointers.h" />
     <ClInclude Include="SortBubble.h" />
     <ClInclude Include="common.h" />
     <ClInclude Include="MathCount.h" />
@@ -185,7 +188,8 @@
     <ClInclude Include="Intervals.h" />
     <ClInclude Include="CIO.h" />
     <ClInclude Include="SortMisc.h" />
-    <ClInclude Include="SortSTL.h" />
+    <ClInclude Include="STLSort.h" />
+    <ClInclude Include="STLAlgorithms.h" />
     <ClInclude Include="StringKMP.h" />
     <ClInclude Include="DPLCS.h" />
     <ClInclude Include="GeoLines.h" />
@@ -225,6 +229,7 @@
     <ClInclude Include="Tries.h" />
     <ClInclude Include="Twitter.h" />
     <ClInclude Include="UnionSets.h" />
+    <ClInclude Include="STLLinear.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />

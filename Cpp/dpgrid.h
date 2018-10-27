@@ -26,10 +26,13 @@ public:
 	// Given a triangle, find the minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below.
 	int minimumTotal(vector<vector<int>>& triangle) {
 		const int n = (int)triangle.size();
-		if (n <= 0) return 0;
-		vector<vector<int>> f(2, vector<int>(n + 1));
-		for (int j = 0; j < n; ++j) f[(n - 1) % 2][j] = triangle[n - 1][j];
+		if (n <= 0)
+			return 0;
 
+		vector<vector<int>> f(2, vector<int>(n + 1));
+
+		for (int j = 0; j < n; ++j)
+			f[(n - 1) % 2][j] = triangle[n - 1][j];
 
 		for (int i = n - 2; i >= 0; --i) {
 			for (int j = 0; j < i + 1; ++j) {
@@ -40,11 +43,11 @@ public:
 	}
 
 	vector<pair<int, int>> pacificAtlanticAnother(Grid& matrix) {
-		int n = (int)matrix.size();
-		int m = n ? (int)matrix[0].size() : 0;
+		const int n = (int)matrix.size();
+		const int m = n ? (int)matrix[0].size() : 0;
 
-		int dx[] = { 1, 0, -1,  0 };
-		int dy[] = { 0, 1,  0, -1 };
+		const int dx[] = { 1, 0, -1,  0 };
+		const int dy[] = { 0, 1,  0, -1 };
 
 		Grid ir(n, vector<int>(m));  // whether increasing in row
 		Grid ic(n, vector<int>(m));  // whether increasing in col
@@ -60,11 +63,12 @@ public:
 			dr[i][m - 1] = true;
 			drc[i][m - 1] = true;
 			for (int j = 1; j < m; ++j)
-				if (ir[i][j - 1] && matrix[i][j] >= matrix[i][j - 1]) ir[i][j] = true;
-
+				if (ir[i][j - 1] && matrix[i][j] >= matrix[i][j - 1])
+					ir[i][j] = true;
 
 			for (int j = m - 2; j >= 0; --j)
-				if (dr[i][j + 1] && matrix[i][j] >= matrix[i][j + 1]) dr[i][j] = true;
+				if (dr[i][j + 1] && matrix[i][j] >= matrix[i][j + 1])
+					dr[i][j] = true;
 		}
 
 
@@ -74,54 +78,52 @@ public:
 			irc[0][j] = true;
 			drc[n - 1][j] = true;
 			for (int i = 1; i < n; ++i)
-				if (ic[i - 1][j] && matrix[i][j] >= matrix[i - 1][j]) ic[i][j] = true;
+				if (ic[i - 1][j] && matrix[i][j] >= matrix[i - 1][j])
+					ic[i][j] = true;
 
 			for (int i = n - 2; i >= 0; --i)
-				if (dc[i][j + 1] && matrix[i][j] >= matrix[i + 1][j]) dc[i][j] = true;
+				if (dc[i][j + 1] && matrix[i][j] >= matrix[i + 1][j])
+					dc[i][j] = true;
 		}
-
-
 
 		for (int i = 1; i < n; ++i) {
 			for (int j = 1; j < m; ++j) {
-				if (ir[i][j] || ic[i][j]) irc[i][j] = true; else
+				if (ir[i][j] || ic[i][j])
+					irc[i][j] = true;
+				else
 					for (int k = 0; k < 4; ++k) {
 						int y = i + dy[k];
 						int x = j + dx[k];
-						if (y < 0 || x < 0 || y >= n || x >= m) continue;
+						if (y < 0 || x < 0 || y >= n || x >= m)
+							continue;
 						if (irc[y][x] && matrix[i][j] >= matrix[y][x])
 							irc[i][j] = true;
 					}
 			}
 		}
-
-
 		for (int i = n - 2; i >= 0; --i) {
 			for (int j = m - 2; j >= 0; --j) {
-				if (dr[i][j] || dc[i][j]) drc[i][j] = true; else
+				if (dr[i][j] || dc[i][j])
+					drc[i][j] = true;
+				else
 					for (int k = 0; k < 4; ++k) {
 						int y = i + dy[k];
 						int x = j + dx[k];
-						if (y < 0 || x < 0 || y >= n || x >= m) continue;
+						if (y < 0 || x < 0 || y >= n || x >= m)
+							continue;
 						if (drc[y][x] && matrix[i][j] >= matrix[y][x])
 							drc[i][j] = true;
 					}
 			}
 		}
-
-
 		vector<pair<int, int>> ans; // answers
 		for (int i = 0; i < n; ++i) {
 			for (int j = 0; j < m; ++j) {
 				if (irc[i][j] && drc[i][j]) ans.push_back(pair<int, int>(i, j));
 			}
 		}
-
-
 		return ans;
 	}
-
-
 
 public:
 	// 85. Maximal Rectangle [M]
@@ -195,7 +197,6 @@ public:
 		return res * res;
 	}
 
-
 	// 174. Dungeon Game
 	// Write a function to determine the knight's minimum initial health so that he is able to rescue the princess.
 	// top left to bottom right
@@ -253,8 +254,6 @@ public:
 				f[j] = 0;
 			}
 		}
-
 		return f[n - 1];
 	} 
 };
-

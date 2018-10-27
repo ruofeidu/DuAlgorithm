@@ -112,5 +112,37 @@ namespace Counts {
 	}
 
 	// Josephus problem
-	
+	// N people, remove the M first, kick every Kth: who is the winner?
+	// POJ 3157
+	int joseph(int n, int m, int k) {
+		int s = 0;
+		for (int i = 2; i <= n; ++i)
+			s = (s + k) % i;
+		k = k % n;
+		if (k == 0)
+			k = n;
+		int d = (s + 1) + (m - k);
+		if (d >= 1 && d <= n)
+			return d;
+		else if (d < 1)
+			return n + d;
+		else
+			return d % n;
+	}
+
+	int josephSimulation(int n, int m, int k) {
+		vector<int> a(n);
+		int i = 0; 
+		for (; i < m - 1; ++i)
+			a[i] = i;
+		for (; i < n; ++i)
+			a[i] = i + 1;
+		int cur = m - 1; 
+		while (--n) {
+			cur = (cur + k - 1) & n;
+			for (i = cur + 1; i < n; ++i)
+				a[i - 1] = a[i];
+		}
+		return a[0] + 1;
+	}
 }

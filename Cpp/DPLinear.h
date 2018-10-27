@@ -3,8 +3,7 @@
 
 class DP1D {
 	// 42. Trapping Rain Water
-	// Given n non-negative integers representing an elevation map where the width of each bar is 1, 
-	// compute how much water it is able to trap after raining.
+	// Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it is able to trap after raining.
 	int trap(vector<int>& height) {
 		const int n = (int)height.size();
 		if (n < 3) return 0;

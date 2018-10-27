@@ -19,6 +19,7 @@
 #include "GameTheory.h"
 #include "GameNim.h"
 #include "GameGo.h"
+#include "GameRock.h"
 #include "GameSudoku.h"
 #include "GameNQueen.h"
 #include "GameTicTacToe.h"
@@ -74,8 +75,8 @@
 #include "SortBubble.h"
 #include "SortInsert.h"
 #include "SortTiny.h"
-#include "SortSTL.h"
 #include "SortCount.h"
+#include "STLSort.h"
 
 /// Strings
 #include "StringCTricks.h"
@@ -84,6 +85,8 @@
 #include "StringSTL.h"
 #include "StringMisc.h"
 
+#include "STLAlgorithms.h"
+
 // Data Structures
 /// linear
 #include "ArrayInPlace.h"
@@ -91,6 +94,8 @@
 #include "LinkedLists.h"
 #include "Queues.h"
 #include "Stacks.h"
+
+#include "STLLinear.h"
 
 /// geometry
 #include "GeoLines.h"
@@ -122,10 +127,13 @@
 #include "RedBlackTree.h"
 #include "Treaps.h"
 
-/// operating systems
+/// Architecture
 #include "LFUCache.h"
 #include "LRUCache.h"
 #include "Times.h"
+
+// Operating System
+#include "SharedPointers.h"
 
 // Design Patterns
 #include "PatternAbstractFactory.h"
@@ -158,6 +166,7 @@ namespace TestTreap {
 
 int main() {
 	TestTreap::main();
+	//SharedPointers::main();
 
 	system("pause");
 	return 0;

@@ -169,12 +169,17 @@ namespace BitsManipulation {
 	}
 
 
-	// 416. Partition Equal Subset Sum
+	// 416. Partition Equal Subset Sum [M]
+	// Given a non-empty array containing only positive integers, find if the array can be partitioned into two subsets such that the sum of elements in both subsets is equal.
+	// Bitset Solution, refer to DPKnapsack for more details
+	// Time: O(N)
+	// Space: O(1)
 	bool canPartition(vector<int>& nums) {
 		bitset<5001> bits(1);
 		int sum = accumulate(nums.begin(), nums.end(), 0);
-		for (int num : nums) bits |= bits << num;
-		return (sum % 2 == 0) && bits[sum >> 1];
+		for (const int &num : nums)
+			bits |= bits << num;
+		return (sum & 1 == 0) && bits[sum >> 1];
 	}
 
 	// 691. Stickers to spell word
