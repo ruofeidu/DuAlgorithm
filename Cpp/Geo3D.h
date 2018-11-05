@@ -22,7 +22,6 @@ namespace Bin2Ply {
 		Face* face;
 	};
 
-
 	int bin2ply()
 	{
 		FILE *fin = fopen("model.bin", "rb");
@@ -63,14 +62,12 @@ namespace Bin2Ply {
 		printf("property list uchar int vertex_index\n");
 		printf("end_header\n");
 
-		for (int i = 0; i < model.n; ++i)
-		{
+		for (int i = 0; i < model.n; ++i) {
 			printf("%.8f %.8f %.8f ", model.vertex[i].position[0], model.vertex[i].position[1], model.vertex[i].position[2]);
 			printf("%.8f %.8f %.8f ", model.vertex[i].normal[0], model.vertex[i].normal[1], model.vertex[i].normal[2]);
 			printf("%d %d %d\n", model.vertex[i].color[0], model.vertex[i].color[1], model.vertex[i].color[2]);
 		}
-		for (int i = 0; i < model.m; ++i)
-		{
+		for (int i = 0; i < model.m; ++i) {
 			printf("3 %d %d %d\n", model.face[i].id[0], model.face[i].id[1], model.face[i].id[2]);
 		}
 		printf("\n");

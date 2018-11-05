@@ -16,12 +16,14 @@ public:
 	// A tree is n-1 edges and no circle
 	bool validTree(int n, vector<pair<int, int>>& edges) {
 		vector<int> roots(n);
-		for (int i = 0; i < n; ++i) roots[i] = i;
+		for (int i = 0; i < n; ++i)
+			roots[i] = i;
 
-		for (auto e : edges) {
+		for (auto const &e : edges) {
 			int x = getParent(roots, e.first);
 			int y = getParent(roots, e.second);
-			if (x == y) return false;
+			if (x == y)
+				return false;
 			roots[x] = y;
 		}
 		return edges.size() == n - 1;
@@ -30,14 +32,16 @@ public:
 	// Test if number of Connected Components in an Undirected Graph
 	int countComponents(int n, vector<pair<int, int>>& edges) {
 		vector<int> union_set(n);
-		for (int i = 0; i < n; ++i) union_set[i] = i;
+		for (int i = 0; i < n; ++i)
+			union_set[i] = i;
 		int ans = n;
 
-		for (auto& e : edges) {
+		for (auto const &e : edges) {
 			int x = getParent(union_set, e.first);
 			int y = getParent(union_set, e.second);
 			// if x and y are not connected, connect them
-			if (x != y) --ans;
+			if (x != y)
+				--ans;
 			union_set[x] = y;
 		}
 
@@ -46,11 +50,12 @@ public:
 
 	vector<int> numIslands2(int m, int n, vector<pair<int, int>>& positions) {
 		vector<int> res;
-		if (m <= 0 || n <= 0) return res;
+		if (m <= 0 || n <= 0)
+			return res;
 		vector<int> roots(m * n, -1);
 		int cnt = 0;
 		vector<vector<int>> dirs{ { 0, -1 },{ -1, 0 },{ 0, 1 },{ 1, 0 } };
-		for (auto a : positions) {
+		for (auto const &a : positions) {
 			int id = n * a.first + a.second;
 			roots[id] = id;
 			++cnt;

@@ -6,23 +6,21 @@ namespace MergeSort {
 	// Time: O(N log N)
 	// Space: O(N)
 	void mergeSort(vector<int> &nums, int l, int r) {
-		if (l == r) return;
+		if (l == r)
+			return;
 		int p = (l + r) >> 1;
 		mergeSort(nums, l, p);
 		mergeSort(nums, p + 1, r);
-		int i = l, j = p + 1;
-		int n = r - l + 1;
 
 		// Merge [l, p] and [p+1, r] to a temporary array
+		int i = l, j = p + 1, n = r - l + 1;
 		vector<int> tmp(n);
 		for (int k = 0; k < n; ++k) {
 			if (j > r || (i <= p && nums[i] < nums[j])) {
-				tmp[k] = nums[i];
-				++i;
+				tmp[k] = nums[i++];
 			}
 			else {
-				tmp[k] = nums[j];
-				++j;
+				tmp[k] = nums[j++];
 			}
 		}
 
@@ -54,7 +52,8 @@ namespace MergeSort {
 	}
 
 	ListNode* sortList(ListNode* head) {
-		if (!head || !head->next) return head;
+		if (!head || !head->next)
+			return head;
 
 		// find the central element in O(n)
 		ListNode *fast = head, *slow = head;
@@ -83,7 +82,7 @@ namespace MergeSort {
 		if (end - start <= 0) {
 			return 0;
 		}
-		int mid = start + (end - start) / 2;
+		int mid = (start + end) / 2;
 		int count = countAndMergeSort(sums, start, mid, lower, upper) +
 			countAndMergeSort(sums, mid + 1, end, lower, upper);
 		int j = mid + 1, k = mid + 1, r = mid + 1;

@@ -10,15 +10,21 @@ public:
 
 private:
 	bool isValidBST(TreeNode* root, int lowerbound, int upperbound) {
-		if (root == NULL) return true;
-		if (root->val < lowerbound || root->val > upperbound) return false;
-		if (root->left != NULL) {
-			if (root->left->val >= root->val) return false;
-			if (!isValidBST(root->left, lowerbound, root->val - 1)) return false;
+		if (root == nullptr)
+			return true;
+		if (root->val < lowerbound || root->val > upperbound)
+			return false;
+		if (root->left != nullptr) {
+			if (root->left->val >= root->val)
+				return false;
+			if (!isValidBST(root->left, lowerbound, root->val - 1))
+				return false;
 		}
-		if (root->right != NULL) {
-			if (root->right->val <= root->val) return false;
-			if (!isValidBST(root->right, root->val + 1, upperbound)) return false;
+		if (root->right != nullptr) {
+			if (root->right->val <= root->val)
+				return false;
+			if (!isValidBST(root->right, root->val + 1, upperbound))
+				return false;
 		}
 		return true;
 	}
@@ -38,12 +44,14 @@ public:
 	}
 
 public:
-	// Time: O(n); Space O(log n)
+	// Time: O(n)
+	// Space O(log n)
 	TreeNode* sortedListToBST(ListNode* &head, int start, int end) {
-		if (start > end) return nullptr;
-		int mid = start + (end - start) / 2;
-		TreeNode *leftChild = sortedListToBST(head, start, mid - 1);
-		TreeNode *parent = new TreeNode(head->val);
+		if (start > end)
+			return nullptr;
+		int mid = (start + end) / 2;
+		auto leftChild = sortedListToBST(head, start, mid - 1);
+		auto parent = new TreeNode(head->val);
 		parent->left = leftChild;
 		head = head->next;
 		parent->right = sortedListToBST(head, mid + 1, end);
@@ -57,9 +65,10 @@ public:
 	template<typename T>
 	TreeNode* sortedArrayToBST(T first, T last) {
 		const auto length = distance(first, last);
-		if (length <= 0) return nullptr;
+		if (length <= 0)
+			return nullptr;
 		auto mid = first + length / 2;
-		TreeNode* node = new TreeNode(*mid);
+		auto node = new TreeNode(*mid);
 		node->left = sortedArrayToBST(first, mid);
 		node->right = sortedArrayToBST(mid + 1, last);
 		return node;
@@ -67,7 +76,8 @@ public:
 
 public:
 	int balanceHeight(TreeNode* root) {
-		if (root == nullptr) return 0;
+		if (root == nullptr)
+			return 0;
 		int l = balanceHeight(root->left);
 		int r = balanceHeight(root->right);
 		if (l < 0 || r < 0 || abs(l - r) > 1) return -1;
@@ -113,9 +123,9 @@ public:
 		4   7
 	*/
 	TreeNode* deleteNode(TreeNode* root, int key) {
-		if (!root) {
+		if (!root)
 			return nullptr;
-		}
+
 		if (root->val > key) {
 			root->left = deleteNode(root->left, key);
 		}
@@ -239,7 +249,8 @@ public:
 			}
 			p = s.top(); s.pop();
 			++cnt;
-			if (cnt == k) return p->val;
+			if (cnt == k)
+				return p->val;
 			p = p->right;
 		}
 		return 0;
@@ -247,7 +258,8 @@ public:
 
 	// 285. Inorder Successor in BST
 	TreeNode* inorderSuccessor(TreeNode* root, TreeNode* p) {
-		if (!root) return NULL;
+		if (!root)
+			return NULL;
 		if (root->val <= p->val) {
 			return inorderSuccessor(root->right, p);
 		}
@@ -257,8 +269,6 @@ public:
 		}
 	}
 };
-
-
 
 // 173. Binary Search Tree Iterator
 // Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST.

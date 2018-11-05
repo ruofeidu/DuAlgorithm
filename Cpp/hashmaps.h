@@ -34,13 +34,14 @@ namespace Hashmaps {
 			else
 				return{ l + 1, r + 1 };
 		}
-		return{};
+		return {};
 	}
 
 	// 15. 3Sum
 	vector<vector<int>> threeSum(vector<int>& nums) {
 		vector<vector<int>> result;
-		if (nums.size() < 3) return result;
+		if (nums.size() < 3)
+			return result;
 		sort(nums.begin(), nums.end());
 		const int target = 0;
 		auto last = nums.end();

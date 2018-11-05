@@ -45,7 +45,9 @@ namespace STLAlgorithm {
 
 	// for_each
 	void for_each_test() {
-		auto print = [](const int& n) { std::cout << " " << n; };
+		auto print = [](const int& n) {
+			std::cout << " " << n;
+		};
 		std::for_each(v.begin(), v.end(), print);
 	}
 

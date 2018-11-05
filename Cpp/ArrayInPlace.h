@@ -8,7 +8,7 @@ namespace ArrayInPlace {
 		if (nums.empty())
 			return 0;
 		int index = 0;
-		for (int i = 0; i < nums.size(); ++i) {
+		for (int i = 0; i < (int)nums.size(); ++i) {
 			if (nums[index] != nums[i])
 				nums[++index] = nums[i];
 		}
