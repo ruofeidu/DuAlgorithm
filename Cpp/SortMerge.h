@@ -25,9 +25,7 @@ namespace MergeSort {
 		}
 
 		// Copy the temporary array back to the vector
-		for (int k = 0, i = l; k < n; ++k, ++i) {
-			nums[i] = tmp[k];
-		}
+		copy(tmp.begin(), tmp.end(), nums.begin() + l);
 	}
 
 	// 148. Sort List
@@ -104,17 +102,19 @@ namespace MergeSort {
 			}
 			tmp.emplace_back((*sums)[i]);
 		}
+
 		// Copy tmp back to sums.
 		copy(tmp.begin(), tmp.end(), sums->begin() + start);
 		return count;
 	}
 
 	int countRangeSum(vector<int>& nums, int lower, int upper) {
-		vector<long long> sums(nums.size() + 1);
-		for (int i = 0; i < nums.size(); ++i) {
+		const int N = (int)nums.size();
+		vector<long long> sums(N + 1);
+		for (int i = 0; i < N; ++i) {
 			sums[i + 1] = sums[i] + nums[i];
 		}
-		return countAndMergeSort(&sums, 0, (int)sums.size() - 1, lower, upper);
+		return countAndMergeSort(&sums, 0, N, lower, upper);
 	}
 
 	// 23. Merge k Sorted Lists [H][Heap][MergeSort]
@@ -139,7 +139,7 @@ namespace MergeSort {
 		ListNode* ans = head;
 
 		while (!minHeap.empty()) {
-			ListNode* t = minHeap.top();
+			auto t = minHeap.top();
 			head->next = new ListNode(t->val);
 			head = head->next;
 			minHeap.pop();

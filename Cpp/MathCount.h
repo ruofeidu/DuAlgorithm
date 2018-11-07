@@ -33,7 +33,8 @@ namespace Counts {
 		// [0-9]    10
 		// [10-99]  90-9=81
 		// f[n] = 9 * 9 * 8 * ... * (9 - k + 2)
-		if (n == 0) return 1;
+		if (n == 0)
+			return 1;
 		int res = 10, cnt = 9;
 		for (int i = 2; i <= n; ++i) {
 			cnt *= (11 - i);

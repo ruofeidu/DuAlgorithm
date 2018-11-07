@@ -1,12 +1,21 @@
 #pragma once
+#include "common.h"
 
-// Graham, BFS for sparse biparate graph
-// O(VE)
+namespace BipariteGraphMatch {
+	// Graham, BFS for sparse biparate graph
+	// O(VE)
+	bool GrahamSearch(Grid &g) {
+		return true;
+	}
 
-// Hopcroft-Carp
-// O(V^0.5 E)
+	bool GrahamDFS(Grid &g) {
+		return true;
+	}
+	// Hopcroft-Carp
+	// O(V^0.5 E)
+}
 
-
+namespace NetworkFlow {
 // Kuhn Munkras 
 // O(VE^2)
 
@@ -26,3 +35,4 @@
 // MinCostMaxFlow
 // SPFA << O(VEf)
 // 
+}

@@ -30,7 +30,7 @@ namespace STLAlgorithm {
 		cout << count(v.begin(), v.end(), 3) << endl;
 		cout << count(a, a + sizeof(a) / sizeof(a[0]), 3) << endl;
 
-		auto is_odd = [](const int x) { return x & 1 == 1; };
+		auto is_odd = [](const int x) { return (x & 1) == 1; };
 		cout << count_if(v.begin(), v.end(), is_odd) << endl;
 	}
 

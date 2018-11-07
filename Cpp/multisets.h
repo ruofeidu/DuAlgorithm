@@ -41,8 +41,10 @@ namespace Multisets{
 		sort(h.begin(), h.end());
 		m.insert(0);
 		for (auto &a : h) {
-			if (a.second < 0) m.insert(-a.second);
-			else m.erase(m.find(a.second));
+			if (a.second < 0)
+				m.insert(-a.second);
+			else
+				m.erase(m.find(a.second));
 			cur = *m.rbegin();
 			if (cur != pre) {
 				res.push_back({ a.first, cur });
