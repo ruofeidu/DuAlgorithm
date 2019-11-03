@@ -11,7 +11,7 @@ namespace Cpp11 {
 		vector<function<int(int)>> funlist;
 		for (int i = 0; i < 10; i++) {
 			funlist.push_back([=](int j) {
-				return i + j; 
+				return i + j;
 			});
 		}
 		cout << funlist[5](8) << endl;

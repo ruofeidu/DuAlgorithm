@@ -1,6 +1,7 @@
 #pragma once
 #include "common.h"
 
+// Converts a binary model into PLY model.
 namespace Bin2Ply {
 	using byte = unsigned char;
 	class Vertex {
@@ -41,6 +42,7 @@ namespace Bin2Ply {
 			fread(&model.vertex[i].color, sizeof(byte), 3, fin);
 			fread(&blank, sizeof(byte), 1, fin);
 		}
+
 		for (int i = 0; i < model.m; ++i) {
 			fread(&model.face[i].id, sizeof(unsigned int), 3, fin);
 		}

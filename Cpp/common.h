@@ -8,7 +8,7 @@
 #include <iostream>
 #include <sstream>
 #include <numeric>
-#include <iomanip> 
+#include <iomanip>
 
 #include <bitset>
 #include <vector>

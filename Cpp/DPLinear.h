@@ -23,8 +23,8 @@ class DP1D {
 
 	// 256. Paint House
 	// k = 3
-	// There are a row of n houses, each house can be painted with one of the k colors. 
-	// The cost of painting each house with a certain color is different. 
+	// There are a row of n houses, each house can be painted with one of the k colors.
+	// The cost of painting each house with a certain color is different.
 	// You have to paint all the houses such that no two adjacent houses have the same color.
 	int minCost(vector<vector<int>>& costs) {
 		if (costs.empty() || costs[0].empty()) return 0;
@@ -55,7 +55,7 @@ class DP1D {
 			if (ratings[i] > ratings[i + 1]) g[i] = g[i + 1] + 1;
 		}
 		for (int i = 0; i < n; ++i) {
-			// cout << f[i] << "\t" << g[i] << endl; 
+			// cout << f[i] << "\t" << g[i] << endl;
 			ans += max(f[i], g[i]);
 		}
 		return ans;
@@ -175,7 +175,7 @@ class DP1D {
 	// Given n balloons, indexed from 0 to n-1. Each balloon is painted with a number on it represented by array nums. You are asked to burst all the balloons. If the you burst balloon i you will get nums[left] * nums[i] * nums[right] coins. Here left and right are adjacent indices of i. After the burst, the left and right then becomes adjacent. Find the maximum coins you can collect by bursting the balloons wisely.
 	/*
 		Input: [3,1,5,8]
-		Output: 167 
+		Output: 167
 		Explanation: nums = [3,1,5,8] --> [3,5,8] -->   [3,8]   -->  [8]  --> []
 					 coins =  3*1*5      +  3*5*8    +  1*3*8      + 1*8*1   = 167
 	*/
@@ -205,7 +205,7 @@ class DP1D {
 	}
 
 	// 313. Super Ugly Number [M] [VH]
-	// Super ugly numbers are positive numbers whose all prime factors are in the given prime list primes of size k. 
+	// Super ugly numbers are positive numbers whose all prime factors are in the given prime list primes of size k.
 	/*
 	Input: n = 12, primes = [2,7,13,19]
 	Output: 32

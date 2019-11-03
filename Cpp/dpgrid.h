@@ -255,5 +255,5 @@ public:
 			}
 		}
 		return f[n - 1];
-	} 
+	}
 };

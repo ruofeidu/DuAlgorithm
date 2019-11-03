@@ -17,8 +17,8 @@ class NQueens {
 		bitNQueens(0, 0, 0);
 		cout << NQtotal << endl;
 		return NQresult;
-	}	
-	
+	}
+
 	// col: whether this col is occupied
 	// ld: left diagnal for the current row
 	// rd: right diagnal for the current row
@@ -37,14 +37,14 @@ class NQueens {
 	}
 
 	void addNQueenSolution() {
-		vector<string> v; 
+		vector<string> v;
 		for (int i = 0; i < NQn; ++i)
 			v.emplace_back(string(NQn, '.'));
 		for (int i = 0; i < NQn; ++i) {
 			v[i][NQpath[i]] = 'Q';
-			//cout << v[i] << endl; 
+			//cout << v[i] << endl;
 		}
-		//cout << endl; 
+		//cout << endl;
 		NQresult.emplace_back(v);
 	}
 

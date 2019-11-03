@@ -1,4 +1,4 @@
-# * The best interactive tutorial: [https://www.codecademy.com/learn/learn-git Codecademy Git]
+# The best interactive tutorial: [https://www.codecademy.com/learn/learn-git Codecademy Git]
 # https://try.github.io
 # Book: [https://github.s3.amazonaws.com/media/progit.en.pdf Pro Git], [http://hoth.entp.com/output/git_for_designers.html Git for designers], [http://toroid.org/git-website-howto Using Git to manage a web site]
 # Hosting: [https://bitbucket.org/ Bitbucket], [https://github.com/ Github]
@@ -26,7 +26,7 @@
     git reset --hard <SOME-COMMIT>
 # Unstage a file
     git reset HEAD file.txt
-# Change the HEAD cursor 
+# Change the HEAD cursor
     git reset SHA(first 7 letters of a commit in git log)
 # Initialize a new branch
     git branch new_branch
@@ -76,7 +76,7 @@
     git push
 # Add submodule
 	git submodule add https://github.com/ruofeidu/DuEngine
-	
+
 # Other commands
     git init
     git status

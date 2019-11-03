@@ -12,9 +12,9 @@ namespace DPEditDistance {
 
 		vector<vector<int>> f(n + 1, vector<int>(m + 1));
 
-		for (int i = 0; i <= n; ++i) 
+		for (int i = 0; i <= n; ++i)
 			f[i][0] = i;
-		for (int j = 0; j <= m; ++j) 
+		for (int j = 0; j <= m; ++j)
 			f[0][j] = j;
 
 		for (int i = 1; i <= n; ++i) {

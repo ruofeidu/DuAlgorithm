@@ -8,7 +8,7 @@ namespace Greedy {
 	// Solution: Greedy
 	// Time: O(n)
 	// Proof: Sort by end date, if the current course cannot be completed, we have to remove one course
-	// if we remove something longer than the maximum one, 
+	// if we remove something longer than the maximum one,
 	// it is possible we can have a smaller end date which yields the next one to the schedule -> contradictory!
 	int scheduleCourse(vector<vector<int>>& courses) {
 		sort(courses.begin(), courses.end(), [](const vector<int>& a, const vector<int>& b) {

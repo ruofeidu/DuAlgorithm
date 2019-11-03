@@ -7,8 +7,7 @@ using namespace std;
 using namespace chrono;
 #define DEBUG_TIMER_ON
 
-struct SingleTimePoint
-{
+struct SingleTimePoint {
 	steady_clock::time_point startTime;
 	int counter;
 	double totalTime;
@@ -22,7 +21,7 @@ private:
 	static map<string, SingleTimePoint> AverageWindowMap;
 
 public:
-	// Start a single timer 
+	// Start a single timer
 	static void Start(string label = "-");
 	// End a single timer
 	static double End(string label = "-", bool silence = false);

@@ -231,7 +231,7 @@ namespace RedBackTree {
 			else {
 				y = z->parent->parent->left;
 				if (y->isRed()) {
-					// case 4 
+					// case 4
 					z->parent->setBlack();
 					y->setBlack();
 					z->parent->parent->setRed();

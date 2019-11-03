@@ -110,7 +110,7 @@ public:
 		* rest[i] = max(sell[i-1], buy[i-1], rest[i-1])
 		*/
 		// rest[i] = sell[i-1]
-		// buy[i]  = max(sell[i-2] - price, buy[i-1]) 
+		// buy[i]  = max(sell[i-2] - price, buy[i-1])
 		// sell[i] = max(buy[i-1] + price, sell[i-1])
 		int buy = INT_MIN, pre_buy = 0, sell = 0, pre_sell = 0;
 		for (int price : prices) {

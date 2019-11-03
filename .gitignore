@@ -9,6 +9,7 @@
 *.avi
 *.pyc
 Python/.idea/
+.vscode/
 
 # User-specific files
 *.suo

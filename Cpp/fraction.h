@@ -2,11 +2,10 @@
 #include "common.h"
 #include "MathMods.h"
 
-class Fraction
-{
+class Fraction {
 public:
 	int numerator, denominator;
-	
+
 	Fraction(int m, int d) :numerator(m), denominator(d) {
 		this->abbreviate();
 	};

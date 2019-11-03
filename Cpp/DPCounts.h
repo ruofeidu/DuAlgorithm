@@ -34,7 +34,7 @@ namespace DPCounts {
 				f[i] = f[i - 2];
 			}
 			else
-			// case 2: 1 or 2 two chars before 
+			// case 2: 1 or 2 two chars before
 			if (s[i - 2] == '1' || (s[i - 2] == '2' && s[i - 1] <= '6')) {
 				f[i] = f[i - 1] + f[i - 2];
 			}

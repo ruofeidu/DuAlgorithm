@@ -94,7 +94,7 @@ namespace BitsManipulation {
 			for (int x : nums) {
 				s.insert(x & mask);
 			}
-			// if t ^ prefix == res 
+			// if t ^ prefix == res
 			// then t = prefix ^ res
 			int t = res | (1 << i);
 			for (int prefix : s) {
@@ -339,7 +339,7 @@ namespace BitsManipulation {
 			return m;
 		}
 	}
-	
+
 	// 461. Hamming Distance
 	int hammingDistance(int x, int y) {
 		int distance = 0;
@@ -363,7 +363,7 @@ namespace BitsManipulation {
 	// 136. Single Number
 	// Given a non-empty array of integers, every element appears twice except for one. Find that single one.
 	int singleNumber(vector<int>& nums) {
-		// int ans = 0;  for (int x : nums) ans ^= x;  return ans; 
+		// int ans = 0;  for (int x : nums) ans ^= x;  return ans;
 		return accumulate(nums.cbegin(), nums.cend(), 0, std::bit_xor<int>());
 	}
 
