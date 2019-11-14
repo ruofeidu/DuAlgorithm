@@ -16,7 +16,7 @@ namespace BipariteGraphMatch {
 }
 
 namespace NetworkFlow {
-// Kuhn Munkras 
+// Kuhn Munkras
 // O(VE^2)
 
 
@@ -24,7 +24,7 @@ namespace NetworkFlow {
 // O(N^3)
 
 
-// Dinic 
+// Dinic
 // O(V^2 E)
 
 
@@ -34,5 +34,5 @@ namespace NetworkFlow {
 
 // MinCostMaxFlow
 // SPFA << O(VEf)
-// 
+//
 }

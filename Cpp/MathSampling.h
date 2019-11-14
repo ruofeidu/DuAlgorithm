@@ -128,7 +128,7 @@ namespace MathSampling {
 		return tent_func(p.x) * tent_func(p.y);
 	}
 
-	// 
+	//
 	vec2 hierarchicalSampleWarping2x2(const vec2 & sample, const SquaredImage &a) {
 		std::random_device rand_dev;
 		std::mt19937 generator(rand_dev());

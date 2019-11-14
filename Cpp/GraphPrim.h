@@ -40,5 +40,5 @@ namespace GraphPrim {
 	}
 
 	// second MST
-	// 
+	//
 }

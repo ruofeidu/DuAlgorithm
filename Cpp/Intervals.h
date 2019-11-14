@@ -48,9 +48,9 @@ namespace TestIntervals {
 		});
 
 		// scan and merge
-		int res = 0; 
+		int res = 0;
 		auto prev = intervals[0];
-		const auto N = intervals.size(); 
+		const auto N = intervals.size();
 		for (int i = 1; i < N; ++i) {
 			if (intervals[i].start < prev.end) {
 				if (intervals[i].end > prev.end) {
@@ -67,7 +67,7 @@ namespace TestIntervals {
 	}
 
 	// 57. Insert Interval
-	// Given a set of sorted non-overlapping intervals, 
+	// Given a set of sorted non-overlapping intervals,
 	// insert a new interval into the intervals (merge if necessary).
 	// Time: O(N)
 	vector<Interval> insert(vector<Interval>& intervals, Interval newInterval) {
@@ -100,7 +100,7 @@ namespace TestIntervals {
 
 	// Time: O(n log n)
 	int eraseOverlapIntervals(vector<Interval>& intervals) {
-		//[1, 4], [1, 2], [2, 5], [2, 4], [3, 4] 
+		//[1, 4], [1, 2], [2, 5], [2, 4], [3, 4]
 		auto& I = intervals;
 		sort(I.begin(), I.end(), [](const Interval& a, const Interval& b) {
 			return a.start < b.start;

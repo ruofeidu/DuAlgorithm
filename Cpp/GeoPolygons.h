@@ -51,9 +51,9 @@ namespace GeoPoints {
 			l2.b = ply[(i + 1) % n];
 			if ((intersects(l1, l2)) || (
 				(pOnL(l1, ply[(i + 1) % n])) && (
-				  (!pOnL(l1, ply[(i + 2) % n])) && 
+				  (!pOnL(l1, ply[(i + 2) % n])) &&
 					(cross(ply[i], ply[(i + 1) % n], l1.a) * cross(ply[(i + 1) % n], ply[(i + 2) % n], l1.a) > 0)
-					|| (pOnL(l1, ply[(i + 2) % n])) && 
+					|| (pOnL(l1, ply[(i + 2) % n])) &&
 					   (cross(ply[i], ply[(i + 2) % n], l1.a) * cross(ply[(i + 2) % n], ply[(i + 3) % n], l1.a) > 0)
 					)))
 				++intersections;
@@ -63,14 +63,14 @@ namespace GeoPoints {
 
 	// compute area of polygon
 	double area(Polygon &ply) {
-		const int n = (int)ply.size(); 
-		if (n < 3) 
+		const int n = (int)ply.size();
+		if (n < 3)
 			return 0;
 
-		double res = ply[0].y * (ply.back().x - ply[1].x); 
+		double res = ply[0].y * (ply.back().x - ply[1].x);
 		for (int i = 1; i < n; ++i)
-			res += ply[i].y * (ply[(i - 1)].x - ply[(i + 1) % n].x); 
-		
+			res += ply[i].y * (ply[(i - 1)].x - ply[(i + 1) % n].x);
+
 		return res / 2;
 	}
 

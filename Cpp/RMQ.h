@@ -7,7 +7,7 @@
 // LCA = RMQ
 // LCA Offline: O(E) + O(1)
 // Init: id[] <- -1, g[] adj matrix
-// Call: 
+// Call:
 // DFS the tree, each time we visit a node i,
 // put the depth into the end of e[], record the first time i appears in the array, as r[i]
 // d[i] is the depth of e[i]
@@ -42,7 +42,7 @@ public:
 	// st[i][j] indicates the peak value from i to i+2^j
 	// st[i][j] = max(st[i][j - 1], st[i + (1 << (j - 1))][j - 1]);
 	void InitRMQ() {
-		for (int i = 0; i < N; ++i) 
+		for (int i = 0; i < N; ++i)
 			st[i][0] = nums[i];
 
 		// [1, 7] = [1, 2] + [4, 2]
@@ -50,7 +50,7 @@ public:
 			for (int i = 0; i < M; ++i) {
 				if (i + pow2[j - 1] - 1 < N)
 					st[i][j] = max(st[i][j - 1], st[i + pow2[j - 1]][j - 1]);
-				else 
+				else
 					break; // st[i][j] = st[i][j-1];
 			}
 	}

@@ -24,9 +24,9 @@ namespace Kruskal {
 		vector<int> p(n);
 		for (int i = 0; i < n; ++i)
 			p[i] = i;
-		int total = 0, res = 0; 
+		int total = 0, res = 0;
 		for (const auto &e : edges) {
-			int x = e.x, y = e.y; 
+			int x = e.x, y = e.y;
 			if (getP(p, x) != getP(p, y)) {
 				p[getP(p, x)] = getP(p, y);
 				res += e.w;

@@ -290,7 +290,7 @@ namespace Geometry {
 				}
 				calcSubBoxes(item->box, item->boxes);
 
-				// assume that a triangle overlaps with an octree cell if the bounding box of the triangle's vertices overlap with the cell		
+				// assume that a triangle overlaps with an octree cell if the bounding box of the triangle's vertices overlap with the cell
 				for (const auto &triIndex : item->triangles) {
 					const auto &triBox = m_mesh->getBoundingBox(triIndex);
 					//#pragma omp parallel for

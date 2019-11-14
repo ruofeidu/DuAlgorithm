@@ -27,7 +27,7 @@ namespace TestLinkedList {
 		}
 
 		// head
-		//       head2    
+		//       head2
 		//   0, 1, 2, 3, 4, 5
 		//   |        p  cur
 		// dummy

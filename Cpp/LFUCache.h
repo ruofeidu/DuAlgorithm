@@ -3,7 +3,7 @@
 
 // 460. LFU Cache
 // Design and implement a data structure for Least Frequently Used (LFU) cache. It should support the following operations: get and put.
-/* 
+/*
 	Example:
 	LFUCache cache = new LFUCache( 2 );
 

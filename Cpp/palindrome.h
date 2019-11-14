@@ -27,7 +27,7 @@ namespace Palindrome {
 	}
 
 	int int_len(int x) {
-		int y = 1; 
+		int y = 1;
 		while (x > 10) {
 			x /= 10;
 			++y;
@@ -62,10 +62,10 @@ namespace Palindrome {
 		auto middle = s[(n - 1) >> 1];
 		string right_half = left_half;
 		reverse(right_half.begin(), right_half.end());
-		int y = 0, inc = 0; 
+		int y = 0, inc = 0;
 		if (is_odd) {
 			inc = pow10(n >> 1);
-			
+
 			auto res = left_half + middle + right_half;
 			y = atoi(res.c_str());
 		}
@@ -219,7 +219,7 @@ namespace Palindrome {
 
 		vector<vector<bool>> visited(N, vector<bool>(N));
 
-		for (int i = 0; i < N; ++i) 
+		for (int i = 0; i < N; ++i)
 			map[words[i]] = i;
 		for (int i = 0; i < N; ++i) {
 			visited[i][i] = true;
@@ -227,7 +227,7 @@ namespace Palindrome {
 			const int n = (int)s.size();
 
 			if (n == 0) {
-				for (int j = 0; j < N; ++j) 
+				for (int j = 0; j < N; ++j)
 					if (i != j && isP(words[j])) {
 						if (!visited[i][j]) {
 							ans.push_back(vector<int>{i, j});
@@ -254,7 +254,7 @@ namespace Palindrome {
 
 			for (int len = 1; len < n; ++len) {
 
-				//			    if (i == 3) cout << s.substr(0, len) << " " << s.substr(len, n-len) << endl; 
+				//			    if (i == 3) cout << s.substr(0, len) << " " << s.substr(len, n-len) << endl;
 
 
 				if (!isP(s.substr(0, len))) continue;

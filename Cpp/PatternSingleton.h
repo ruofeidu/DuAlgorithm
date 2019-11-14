@@ -16,8 +16,8 @@ public:
 	}
 
 private:
-	Singleton() { 
-		m_Test = 10; 
+	Singleton() {
+		m_Test = 10;
 	}
 	static Singleton *m_Instance;
 	int m_Test;

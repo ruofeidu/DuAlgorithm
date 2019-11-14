@@ -2,7 +2,7 @@
 #include "common.h"
 
 namespace Mods {
-	// GCD: Greatest common divisor using binary Euclidean algorithm. 
+	// GCD: Greatest common divisor using binary Euclidean algorithm.
 	// Thus, the time complexity is O(log(a.b)) = O(log (a + b)) = O(log n).
 	int gcd(int x, int y) {
 		if (!x || !y) return max(x, y);
@@ -99,7 +99,7 @@ namespace Mods {
 	// You are given two jugs with capacities x and y litres. There is an infinite amount of water supply available. You need to determine whether it is possible to measure exactly z litres using these two jugs.
 	// Time:  O(logn), n is the max of (x, y)
 	// Space: O(1)
-	// Bézout's identity (also called Bézout's lemma) 
+	// Bï¿½zout's identity (also called Bï¿½zout's lemma)
 	// https://en.wikipedia.org/wiki/B%C3%A9zout%27s_identity
 	// Let a and b be integers with greatest common divisor d. Then, there exist integers x and y such that ax + by = d. More generally, the integers of the form ax + by are exactly the multiples of d.
 	bool canMeasureWater(int x, int y, int z) {
@@ -132,7 +132,7 @@ class MathModsProblems {
 	}
 
 	// 263. Ugly numbers
-	// Ugly numbers are positive numbers whose prime factors only include 2, 3, 5. 
+	// Ugly numbers are positive numbers whose prime factors only include 2, 3, 5.
 	// For example, 6, 8 are ugly while 14 is not ugly since it includes another prime factor 7.
 	bool isUgly(int num) {
 		if (num <= 0) return false;

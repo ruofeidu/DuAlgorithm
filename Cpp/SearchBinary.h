@@ -250,7 +250,7 @@ public:
 	// Given two arrays, write a function to compute their intersection.
 	// Time:  O(max(m, n) * log(max(m, n)))
 	// Space: O(1)
-	// See hash map for linear time solution 
+	// See hash map for linear time solution
 	vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
 		// Time:  O(max(m, n) * log(max(m, n)))
 		// Space: O(1)

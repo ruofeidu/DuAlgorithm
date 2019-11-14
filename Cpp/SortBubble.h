@@ -1,7 +1,7 @@
 #pragma once
 #include "common.h"
 
-// Bubble sort 
+// Bubble sort
 // While not sorted, scan and float the largest to the end
 // Time: O(N^2)
 void bubble_sort(vector<int> &a, int l, int r) {

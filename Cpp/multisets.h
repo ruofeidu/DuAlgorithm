@@ -17,7 +17,7 @@ namespace Multisets{
 	// See mergesort.h for another solution.
 	int countRangeSum(vector<int>& nums, int lower, int upper) {
 		int res = 0;
-		long long sum = 0; 
+		long long sum = 0;
 		multiset<long long> sums;
 		sums.insert(0);
 		for (size_t i = 0; i < nums.size(); ++i) {
@@ -64,7 +64,7 @@ namespace Multisets{
 			if ((int)BST.size() == k + 1) {
 				BST.erase(nums[i - k - 1]);
 			}
-			auto low = BST.lower_bound(nums[i] - t); // the first element that >= nums[i] - t 
+			auto low = BST.lower_bound(nums[i] - t); // the first element that >= nums[i] - t
 			if (low != BST.end() && abs(*low - nums[i]) <= t) return true;
 			BST.insert(nums[i]);
 		}

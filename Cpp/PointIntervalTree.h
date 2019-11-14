@@ -116,9 +116,9 @@ namespace CashierDataMaker {
 
 		for (int i = 0; i < n; ++i) printf("I %d\n", a[i]);
 		for (int i = 0; i < n; ++i) if (g[i]) printf("D %d\n", a[i]);
-		//for ( int i = 0; i < n; ++i ) printf("F %d\n", rand() % (n-n/3)+1); 
+		//for ( int i = 0; i < n; ++i ) printf("F %d\n", rand() % (n-n/3)+1);
 		for (int i = 0; i < n; ++i) printf("B %d\n", a[i]);
-		//if (rand()%2==0) printf("A %d\n", a[i]); else 
+		//if (rand()%2==0) printf("A %d\n", a[i]); else
 		return 0;
 	}
 }

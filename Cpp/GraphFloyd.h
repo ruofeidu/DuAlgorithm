@@ -7,7 +7,7 @@ namespace GraphFloyd {
 		for (int k = 0; k < n; ++k) {
 			for (int i = 0; i < n; ++i)
 				if (i != k) {
-					for (int j = 0; j < n; ++j) 
+					for (int j = 0; j < n; ++j)
 						if (j != k && i != j)
 							f[i][j] = min(f[i][j], f[i][k] + f[k][j]);
 				}
@@ -15,7 +15,7 @@ namespace GraphFloyd {
 	}
 
 	// Floyd can further be used to compute the minimum circle in a graph
-	// Proof: the greatest node in a circle is k, adjcent to i and j, 
+	// Proof: the greatest node in a circle is k, adjcent to i and j,
 	// the minimum length of the circle is f[i][k] + f[k][j] + shortest path [i][j]
 	vector<int> FloydMinCircle(Grid &f) {
 		int n = (int)f.size();
