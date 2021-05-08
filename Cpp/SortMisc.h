@@ -1,7 +1,7 @@
 #pragma once
 #include "common.h"
-namespace SortMisc {
 
+namespace SortMisc {
 	// 280. Wiggle Sort [L][M]
 	// Given an unsorted array nums, reorder it in-place such that nums[0] <= nums[1] >= nums[2] <= nums[3]...
 	// O(n) time and O(1) space

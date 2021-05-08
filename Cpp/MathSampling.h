@@ -119,7 +119,6 @@ namespace MathSampling {
 		return INV_TWOPI * 2 * exp(-tanTheta2 / alpha2) / alpha2 / cosTheta3;
 	}
 
-
 	vec2 squareToTent(const vec2 &sample) {
 		return vec2(inverse_tent(sample.x), inverse_tent(sample.y));
 	}

@@ -2,7 +2,7 @@
 #include "common.h"
 
 namespace TestHeap {
-// priority_queue is by default a max heap
+// priority_queue is by default a max heap.
 priority_queue<int> max_heap;
 priority_queue<pair<int, int>> max_pair_heap;
 
