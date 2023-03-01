@@ -20,7 +20,7 @@ function string2int(s) {
 return s.split()
  .map(function(x){ return x - '0';})
  .reduce(function(x, y){ return x*10+y; });
-}
+} 
 
 // Literally, filter is used to filter out some elements from an array. For instance, to keep only even numbers from an array:
 

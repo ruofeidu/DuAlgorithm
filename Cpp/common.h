@@ -1,28 +1,25 @@
 #pragma once
 #pragma warning(disable : 4996)
-#include <cstdio>
-#include <cmath>
-#include <ctime>
-
-#include <fstream>
-#include <iostream>
-#include <sstream>
-#include <numeric>
-#include <iomanip>
-
-#include <bitset>
-#include <vector>
-#include <queue>
-#include <stack>
-#include <map>
-#include <set>
-#include <string>
-#include <iterator>
-#include <unordered_set>
-#include <unordered_map>
-
-#include <functional>
 #include <algorithm>
+#include <bitset>
+#include <cmath>
+#include <cstdio>
+#include <ctime>
+#include <fstream>
+#include <functional>
+#include <iomanip>
+#include <iostream>
+#include <iterator>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <sstream>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 using namespace std;
 
 // common data structued are defined below
@@ -44,7 +41,7 @@ struct hash<pair<S, T>> {
     return seed;
   }
 };
-}
+}  // namespace std
 
 // Linear
 

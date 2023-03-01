@@ -54,6 +54,23 @@ ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
   return ans;
 }
 
+ListNode* addTwoNumbers2(ListNode* l1, ListNode* l2) {
+  ListNode start{0};
+  auto current = &start;
+  auto carry = 0;
+  while (l1 || l2 || carry) {
+    auto a = l1 ? l1->val : 0;
+    auto b = l2 ? l2->val : 0;
+    auto s = a + b + carry;
+    carry = s / 10;
+    current->next = new ListNode(s % 10);
+    l1 = l1 ? l1->next : nullptr;
+    l2 = l2 ? l2->next : nullptr;
+    current = current->next;
+  }
+  return start.next;
+};
+
 // 66. Plus One
 void add(vector<int>& digits, int num) {
   int carry = num;
@@ -114,9 +131,9 @@ bigint make_bigint(string const& s) {
 
 string to_string(bigint const& n) {
   string s;
-  transform(find_if(n.rbegin(), prev(n.rend()), [](char c) {
-              return c > '\0';
-            }), n.rend(), back_inserter(s), [](char c) { return c + '0'; });
+  transform(
+      find_if(n.rbegin(), prev(n.rend()), [](char c) { return c > '\0'; }),
+      n.rend(), back_inserter(s), [](char c) { return c + '0'; });
   return s;
 }
 
@@ -138,4 +155,4 @@ class Solution {
     return to_string(make_bigint(num1) * make_bigint(num2));
   }
 };
-};
+};  // namespace HPMisc

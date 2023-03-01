@@ -21,6 +21,19 @@ vector<size_t> twoSum(vector<int>& nums, int target) {
   return res;
 }
 
+vector<int> twoSum2(vector<int>& nums, int target) {
+  unordered_map<int, int> dict;
+  const auto n = nums.size();
+  for (int i = 0; i < n; ++i) {
+    auto x = nums[i];
+    if (dict.find(target - x) != dict.end()) {
+      return {dict[target - x], i};
+    }
+    dict[x] = i;
+  }
+  return {};
+}
+
 // 167. Two Sum II - Input array is sorted
 // Given an array of integers that is already sorted in ascending order, find
 // two numbers such that they add up to a specific target number.
@@ -361,4 +374,4 @@ bool isIsomorphic(string s, string t) {
   }
   return true;
 }
-}
+}  // namespace Hashmaps

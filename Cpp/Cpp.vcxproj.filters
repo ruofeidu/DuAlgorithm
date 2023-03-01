@@ -459,6 +459,9 @@
     <ClInclude Include="STLSort.h">
       <Filter>Header Files\Algorithms\Sorts</Filter>
     </ClInclude>
+    <ClInclude Include="PointIntervalTree.h">
+      <Filter>Header Files\DataStructures\Tree\BST</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
