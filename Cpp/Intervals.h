@@ -6,15 +6,16 @@ namespace TestIntervals {
 	// Time: O(n log n)
 	// Extra Space: O(1)
 	// Given a collection of intervals, merge all overlapping intervals.
-	// Input: [[1,3],[2,6],[8,10],[15,18]]
+	// Input: [[1,3], [2,6], [8,10], [15,18]]
 	// Output: [[1, 6], [8, 10], [15, 18]]
-	// Sort then merge
+	// Sort then merge.
 	vector<Interval> merge(vector<Interval>& intervals) {
-		auto &I = intervals;
+		auto& I = intervals;
 		if (I.empty()) {
 			return I;
 		}
-		sort(I.begin(), I.end(), [](const Interval& a, const Interval& b) {
+
+		sort(I.begin(), I.end(), [](const Interval& a, const Interval& b)) {
 			return a.start < b.start;
 		});
 

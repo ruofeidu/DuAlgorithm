@@ -42,4 +42,4 @@ string longestCommonPrefix(vector<string> &strs) {
   }
   return strs[0].substr(0, ans);
 }
-}
+}  // namespace LCSProblems

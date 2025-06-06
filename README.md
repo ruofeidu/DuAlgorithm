@@ -41,12 +41,12 @@ My personal collection of algorithms, data structures, and design patterns in C+
 
 - uniquePath: C(m+n-2, max(m-1, n-1))
 - maxRegionsByALine: n \* (n + 1) / 2 + 1
-- maxRegionsByAPolyLine: (n - 1)_(2 _ n - 1) + 2 \* n
+- maxRegionsByAPolyLine: (n - 1)_(2_ n - 1) + 2 \* n
 - countTrianglesOfPolygon: C(2 \* n - 2, n - 1)
 
 #### Mods Theory
 
-- GCD: Greatest Common Divisor; Extended: gcd(a, b) = a _ x + b _ y
+- GCD: Greatest Common Divisor; Extended: gcd(a, b) = a _x + b_ y
 - LCM: Lowest Common Multiple
 - Modular exponentiation: (a ^ b) % n
 - Modular multiplication (x \* y) % n
@@ -218,3 +218,63 @@ My personal collection of algorithms, data structures, and design patterns in C+
 ### Abstract Factory
 
 - virtual factories for creating products
+
+1. Use a Heap for K Elements
+
+- When finding the top K largest or smallest elements, heaps are your best tool.
+- They efficiently handle priority-based problems with O(log K) operations.
+- Example: Find the 3 largest numbers in an array.
+
+2. Binary Search or Two Pointers for Sorted Inputs
+
+- Sorted arrays often point to Binary Search or Two Pointer techniques.
+- These methods drastically reduce time complexity to O(log n) or O(n).
+- Example: Find two numbers in a sorted array that add up to a target.
+
+3. Backtracking or BFS for Combinations
+
+- Use Backtracking or BFS to explore all combinations or permutations.
+- They’re great for generating subsets or solving puzzles.
+- Example: Generate all possible subsets of a given set.
+
+4. BFS or DFS for Trees and Graphs
+
+- Trees and graphs are often solved using BFS for shortest paths or DFS for traversals.
+- BFS is best for level-order traversal, while DFS is useful for exploring paths.
+- Example: Find the shortest path in a graph.
+
+5. Convert Recursion to Iteration with a Stack
+
+- Recursive algorithms can be converted to iterative ones using a stack.
+- This approach provides more control over memory and avoids stack overflow.
+- Example: Iterative in-order traversal of a binary tree.
+
+6. Optimize Arrays with HashMaps or Sorting
+
+- Replace nested loops with HashMaps for O(n) solutions or sorting for O(n log n).
+- HashMaps are perfect for lookups, while sorting simplifies comparisons.
+- Example: Find duplicates in an array.
+
+7. Use Dynamic Programming for Optimization Problems
+
+- DP breaks problems into smaller overlapping sub-problems for optimization.
+- It's often used for maximization, minimization, or counting paths.
+- Example: Solve the 0/1 knapsack problem.
+
+8. HashMap or Trie for Common Substrings
+
+- Use HashMaps or Tries for substring searches and prefix matching.
+- They efficiently handle string patterns and reduce redundant checks.
+- Example: Find the longest common prefix among multiple strings.
+
+9. Trie for String Search and Manipulation
+
+- Tries store strings in a tree-like structure, enabling fast lookups.
+- They’re ideal for autocomplete or spell-check features.
+- Example: Implement an autocomplete system.
+
+10. Fast and Slow Pointers for Linked Lists
+
+- Use two pointers moving at different speeds to detect cycles or find midpoints.
+- This approach avoids extra memory usage and works in O(n) time.
+- Example: Detect if a linked list has a loop.
