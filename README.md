@@ -9,12 +9,12 @@ My personal collection of algorithms, data structures, and design patterns in C+
 #### Knapsack problem
 
 - f[j] = f[j] || f[j-v[i]]
-- f[i][j] = max(f[i-1]j-v[i]] + w[i], f[i-1][j])
-- f[i,j] = f[i-1,j-a[i]] or f[i-1,j+a[i]]
+- f[i][j] = max(f[i-1][j-v[i]] + w[i], f[i-1][j])
+- f[i, j] = f[i-1, j-a[i]] or f[i-1, j+a[i]]
 
 ##### Knapsack on a Tree
 
-- f[i,j] = max(f[i,j], f[l,j-v[i]-v[fb[i]]-v[fa[i]]]+v[i]*p[i]+v[fb[i]]*p[fb[i]]+v[fa[i]]\*p[fa[i]])
+- f[i, j] = max(f[i, j], f[l, j-v[i]-v[fb[i]]-v[fa[i]]]+v[i]*p[i]+v[fb[i]]*p[fb[i]]+v[fa[i]]\*p[fa[i]])
 
 #### LIS: Longest Increasing Subsequence
 
@@ -71,7 +71,7 @@ My personal collection of algorithms, data structures, and design patterns in C+
 
 ##### Shuffle
 
-- Time: O(N), scan and swap a[i] with a[random(i,n-1)].
+- Time: O(N), scan and swap a[i] with a[random(i, n-1)].
 
 ##### Basic
 
@@ -79,7 +79,7 @@ My personal collection of algorithms, data structures, and design patterns in C+
 - P(A|B) = P(B|A) \* P(A) / P(B)
 - P(AB) = P(A|B)P(B)
 - P(ABC) = P(A,B | C) P(C) = P(A|BC)P(BC) = P(A|BC) P(B|C) P(C)
-- rand(0,1): unifiorm
+- rand(0, 1): unifiorm
 - Y~ uniform (0,1)
 - X = Y_1 .. Y_n i.i.d. ~ Gaussian(0,1)
 - X = rand(0,1) + rand(0,1) + rand(0,1) + rand(0,1) + rand(0,1)......(100000 times)
@@ -204,7 +204,7 @@ My personal collection of algorithms, data structures, and design patterns in C+
 
 ## Design Patterns
 
-### Sinleton
+### Singleton
 
 - multithreading safe singleton
 - a static instance member pointing to its self
