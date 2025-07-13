@@ -12,4 +12,4 @@ void reverseWords(string &s) {
   while (is >> tmp) s = tmp + " " + s;
   if (!s.empty() && s[0] == ' ') s = "";
 }
-}
+}  // namespace StringTricks
