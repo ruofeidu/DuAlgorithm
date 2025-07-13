@@ -69,7 +69,7 @@ void test() {
 
 // 211. Add and Search Word - Data structure design [M]
 // See Python
-}
+}  // namespace TestTrie
 
 // 212. Word Search II [H]
 // Given a 2D board and a list of words from the dictionary, find all words in

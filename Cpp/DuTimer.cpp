@@ -1,5 +1,6 @@
-#include "common.h"
 #include "DuTimer.h"
+
+#include "common.h"
 map<string, steady_clock::time_point> DuTimer::Map;
 map<string, SingleTimePoint> DuTimer::AverageWindowMap;
 

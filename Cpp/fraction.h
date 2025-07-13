@@ -1,6 +1,6 @@
 #pragma once
-#include "common.h"
 #include "MathMods.h"
+#include "common.h"
 
 class Fraction {
  public:
@@ -95,4 +95,4 @@ string fractionToDecimal(int numerator, int denominator) {
   }
   return res + s;
 }
-}
+}  // namespace Fractions

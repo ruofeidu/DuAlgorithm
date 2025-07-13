@@ -74,4 +74,4 @@ int maxPoints2(vector<Point>& points) {
   }
   return ans;
 }
-}
+}  // namespace GeoPoints

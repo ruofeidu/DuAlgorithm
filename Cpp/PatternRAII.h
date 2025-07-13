@@ -1,7 +1,8 @@
 #pragma once
-#include <iostream>
-#include <windows.h>
 #include <process.h>
+#include <windows.h>
+
+#include <iostream>
 
 using namespace std;
 static int gGlobal = 0;

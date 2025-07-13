@@ -80,7 +80,7 @@ int main() {
   }
   return 0;
 }
-}
+}  // namespace HashCustomizedForCashier
 
 namespace HashMaker {
 ofstream fout("hash.in");
@@ -114,4 +114,4 @@ int main() {
 
   return 0;
 }
-}
+}  // namespace HashMaker

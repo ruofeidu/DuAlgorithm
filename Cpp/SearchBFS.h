@@ -301,4 +301,4 @@ vector<vector<string>> findLadders(string beginWord, string endWord,
   }
   return res;
 }
-}
+}  // namespace BFS

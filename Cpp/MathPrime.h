@@ -2,7 +2,7 @@
 #include "common.h"
 
 class PrimeNumbers {
-  // Miller�CRabin primality test
+  // Miller Rabin primality test
   // https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test
   // for n > 2, and steps = 50. error rate <= 2^{-steps}
   bool millerTest(int n, int s = 50) {

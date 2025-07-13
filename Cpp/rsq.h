@@ -24,15 +24,15 @@ class RSQ {
   // 307. Range Sum Query - Mutable
   // 1D Updated RSQ, O(n log n), Binary Index Tree (Fenwick Tree)
   /**
-  *	C1 = A1
-  *	C2 = A1 + A2
-  *	C3 = A3
-  *	C4 = A1 + A2 + A3 + A4
-  *	C5 = A5
-  *	C6 = A5 + A6
-  *	C7 = A7
-  *	C8 = A1 + A2 + A3 + A4 + A5 + A6 + A7 + A8
-  **/
+   *	C1 = A1
+   *	C2 = A1 + A2
+   *	C3 = A3
+   *	C4 = A1 + A2 + A3 + A4
+   *	C5 = A5
+   *	C6 = A5 + A6
+   *	C7 = A7
+   *	C8 = A1 + A2 + A3 + A4 + A5 + A6 + A7 + A8
+   **/
   class NumArrayMutable {
    public:
     // O(N log N)

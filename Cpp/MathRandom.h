@@ -1,5 +1,6 @@
 #pragma once
 #include <random>
+
 #include "common.h"
 
 namespace Randoms {
@@ -23,7 +24,7 @@ void shuffle(vector<int> &a) {
 
 // rand(): Returns a pseudo-random integral number in the range between 0 and
 // RAND_MAX (32767).
-}
+}  // namespace Randoms
 
 // 381. Insert Delete GetRandom O(1) - Duplicates allowed
 // Design a data structure that supports all following operations in average

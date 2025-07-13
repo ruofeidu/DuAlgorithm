@@ -11,4 +11,4 @@ int computeArea(int A, int B, int C, int D, int E, int F, int G, int H) {
             b2 = max(0LL, ((long long)min(D, H) - max(B, F)));
   return (int)(area1 + area2 - b1 * b2);
 }
-}
+}  // namespace GeoRect

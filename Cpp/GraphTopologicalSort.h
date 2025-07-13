@@ -71,4 +71,4 @@ vector<int> findOrder(int n, vector<pair<int, int>> &prerequisites) {
 }
 
 // Refer to 630. Course Schedule III [H], in Greedy.h
-}
+}  // namespace TopologicalSort

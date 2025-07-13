@@ -58,4 +58,4 @@ class MovingAverage {
 
 // 225. Implement Stack using Queues
 // See Python
-};
+};  // namespace Queues

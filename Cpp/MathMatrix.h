@@ -63,4 +63,4 @@ int gauss_tpivot(int n, double a[][MAXN], double b[]) {
   for (k = 0; k < n; k++) b[k] = a[0][k];
   return 1;
 }
-}
+}  // namespace MathMatrix

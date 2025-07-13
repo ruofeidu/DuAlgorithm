@@ -67,9 +67,9 @@ class Twitter {
   }
 
   /**
-    * Follower follows a followee. If the operation is invalid, it should be a
+   * Follower follows a followee. If the operation is invalid, it should be a
    * no-op.
-    */
+   */
   void follow(int followerId, int followeeId) {
     if (followerId != followeeId && !m_follow[followerId].count(followeeId)) {
       m_follow[followerId].emplace(followeeId);
@@ -77,9 +77,9 @@ class Twitter {
   }
 
   /**
-    * Follower unfollows a followee. If the operation is invalid, it should be a
+   * Follower unfollows a followee. If the operation is invalid, it should be a
    * no-op.
-    */
+   */
   void unfollow(int followerId, int followeeId) {
     if (m_follow[followerId].count(followeeId)) {
       m_follow[followerId].erase(followeeId);

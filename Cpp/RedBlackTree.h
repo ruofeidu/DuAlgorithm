@@ -18,7 +18,7 @@ bool containsNearbyAlmostDuplicate(vector<int>& nums, int k, int t) {
   }
   return false;
 }
-}
+}  // namespace map
 
 // 5/21/2010, in CS 361, SJTU
 // log(n) operations, validated with tree and NOI cashier problem
@@ -452,4 +452,4 @@ int main(void) {
   }
   return 0;
 }
-}
+}  // namespace RedBackTree

@@ -1,8 +1,9 @@
 #pragma once
-#include "common.h"
-#include "DuUtils.h"
 #include <chrono>
 #include <ctime>
+
+#include "DuUtils.h"
+#include "common.h"
 
 class DuConfig {
  public:

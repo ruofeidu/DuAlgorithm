@@ -72,4 +72,4 @@ bool containsDuplicate(vector<int> &nums) {
   }
   return false;
 }
-}
+}  // namespace HashSets

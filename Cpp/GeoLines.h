@@ -34,4 +34,4 @@ vec3 calcLinePlaneIntersection(vec3 p0, vec3 p1, vec3 a, vec3 b, vec3 c,
   }
   return vec3(-1, -1, -1);
 }
-}
+}  // namespace Lines

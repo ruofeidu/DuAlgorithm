@@ -1,9 +1,10 @@
-#include "common.h"
 #include "DuUtils.h"
 
+#include "common.h"
+
 #if _WIN64 | _WIN32
-#include "windows.h"
 #include "dirent.h"
+#include "windows.h"
 #endif
 
 #include <iomanip>

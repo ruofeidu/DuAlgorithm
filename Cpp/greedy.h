@@ -112,4 +112,4 @@ int minPatches(vector<int>& nums, int n) {
   }
   return res;
 }
-}
+}  // namespace Greedy

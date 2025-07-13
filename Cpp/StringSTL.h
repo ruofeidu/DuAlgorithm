@@ -48,4 +48,4 @@ void erase() {
 
   // "This sentence."
 }
-}
+}  // namespace StringSTL

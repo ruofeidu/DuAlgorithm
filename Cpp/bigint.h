@@ -19,9 +19,9 @@ bigint make_bigint(string const& s) {
 
 string to_string(bigint const& n) {
   string s;
-  transform(find_if(n.rbegin(), prev(n.rend()), [](char c) {
-              return c > '\0';
-            }), n.rend(), back_inserter(s), [](char c) { return c + '0'; });
+  transform(
+      find_if(n.rbegin(), prev(n.rend()), [](char c) { return c > '\0'; }),
+      n.rend(), back_inserter(s), [](char c) { return c + '0'; });
   return s;
 }
 
