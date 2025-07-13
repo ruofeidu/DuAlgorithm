@@ -1,6 +1,7 @@
-# 176. Second Highest Salary
+-- # 176. Second Highest Salary
 SELECT (SELECT Salary FROM Employee GROUP BY Salary ORDER BY Salary DESC LIMIT 1 OFFSET 1) SecondHighestSalary;
 
+/*
 # 177. Nth Highest Salary
 # Time:  O(n^2)
 # Space: O(n)
@@ -16,16 +17,17 @@ SELECT (SELECT Salary FROM Employee GROUP BY Salary ORDER BY Salary DESC LIMIT 1
 # +----+--------+
 # For example, given the above Employee table, the nth highest salary where n = 2 is 200. If there is no nth highest salary, then the query should return null.
 #
-
+*/
 CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
 BEGIN
   RETURN (
       SELECT MAX(Salary) FROM Employee E1
-      WHERE (N-1) = (SELECT COUNT(DISTINCT(E2.Salary)) FROM Employee E2 
+      WHERE (N-1) = (SELECT COUNT(DISTINCT(E2.Salary)) FROM Employee E2
       WHERE E2.Salary > E1.Salary)
   );
 END
 
+/*
 # 178. Rank Scores
 # Time:  O(n^2)
 # Space: O(n)
@@ -55,20 +57,21 @@ END
 #    | 3.50  | 4    |
 #    +-------+------+
 #
-
+*/
 # Write your MySQL query statement below
-SELECT Ranks.Score, Ranks.Rank FROM Scores LEFT JOIN 
-       ( SELECT r.Score, @curRow := @curRow + 1  Rank 
-            FROM (SELECT DISTINCT(Score), (SELECT @curRow := 0) 
+SELECT Ranks.Score, Ranks.Rank FROM Scores LEFT JOIN
+       ( SELECT r.Score, @curRow := @curRow + 1  Rank
+            FROM (SELECT DISTINCT(Score), (SELECT @curRow := 0)
                       FROM Scores ORDER by Score DESC) r
-       ) Ranks 
+       ) Ranks
        ON Scores.Score = Ranks.Score
        ORDER by Score DESC
 
-
+/*
 # Time:  O(n^3)
 # Space: O(n)
 # Write your MySQL query statement below
 # SELECT Score,  (SELECT COUNT(DISTINCT(Score)) FROM  Scores b WHERE b.Score > a.Score) + 1 AS Rank
 #       FROM Scores a
 #       ORDER by Score DESC
+*/

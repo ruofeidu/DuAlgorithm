@@ -6,7 +6,7 @@ namespace DPEditDistance {
 // Given two words word1 and word2, find the minimum number of operations
 // required to convert word1 to word2.
 // Operations: insert, delete, and replace
-int minDistance(string word1, string word2) {
+int minDistance(string& word1, string& word2) {
   const int n = word1.size(), m = word2.size();
   if (n == 0 && m == 0) return 0;
 
@@ -30,7 +30,7 @@ int minDistance(string word1, string word2) {
 // 161. Edit Distance
 // Given two strings S and T, determine if they are both one edit distance
 // apart.
-bool isOneEditDistance(string s, string t) {
+bool isOneEditDistance(string& s, string& t) {
   int n = (int)s.size(), m = (int)t.size();
   for (int i = 0; i < min(n, m); ++i) {
     if (s[i] != t[i]) {
@@ -80,14 +80,14 @@ bool isScramble(string s1, string s2) {
 // 97. Interleaving String [H][VH]
 // Given s1, s2, s3, find whether s3 is formed by the interleaving of s1 and s2.
 /*
-        Example 1:
+  Example 1:
 
-        Input: s1 = "aabcc", s2 = "dbbca", s3 = "aadbbcbcac"
-        Output: true
-        Example 2:
+  Input: s1 = "aabcc", s2 = "dbbca", s3 = "aadbbcbcac"
+  Output: true
+  Example 2:
 
-        Input: s1 = "aabcc", s2 = "dbbca", s3 = "aadbbbaccc"
-        Output: false
+  Input: s1 = "aabcc", s2 = "dbbca", s3 = "aadbbbaccc"
+  Output: false
 */
 bool isInterleave(string s1, string s2, string s3) {
   int N = s3.size();
@@ -107,4 +107,4 @@ bool isInterleave(string s1, string s2, string s3) {
   }
   return f[N][m];
 }
-}
+}  // namespace DPEditDistance

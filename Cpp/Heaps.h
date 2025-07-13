@@ -33,7 +33,7 @@ priority_queue<Point, vector<Point>, myComparator> pq;
 
 priority_queue<string, vector<string>, greater<string>> ascend;
 priority_queue<string, vector<string>, less<string>> descend;
-}
+}  // namespace TestHeap
 
 namespace HeapAlgos {
 // 857. Minimum Cost to Hire K Workers
@@ -123,4 +123,4 @@ class MedianFinder {
                : 0.5 * (max_heap.top() - min_heap.top());
   }
 };
-}
+}  // namespace HeapAlgos

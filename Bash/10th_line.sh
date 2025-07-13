@@ -4,7 +4,7 @@
 # How would you print just the 10th line of a file?
 #
 # For example, assume that file.txt has the following content:
-# 
+#
 # Line 1
 # Line 2
 # Line 3

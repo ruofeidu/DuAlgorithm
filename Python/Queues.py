@@ -1,6 +1,9 @@
+from typing import List
+from collections import deque
+from collections import Counter
+
+
 # 225. Implement Stack using Queues
-
-
 class Queue:
 
   def __init__(self):
@@ -48,3 +51,26 @@ class MyStack:
   # @return an boolean
   def empty(self):
     return self.q_.empty()
+
+
+# Time Complexity: O(N)
+# Space Complexity: O(K)
+def getMaxDish(N: int, D: List[int], K: int) -> int:
+  q = deque()
+  counter = Counter()
+  res = 0
+
+  for dish in D:
+    if counter[dish] < 1:
+      res += 1
+      counter[dish] += 1
+      q.append(dish)
+      if len(q) > K:
+        dish_out = q.popleft()
+        counter[dish_out] -= 1
+
+  return res
+
+
+if __name__ == "__main__":
+  print(getMaxDish(6, [1, 2, 3, 3, 2, 1], 2))

@@ -1,7 +1,7 @@
 #pragma once
 #include "common.h"
 
-class DP2D {
+class DPGrid {
  public:
   // 64. Minimum Path Sum
   int minPathSum(vector<vector<int>>& grid) {

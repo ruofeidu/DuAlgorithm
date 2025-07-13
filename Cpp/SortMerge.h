@@ -6,13 +6,16 @@ namespace MergeSort {
 // Time: O(N log N)
 // Space: O(N)
 void mergeSort(vector<int>& nums, int l, int r) {
-  if (l == r) return;
-  int p = (l + r) >> 1;
+  if (l >= r) return;
+  // Prevents potential integer overflow.
+  int p = l + (r - l) / 2;
   mergeSort(nums, l, p);
   mergeSort(nums, p + 1, r);
 
   // Merge [l, p] and [p+1, r] to a temporary array
   int i = l, j = p + 1, n = r - l + 1;
+
+  // Create a temporary vector to store the merged elements.
   vector<int> tmp(n);
   for (int k = 0; k < n; ++k) {
     if (j > r || (i <= p && nums[i] < nums[j])) {
@@ -166,4 +169,4 @@ void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
     nums1[k--] = nums2[j--];
   }
 }
-}
+}  // namespace MergeSort

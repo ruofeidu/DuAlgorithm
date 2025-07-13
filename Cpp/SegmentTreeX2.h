@@ -124,4 +124,4 @@ int main() {
   }
   return 0;
 }
-}
+}  // namespace SegmentTreeX2

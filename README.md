@@ -1,8 +1,9 @@
 # DuAlgorithm
 
-My personal collection of algorithms, data structures, and design patterns in C++, Python, and more.
+Ruofei Du's personal collection of algorithms, data structures, and design
+patterns in C++, Python, and beyond.
 
-## Algorithm
+## Algorithms
 
 ### Dynamic Programming
 
