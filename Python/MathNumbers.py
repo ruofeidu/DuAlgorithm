@@ -6,9 +6,9 @@
 # include 1. Those numbers for which this process ends in 1 are happy numbers.
 def isHappy(self, n):
   """
-    :type n: int
-    :rtype: bool
-    """
+  :type n: int
+  :rtype: bool
+  """
   h = set()
   while n != 1 and n not in h:
     h.add(n)

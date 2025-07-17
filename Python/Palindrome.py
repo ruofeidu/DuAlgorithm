@@ -6,9 +6,9 @@ class Palindrome:
   @staticmethod
   def next(x):
     """
-      :type x: int
-      :rtype: int
-      """
+    :type x: int
+    :rtype: int
+    """
 
     # 192 -> 200
     # 1991 -> 2000
@@ -91,9 +91,9 @@ class Palindrome:
   @staticmethod
   def is_valid_with_space(self, s):
     """
-      :type s: str
-      :rtype: bool
-      """
+    :type s: str
+    :rtype: bool
+    """
     s = s.lower()
     l, r = 0, len(s) - 1
     while l < r:
@@ -113,9 +113,9 @@ class Palindrome:
   @staticmethod
   def next_prime(x):
     """
-      :type x: int
-      :rtype: int
-      """
+    :type x: int
+    :rtype: int
+    """
 
     def is_prime(x):
       for i in range(2, int(math.sqrt(x)) + 1):

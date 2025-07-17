@@ -20,9 +20,9 @@ class Solution(object):
 
   def rightSideView(self, root):
     """
-        :type root: TreeNode
-        :rtype: List[int]
-        """
+    :type root: TreeNode
+    :rtype: List[int]
+    """
     ans = []
     if root is None:
       return ans
@@ -86,9 +86,9 @@ def exist(self, root, n):
 # 226. Invert Binary Tree [E]
 def invertTree(self, root):
   """
-    :type root: TreeNode
-    :rtype: TreeNode
-    """
+  :type root: TreeNode
+  :rtype: TreeNode
+  """
   if root is None:
     return
   tmp = self.invertTree(root.left)

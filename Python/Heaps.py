@@ -9,10 +9,9 @@ import sys
 # For pairs, to make a max-heap based on the first element of the pair:
 # max_pair_heap = [] # Example: heapq.heappush(max_pair_heap, (-key, value))
 
+
 # Min-heap for integers (default heapq behavior):
 # min_heap = [] # Example: heapq.heappush(min_heap, value)
-
-
 class Point:
   """
   Represents a 2D point with x and y coordinates.
@@ -80,22 +79,22 @@ class HeapAlgos:
   def min_cost_to_hire_workers(self, quality: list[int], wage: list[int],
                                k: int) -> float:
     """
-      857. Minimum Cost to Hire K Workers
-      Calculates the least amount of money needed to form a paid group
-      of K workers satisfying the given conditions.
+    857. Minimum Cost to Hire K Workers
+    Calculates the least amount of money needed to form a paid group
+    of K workers satisfying the given conditions.
 
-      Time Complexity: O(N log N) due to sorting, plus O(N log K) for heap operations.
-                        Overall O(N log N).
-      Space Complexity: O(N) for storing workers, O(K) for the heap.
+    Time Complexity: O(N log N) due to sorting, plus O(N log K) for heap operations.
+                      Overall O(N log N).
+    Space Complexity: O(N) for storing workers, O(K) for the heap.
 
-      Args:
-          quality: A list of integers representing the quality of each worker.
-          wage: A list of integers representing the minimum wage expectation of each worker.
-          k: The number of workers to hire.
+    Args:
+        quality: A list of integers representing the quality of each worker.
+        wage: A list of integers representing the minimum wage expectation of each worker.
+        k: The number of workers to hire.
 
-      Returns:
-          The least amount of money needed.
-      """
+    Returns:
+        The least amount of money needed.
+    """
     num_workers = len(quality)
     workers = []  # List of (wage_to_quality_ratio, quality) tuples
 
@@ -146,19 +145,19 @@ class HeapAlgos:
 
   def min_meeting_rooms(self, intervals: list['Interval']) -> int:
     """
-        252. Meeting Rooms II (similar to 253. Meeting Rooms II)
-        Finds the minimum number of conference rooms required.
+    252. Meeting Rooms II (similar to 253. Meeting Rooms II)
+    Finds the minimum number of conference rooms required.
 
-        Time Complexity: O(N log N) due to sorting and heap operations.
-        Space Complexity: O(N) for sorting (if not in-place) and O(N) for the heap
-                          in the worst case (all meetings overlapping).
+    Time Complexity: O(N log N) due to sorting and heap operations.
+    Space Complexity: O(N) for sorting (if not in-place) and O(N) for the heap
+                      in the worst case (all meetings overlapping).
 
-        Args:
-            intervals: A list of Interval objects, each with a start and end time.
+    Args:
+        intervals: A list of Interval objects, each with a start and end time.
 
-        Returns:
-            The minimum number of meeting rooms needed.
-        """
+    Returns:
+        The minimum number of meeting rooms needed.
+    """
     if not intervals:
       return 0
 
@@ -193,20 +192,20 @@ class HeapAlgos:
 
   def find_kth_largest(self, nums: list[int], k: int) -> int:
     """
-        215. Kth Largest Element in an Array
-        Finds the Kth largest element in an unsorted array.
+    215. Kth Largest Element in an Array
+    Finds the Kth largest element in an unsorted array.
 
-        Time Complexity: O(N log K), where N is the number of elements in nums.
-                         Each push/pop operation on a heap of size K takes O(log K).
-        Space Complexity: O(K) for the heap.
+    Time Complexity: O(N log K), where N is the number of elements in nums.
+                      Each push/pop operation on a heap of size K takes O(log K).
+    Space Complexity: O(K) for the heap.
 
-        Args:
-            nums: A list of integers.
-            k: The desired rank (e.g., 1st largest, 2nd largest, etc.).
+    Args:
+        nums: A list of integers.
+        k: The desired rank (e.g., 1st largest, 2nd largest, etc.).
 
-        Returns:
-            The Kth largest element. Returns -1 if nums is empty or k is invalid.
-        """
+    Returns:
+        The Kth largest element. Returns -1 if nums is empty or k is invalid.
+    """
     if not nums or k <= 0:
       return -1
 
@@ -227,13 +226,13 @@ class HeapAlgos:
 
   class MedianFinder:
     """
-        295. Find Median from Data Stream
-        Data structure to find the median of a dynamically growing data stream.
-        Uses two heaps:
-        - `max_heap`: Stores the smaller half of the numbers (as negative values to simulate max-heap).
-        - `min_heap`: Stores the larger half of the numbers.
-        Ensures `len(max_heap)` is either equal to `len(min_heap)` or `len(min_heap) + 1`.
-        """
+    295. Find Median from Data Stream
+    Data structure to find the median of a dynamically growing data stream.
+    Uses two heaps:
+    - `max_heap`: Stores the smaller half of the numbers (as negative values to simulate max-heap).
+    - `min_heap`: Stores the larger half of the numbers.
+    Ensures `len(max_heap)` is either equal to `len(min_heap)` or `len(min_heap) + 1`.
+    """
 
     def __init__(self):
       # max_heap stores the smaller half of numbers.
@@ -246,9 +245,9 @@ class HeapAlgos:
 
     def add_num(self, num: int) -> None:
       """
-            Adds a number into the data structure.
-            Time Complexity: O(log N)
-            """
+      Adds a number into the data structure.
+      Time Complexity: O(log N)
+      """
       # Rule 1: Always add to max_heap first (smaller half).
       heapq.heappush(self.max_heap, -num)
 
@@ -266,9 +265,9 @@ class HeapAlgos:
 
     def find_median(self) -> float:
       """
-            Returns the median of all numbers added so far.
-            Time Complexity: O(1)
-            """
+      Returns the median of all numbers added so far.
+      Time Complexity: O(1)
+      """
       # If max_heap has more elements, it means there's an odd number of elements,
       # and the median is the largest element in the smaller half (top of max_heap).
       if len(self.max_heap) > len(self.min_heap):
