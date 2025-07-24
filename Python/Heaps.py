@@ -76,6 +76,29 @@ class HeapAlgos:
   Collection of algorithms demonstrating heap usage.
   """
 
+  def nthSuperUglyNumber(self, n: int, primes: List[int]) -> int:
+    """
+    313. Super Ugly Number
+    Super ugly numbers are positive numbers whose all prime factors are in
+    the given prime list. Find the nth super ugly number.
+    This is a corrected and more idiomatic Python version of the heap-based C++ solution.
+    """
+    uglies = [1]
+    # (next_ugly_number, prime_factor, index_in_uglies)
+    min_heap = [(p, p, 1) for p in primes]
+
+    while len(uglies) < n:
+      next_ugly, prime, index = heapq.heappop(min_heap)
+
+      if next_ugly > uglies[-1]:
+        uglies.append(next_ugly)
+
+      # Add the next multiple of the same prime to the heap
+      new_next_ugly = prime * uglies[index]
+      heapq.heappush(min_heap, (new_next_ugly, prime, index + 1))
+
+    return uglies[-1]
+
   def min_cost_to_hire_workers(self, quality: list[int], wage: list[int],
                                k: int) -> float:
     """

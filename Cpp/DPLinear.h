@@ -260,7 +260,8 @@ class DP1D {
     const int m = (int)primes.size();
     // min_heap
     priority_queue<pair<int, int>, vector<pair<int, int>>,
-                   greater<pair<int, int>>> heap;
+                   greater<pair<int, int>>>
+        heap;
 
     vector<int> uglies(n), idx(m), ugly_by_last_prime(n);
     uglies[0] = 1;

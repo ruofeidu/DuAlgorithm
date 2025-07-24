@@ -243,3 +243,58 @@ def CountUniform(A: int, B: int) -> int:
 
 
 print(CountUniform(75, 300))
+
+
+def countMinProblems(N: int, S):
+  unique_scores = sorted(list(set(S)))
+  if not unique_scores:
+    return 0
+
+  max_score = unique_scores[-1]
+  # An initial upper bound: all problems are 1-point problems.
+  min_total_problems = max_score
+
+  # Bounds for c1 and c2. An optimal solution is unlikely to need many 1s or 2s.
+  # A larger bound provides more safety at a small performance cost with this algorithm.
+  c1_bound = 6
+  c2_bound = 6
+
+  for c1 in range(c1_bound):
+    for c2 in range(c2_bound):
+      # Pre-calculate all sums v = i*1 + j*2, and group by v % 3
+      formable_v = {i + 2 * j for i in range(c1 + 1) for j in range(c2 + 1)}
+
+      v_mod_3 = [[] for _ in range(3)]
+      for v in formable_v:
+        v_mod_3[v % 3].append(v)
+
+      for i in range(3):
+        v_mod_3[i].sort()
+
+      max_c3 = 0
+      possible_config = True
+      for s in unique_scores:
+        rem = s % 3
+        candidate_vs = v_mod_3[rem]
+
+        # Find largest v in candidate_vs such that v <= s
+        # bisect_right finds an insertion point, so the element at index-1 is the one.
+        idx = bisect_right(candidate_vs, s)
+
+        if idx == 0:
+          # No v <= s can be formed with the required remainder.
+          possible_config = False
+          break
+
+        max_v = candidate_vs[idx - 1]
+        c3_for_s = (s - max_v) // 3
+        max_c3 = max(max_c3, c3_for_s)
+
+      if possible_config:
+        current_total = c1 + c2 + max_c3
+        min_total_problems = min(min_total_problems, current_total)
+
+  return min_total_problems
+
+
+print(5, [1, 2, 3, 4, 5])
